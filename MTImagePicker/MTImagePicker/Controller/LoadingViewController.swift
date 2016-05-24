@@ -11,8 +11,8 @@ import UIKit
 class LoadingViewController: UIViewController {
 
     //use UIWindow show modal dialog
-    var newWindow:UIWindow!
-    var prevWindow:UIWindow!
+    var newWindow:UIWindow?
+    var prevWindow:UIWindow?
     var showTimes = 0
     
     func show(){
@@ -24,14 +24,14 @@ class LoadingViewController: UIViewController {
             uiwindow.rootViewController = self
             uiwindow.makeKeyAndVisible()
             self.newWindow = uiwindow
-            (UIApplication.sharedApplication().delegate as! AppDelegate).window = uiwindow
+            (UIApplication.sharedApplication().delegate as? AppDelegate)?.window = uiwindow
             self.showTimes += 1
         }
     }
     func dismiss(){//退出界面
         self.newWindow = nil
-        self.prevWindow.makeKeyAndVisible()
-        (UIApplication.sharedApplication().delegate as! AppDelegate).window = self.prevWindow
+        self.prevWindow?.makeKeyAndVisible()
+        (UIApplication.sharedApplication().delegate as? AppDelegate)?.window = self.prevWindow
     }
 
     

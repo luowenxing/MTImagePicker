@@ -29,15 +29,13 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     var maxCount: Int = Int.max
     var ALAssetGroup:UInt32 = ALAssetsGroupAll
     weak var delegate:MTImagePickerControllerDelegate?
+    lazy var lib = ALAsset.getLib()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lbSelected: UILabel!
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var btnPreview: UIButton!
-    
-    private var initialScrollDone:Bool = false
-    private lazy var lib = ALAsset.getLib()
     
     //MARK: 数据源
     private lazy var dataSource:[MTImagePickerModel] = {
@@ -91,6 +89,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         return dataSource
     }()
     private var selectedSource = Set<MTImagePickerModel>()
+    private var initialScrollDone:Bool = false
     
     class var instance:MTImagePickerController {
         get {

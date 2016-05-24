@@ -56,7 +56,28 @@ extension ALAsset {
     }
     
 }
-
+extension Int {
+    func byteFormat( places:UInt = 2 ) -> String {
+        if self < 0 {
+            return ""
+        }
+        else if self == 0 {
+            return "0KB"
+        }
+        else if self < 1024 {
+            return "1KB"
+        }
+        else if self < 1024 * 1024 { //KB
+            return "\(self/1024)KB"
+        }
+        else if self < 1024 * 1024 * 1024 { //MB
+            return "\(String(format: "%.\(places)f", Float(self) / 1024 / 1024))MB"
+        }
+        else {
+            return "\(String(format: "%.\(places)f", Float(self) / 1024 / 1024 / 1024))GB"
+        }
+    }
+}
 
 extension UIView {
     func heartbeatsAnimation(duration:Double) {

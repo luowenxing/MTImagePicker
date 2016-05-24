@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1B0F2F71CF32500008672D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F2F61CF32500008672D1 /* AppDelegate.swift */; };
-		B1B0F2F91CF32500008672D1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F2F81CF32500008672D1 /* TableViewController.swift */; };
-		B1B0F2FC1CF32500008672D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F2FA1CF32500008672D1 /* Main.storyboard */; };
 		B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F2FD1CF32500008672D1 /* Image.xcassets */; };
 		B1B0F30C1CF32500008672D1 /* MTImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F30B1CF32500008672D1 /* MTImagePickerTests.swift */; };
 		B1B0F3171CF32501008672D1 /* MTImagePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3161CF32501008672D1 /* MTImagePickerUITests.swift */; };
@@ -49,6 +46,10 @@
 		B1B0F3621CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
 		B1B0F3631CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
 		B1B0F3641CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
+		B1B0F3661CF47B61008672D1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3651CF47B61008672D1 /* TableViewController.swift */; };
+		B1B0F36A1CF47B71008672D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3671CF47B71008672D1 /* AppDelegate.swift */; };
+		B1B0F36B1CF47B71008672D1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3681CF47B71008672D1 /* Info.plist */; };
+		B1B0F36C1CF47B71008672D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3691CF47B71008672D1 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,11 +71,7 @@
 
 /* Begin PBXFileReference section */
 		B1B0F2F31CF32500008672D1 /* MTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B0F2F61CF32500008672D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
-		B1B0F2F81CF32500008672D1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
-		B1B0F2FB1CF32500008672D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B1B0F2FD1CF32500008672D1 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Image.xcassets; path = ../../Image.xcassets; sourceTree = "<group>"; };
-		B1B0F3021CF32500008672D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		B1B0F2FD1CF32500008672D1 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		B1B0F3071CF32500008672D1 /* MTImagePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTImagePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B0F30B1CF32500008672D1 /* MTImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTImagePickerTests.swift; sourceTree = "<group>"; };
 		B1B0F30D1CF32500008672D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +90,10 @@
 		B1B0F3571CF42D68008672D1 /* VideoPickerPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPickerPreviewCell.swift; sourceTree = "<group>"; };
 		B1B0F35B1CF42D97008672D1 /* ImagePickerPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerPreviewCell.swift; sourceTree = "<group>"; };
 		B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1B0F3651CF47B61008672D1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B1B0F3671CF47B71008672D1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1B0F3681CF47B71008672D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1B0F3691CF47B71008672D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,10 +246,10 @@
 		B1B0F3601CF451CB008672D1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				B1B0F2F61CF32500008672D1 /* AppDelegate.swift */,
-				B1B0F2F81CF32500008672D1 /* TableViewController.swift */,
-				B1B0F2FA1CF32500008672D1 /* Main.storyboard */,
-				B1B0F3021CF32500008672D1 /* Info.plist */,
+				B1B0F3671CF47B71008672D1 /* AppDelegate.swift */,
+				B1B0F3681CF47B71008672D1 /* Info.plist */,
+				B1B0F3691CF47B71008672D1 /* Main.storyboard */,
+				B1B0F3651CF47B61008672D1 /* TableViewController.swift */,
 				B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */,
 			);
 			path = Demo;
@@ -359,10 +360,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B0F36B1CF47B71008672D1 /* Info.plist in Resources */,
+				B1B0F36C1CF47B71008672D1 /* Main.storyboard in Resources */,
 				B1B0F3311CF32762008672D1 /* MTImagePicker.storyboard in Resources */,
 				B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */,
 				B1B0F3621CF4564D008672D1 /* LaunchScreen.storyboard in Resources */,
-				B1B0F2FC1CF32500008672D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,16 +393,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B0F36A1CF47B71008672D1 /* AppDelegate.swift in Sources */,
 				B1B0F3541CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */,
 				B1B0F3581CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */,
-				B1B0F2F91CF32500008672D1 /* TableViewController.swift in Sources */,
 				B1B0F3501CF3FDCE008672D1 /* FlashAlertView.swift in Sources */,
 				B1B0F3421CF3E073008672D1 /* Extensions.swift in Sources */,
 				B1B0F3361CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */,
 				B1B0F34C1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */,
+				B1B0F3661CF47B61008672D1 /* TableViewController.swift in Sources */,
 				B1B0F3391CF329CC008672D1 /* MTImagePickerController.swift in Sources */,
 				B1B0F3481CF3E101008672D1 /* MTImagePickerCell.swift in Sources */,
-				B1B0F2F71CF32500008672D1 /* AppDelegate.swift in Sources */,
 				B1B0F35C1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */,
 				B1B0F33D1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */,
 			);
@@ -456,18 +458,6 @@
 			targetProxy = B1B0F3131CF32501008672D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B1B0F2FA1CF32500008672D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1B0F2FB1CF32500008672D1 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B1B0F3191CF32501008672D1 /* Debug */ = {
@@ -561,7 +551,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = MTImagePicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,7 +565,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = MTImagePicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";

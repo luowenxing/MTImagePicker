@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "static ALAsset.getLib() -&gt; ALAssetsLibrary?:Extensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ALAssetsLibrary.authorizationStatus()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

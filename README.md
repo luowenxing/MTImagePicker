@@ -2,7 +2,7 @@
 A WeiXin like multiple image/video picker using `ALAssetsLibrary` and compatible for iOS7 and higher
 
 #Demo
-
+![demo](https://github.com/luowenxing/MTImagePicker/blob/master/MTImagePicker/Demo/demo.gif)
 #Usage
 The MTImagePicker is similiar to `UIImagePickerController`.It's easy to use the image picker following the sample code in demo like below
 ```

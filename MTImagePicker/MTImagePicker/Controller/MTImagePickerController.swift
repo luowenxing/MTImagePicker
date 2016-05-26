@@ -44,7 +44,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         if let lib = self.lib {
             let failureblock:(NSError!) ->Void = {
                 error in
-                let alert = FlashAlertView(message: "访问系统相册失败")
+                let alert = FlashAlertView(message: "Access photo library failed".localized)
                 alert.show()
                 loading.dismiss()
             }
@@ -83,7 +83,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
                     self.scrollToBottom()
                 }
             }
-            loading.show("正在加载...")
+            loading.show("Loading...".localized)
             lib.enumerateGroupsWithTypes(ALAssetsGroupAll, usingBlock: libraryGroupsEnumeration , failureBlock:failureblock)
         }
         return dataSource
@@ -164,7 +164,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
             self.lbSelected.heartbeatsAnimation(0.15)
             self.btnPreview.enabled = !(self.selectedSource.count == 0)
         } else {
-            let alertView = FlashAlertView(message: "已经达到最大选择数", delegate: nil)
+            let alertView = FlashAlertView(message: "Maxium selected".localized, delegate: nil)
             alertView.show()
         }
     }
@@ -181,7 +181,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         layout.prepareLayout()
         self.trailing.constant = layout.space / 2.0
         self.leading.constant = self.trailing.constant
-        self.title = "所有照片"
+        self.title = "All Photos".localized
     }
     
     private func pushToImageSelectorPreviewController(initialIndexPath:NSIndexPath?,dataSource:[MTImagePickerModel]) {

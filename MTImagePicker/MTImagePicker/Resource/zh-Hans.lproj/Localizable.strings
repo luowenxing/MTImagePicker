@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  MTImagePicker
+
+  Created by Luo on 5/26/16.
+  Copyright © 2016 Luo. All rights reserved.
+*/
+"OK" = "确定";
+"Maxium selected" = "已达到最大选择数";
+"Loading..." = "正在加载...";
+"Access photo library failed" = "访问系统相册失败";
+"Notice" = "提示";

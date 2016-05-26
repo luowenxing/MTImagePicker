@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-R4-XZw">
-                                        <rect key="frame" x="544" y="0.0" width="56" height="44"/>
+                                        <rect key="frame" x="519" y="0.0" width="81" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="16" maxY="0.0"/>
-                                        <state key="normal" title="预览">
+                                        <state key="normal" title="Preview">
                                             <color key="titleColor" red="0.015686274510000001" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="disabled">
@@ -35,7 +35,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htg-6y-iS6">
-                                        <rect key="frame" x="524" y="12" width="20" height="20"/>
+                                        <rect key="frame" x="499" y="12" width="20" height="20"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="aeJ-V5-AMr"/>
@@ -51,10 +51,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9l-Hz-hPi">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="8" maxY="0.0"/>
-                                        <state key="normal" title="清空">
+                                        <state key="normal" title="Empty">
                                             <color key="titleColor" red="0.015686274510000001" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="disabled">
@@ -176,12 +176,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="91I-9G-FZN">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="uQU-WW-nsx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uQU-WW-nsx">
                             <connections>
                                 <action selector="btnCancelTouch:" destination="M8Z-D7-a26" id="Oqv-tp-F0z"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="6QZ-sk-cbE">
+                        <barButtonItem key="rightBarButtonItem" title="Finish" id="6QZ-sk-cbE">
                             <connections>
                                 <action selector="btnFinishTouch:" destination="M8Z-D7-a26" id="DRH-ZH-vMu"/>
                             </connections>
@@ -335,14 +335,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSm-f7-Vwf">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已选" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-H5-UK7">
-                                        <rect key="frame" x="550" y="11" width="34" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-H5-UK7">
+                                        <rect key="frame" x="516.5" y="11" width="67.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAx-t8-aIT">
-                                        <rect key="frame" x="522" y="12" width="20" height="20"/>
+                                        <rect key="frame" x="488.5" y="12" width="20" height="20"/>
                                         <color key="backgroundColor" red="0.015686274510000001" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Hwu-JM-3JU"/>

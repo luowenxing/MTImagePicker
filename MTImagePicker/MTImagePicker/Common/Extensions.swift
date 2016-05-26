@@ -48,7 +48,7 @@ extension ALAsset {
             return ALAssetsLibrary()
         } else {
             dispatch_async(dispatch_get_main_queue()){
-                let alertView = UIAlertView(title: "提示", message: "照片访问权限被禁用，请前往系统设置->隐私->照片中，启用本程序对照片的访问权限", delegate: nil, cancelButtonTitle: "确定")
+                let alertView = UIAlertView(title: "Notice".localized, message: "照片访问权限被禁用，请前往系统设置->隐私->照片中，启用本程序对照片的访问权限", delegate: nil, cancelButtonTitle: "OK".localized)
                 alertView.show()
             }
             return nil
@@ -94,6 +94,12 @@ extension UIView {
                 }
             }
         }
+    }
+}
+
+extension String {
+    var localized:String {
+        return NSLocalizedString(self, comment: "")
     }
 }
 

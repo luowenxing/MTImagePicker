@@ -125,7 +125,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
                 self.lbSelected.heartbeatsAnimation(0.15)
             }
         } else {
-            let alertView = FlashAlertView(message: "已经达到最大选择数", delegate: nil)
+            let alertView = FlashAlertView(message: "Maxium selected".localized, delegate: nil)
             alertView.show()
         }
     }

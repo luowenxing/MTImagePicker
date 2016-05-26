@@ -28,7 +28,7 @@ class LoadingViewController: UIViewController {
             self.showTimes += 1
         }
     }
-    func dismiss(){//退出界面
+    func dismiss(){
         self.newWindow = nil
         self.prevWindow?.makeKeyAndVisible()
         (UIApplication.sharedApplication().delegate as? AppDelegate)?.window = self.prevWindow

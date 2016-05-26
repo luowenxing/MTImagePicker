@@ -14,12 +14,13 @@ class MTImagePickerModel:NSObject {
     var mediaType:MTImagePickerMediaType
     var sortNumber = 0
     var asset:ALAsset
-    var url:NSURL!
+    var lib:ALAssetsLibrary
     
-    init(mediaType:MTImagePickerMediaType,sortNumber:Int,asset:ALAsset) {
+    init(mediaType:MTImagePickerMediaType,sortNumber:Int,asset:ALAsset,lib:ALAssetsLibrary) {
         self.mediaType = mediaType
         self.sortNumber = sortNumber
         self.asset = asset
+        self.lib = lib
     }
     
     func getThumbImage()-> UIImage? {
@@ -48,8 +49,7 @@ class MTImagePickerModel:NSObject {
     }
     
     func getUrl() ->NSURL {
-        self.url = self.asset.defaultRepresentation().url()
-        return self.url
+        return self.asset.defaultRepresentation().url()
     }
     
 }

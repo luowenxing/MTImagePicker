@@ -41,48 +41,48 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     private lazy var dataSource:[MTImagePickerModel] = {
         var dataSource = [MTImagePickerModel]()
         let loading = LoadingViewController()
-        let failureblock:(NSError!) ->Void = {
-            error in
-            let alert = FlashAlertView(message: "访问系统相册失败")
-            alert.show()
-            loading.dismiss()
-        }
-        
-        let libraryGroupsEnumeration:(ALAssetsGroup!,UnsafeMutablePointer<ObjCBool>)->Void = {
-            Group,Stop in
-            if let group = Group where group.numberOfAssets() > 0{
-                group.enumerateAssetsUsingBlock(){
-                    Result, Index, Stop in
-                    if let result = Result {
-                        let ALAssetType = result.valueForProperty(ALAssetPropertyType) as! NSString
-                        var mediaType = MTImagePickerMediaType.Photo
-                        var isValid = false
-                        for type in self.mediaTypes {
-                            if type == .Photo {
-                                if ALAssetType.isEqualToString(ALAssetTypePhoto) {
-                                    isValid = true
-                                    mediaType = .Photo
-                                }
-                            } else if type == .Video {
-                                if ALAssetType.isEqualToString(ALAssetTypeVideo) {
-                                    isValid = true
-                                    mediaType = .Video
+        if let lib = self.lib {
+            let failureblock:(NSError!) ->Void = {
+                error in
+                let alert = FlashAlertView(message: "访问系统相册失败")
+                alert.show()
+                loading.dismiss()
+            }
+            
+            let libraryGroupsEnumeration:(ALAssetsGroup!,UnsafeMutablePointer<ObjCBool>)->Void = {
+                Group,Stop in
+                if let group = Group where group.numberOfAssets() > 0{
+                    group.enumerateAssetsUsingBlock(){
+                        Result, Index, Stop in
+                        if let result = Result {
+                            let ALAssetType = result.valueForProperty(ALAssetPropertyType) as! NSString
+                            var mediaType = MTImagePickerMediaType.Photo
+                            var isValid = false
+                            for type in self.mediaTypes {
+                                if type == .Photo {
+                                    if ALAssetType.isEqualToString(ALAssetTypePhoto) {
+                                        isValid = true
+                                        mediaType = .Photo
+                                    }
+                                } else if type == .Video {
+                                    if ALAssetType.isEqualToString(ALAssetTypeVideo) {
+                                        isValid = true
+                                        mediaType = .Video
+                                    }
                                 }
                             }
-                        }
-                        if isValid {
-                            let model = MTImagePickerModel(mediaType: mediaType, sortNumber: Index,asset: result)
-                            dataSource.append(model)
+                            if isValid {
+                                let model = MTImagePickerModel(mediaType: mediaType, sortNumber: Index,asset: result,lib:lib)
+                                dataSource.append(model)
+                            }
                         }
                     }
+                    loading.dismiss()
+                    self.dataSource =  dataSource
+                    self.collectionView.reloadData()
+                    self.scrollToBottom()
                 }
-                loading.dismiss()
-                self.dataSource =  dataSource
-                self.collectionView.reloadData()
-                self.scrollToBottom()
             }
-        }
-        if let lib = self.lib {
             loading.show("正在加载...")
             lib.enumerateGroupsWithTypes(ALAssetsGroupAll, usingBlock: libraryGroupsEnumeration , failureBlock:failureblock)
         }
@@ -217,6 +217,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         self.pushToImageSelectorPreviewController(nil, dataSource: dataSource)
     }
     @IBAction func btnCancelTouch(sender: AnyObject) {
+        self.delegate?.imagePickerControllerDidCancel?(self)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func btnClearTouch(sender: AnyObject) {

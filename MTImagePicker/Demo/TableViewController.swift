@@ -70,7 +70,6 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     }
 
     func imagePickerController(picker: MTImagePickerController, didFinishPickingWithModels models: [MTImagePickerModel]) {
-        self.lib = picker.lib
         self.dataSource = models
         self.tableView.reloadData()
     }

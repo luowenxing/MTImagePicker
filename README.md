@@ -15,7 +15,7 @@ A WeiXin like multiple image/video picker using `ALAssetsLibrary` and compatible
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
-pod 'Kingfisher', '~> 2.4'
+pod 'MTImagePicker', '~> 1.0.1'
 ```
 
 #Usage

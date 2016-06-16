@@ -4,6 +4,10 @@ A WeiXin like multiple image/video picker using `ALAssetsLibrary` and compatible
 #Demo
 ![demo](https://github.com/luowenxing/MTImagePicker/blob/master/MTImagePicker/Demo/demo.gif)
 
+# Requirement
+* iOS7.0+
+* Build success in Xcode 7.3 Swift 2.2
+
 # Installation
 There is no ohter dependency in `MTImagePicker`.Simply drag the `MTImagePicker/MTImagePicker` folder to your project.
 

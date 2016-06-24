@@ -10,6 +10,7 @@ import UIKit
 import AssetsLibrary
 import CoreImage
 import Foundation
+import Photos
 
 
 
@@ -18,18 +19,41 @@ enum MTImagePickerMediaType {
     case Video
 }
 
+enum MTImagePickerSource {
+    case ALAsset
+    case Photos
+}
+
 @objc protocol MTImagePickerControllerDelegate:NSObjectProtocol {
-    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithModels models:[MTImagePickerModel])
+    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithAssetsModels models:[MTImagePickerAssetsModel])
+    
+    @available(iOS 8.0, *)
+    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithPhotosModels models:[MTImagePickerPhotosModel])
+    
     optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
 }
 
 class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
+    weak var delegate:MTImagePickerControllerDelegate?
     var mediaTypes:[MTImagePickerMediaType] = [.Photo]
     var maxCount: Int = Int.max
     var ALAssetGroup:UInt32 = ALAssetsGroupAll
-    weak var delegate:MTImagePickerControllerDelegate?
-    lazy var lib = ALAsset.getLib()
+    var source:MTImagePickerSource {
+        get {
+            return self._source
+        }
+        set {
+            if newValue == .Photos {
+                if #available(iOS 8.0, *) {
+                    self._source = .Photos
+                } else {
+                    self._source = .ALAsset
+                }
+            }
+        }
+    }
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lbSelected: UILabel!
@@ -37,9 +61,21 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var btnPreview: UIButton!
     
-    //MARK: 数据源
+    //MARK: data source
     private lazy var dataSource:[MTImagePickerModel] = {
-        var dataSource = [MTImagePickerModel]()
+        if self.source == .ALAsset {
+            return self.alassetDataSource
+        } else {
+            if #available(iOS 8.0, *) {
+                return self.photosDataSource
+            }else {
+                return self.alassetDataSource
+            }
+        }
+    }()
+    
+    private lazy var alassetDataSource:[MTImagePickerAssetsModel] = {
+        var dataSource = [MTImagePickerAssetsModel]()
         let loading = LoadingViewController()
         if let lib = self.lib {
             let failureblock:(NSError!) ->Void = {
@@ -72,7 +108,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
                                 }
                             }
                             if isValid {
-                                let model = MTImagePickerModel(mediaType: mediaType, sortNumber: Index,asset: result,lib:lib)
+                                let model = MTImagePickerAssetsModel(mediaType: mediaType, sortNumber: Index,source:.ALAsset,asset: result,lib:lib)
                                 dataSource.append(model)
                             }
                         }
@@ -88,8 +124,35 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         }
         return dataSource
     }()
+    
+
+    @available(iOS 8.0, *)
+    private lazy var photosDataSource:[MTImagePickerPhotosModel] = {
+        var dataSource = [MTImagePickerPhotosModel]()
+        let options = PHFetchOptions()
+        options.predicate = NSPredicate(format: "mediaType = %d or mediaType = %d", PHAssetMediaType.Image.rawValue,PHAssetMediaType.Video.rawValue)
+        let result = PHAsset.fetchAssetsWithOptions(options)
+        result.enumerateObjectsUsingBlock(){
+            (phassets, index, isStop) -> Void in
+            let phasset = phassets as! PHAsset
+            var mediaType:MTImagePickerMediaType = .Photo
+            if phasset.mediaType == PHAssetMediaType.Image {
+                mediaType = .Photo
+            }else {
+                mediaType = .Video
+            }
+            let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, source: .Photos, phasset: phasset)
+            dataSource.append(model)
+            
+        }
+        return dataSource
+    }()
+    
+    
     private var selectedSource = Set<MTImagePickerModel>()
     private var initialScrollDone:Bool = false
+    private lazy var lib = ALAsset.getLib()
+    private var _source:MTImagePickerSource = .ALAsset
     
     class var instance:MTImagePickerController {
         get {
@@ -99,6 +162,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         }
     }
     
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
@@ -131,7 +195,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         let model = self.dataSource[indexPath.row]
         if model.mediaType == .Video   {
             cell.videoView.hidden = false
-            cell.videoDuration.text = model.getVideoDuration()
+            cell.videoDuration.text = model.getVideoDuration().timeFormat()
         } else {
             cell.videoView.hidden = true
         }
@@ -169,6 +233,8 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         }
     }
     
+    //MARK: private methods
+    
     private func scrollToBottom() {
         if self.dataSource.count > 0 {
             let indexPath = NSIndexPath(forRow: self.dataSource.count - 1 , inSection: 0)
@@ -205,10 +271,18 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         return dataSource
     }
     
-    
+    //MARK: IBActions
     @IBAction func btnFinishTouch(sender: AnyObject) {
         let dataSource = self.getSelectedSortedSource()
-        self.delegate?.imagePickerController?(self, didFinishPickingWithModels: dataSource)
+        if self.source == .Photos {
+            if #available(iOS 8.0, *) {
+                self.delegate?.imagePickerController?(self, didFinishPickingWithPhotosModels: dataSource as! [MTImagePickerPhotosModel])
+            } else {
+                // Fallback on earlier versions
+            }
+        } else {
+            self.delegate?.imagePickerController?(self, didFinishPickingWithAssetsModels: dataSource as! [MTImagePickerAssetsModel])
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

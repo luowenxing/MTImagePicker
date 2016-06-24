@@ -79,6 +79,14 @@ extension Int {
     }
 }
 
+extension Double {
+    func timeFormat() -> String {
+        let ticks = Int(self)
+        let text = String(format: "%d:%02d",ticks/60,ticks%60)
+        return text
+    }
+}
+
 extension UIView {
     func heartbeatsAnimation(duration:Double) {
         UIView.animateWithDuration(duration, animations: {

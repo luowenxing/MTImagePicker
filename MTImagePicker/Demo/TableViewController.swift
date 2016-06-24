@@ -45,11 +45,10 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
             return cell
         } else {
             let model = self.dataSource[indexPath.row]
-            let rept = model.asset.defaultRepresentation()
             let cell = self.tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath)
             (cell.viewWithTag(1001) as! UIImageView).image = model.getThumbImage()
-            (cell.viewWithTag(1002) as! UILabel).text = Int(rept.size()).byteFormat()
-            (cell.viewWithTag(1003) as! UILabel).text = rept.filename()
+            (cell.viewWithTag(1002) as! UILabel).text = model.getFileSize().byteFormat()
+            (cell.viewWithTag(1003) as! UILabel).text = model.getFileName()
             return cell
         }
     }
@@ -68,11 +67,18 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
             return 100
         }
     }
-
-    func imagePickerController(picker: MTImagePickerController, didFinishPickingWithModels models: [MTImagePickerModel]) {
+    
+    @available(iOS 8.0, *)
+    func imagePickerController(picker: MTImagePickerController, didFinishPickingWithPhotosModels models: [MTImagePickerPhotosModel]) {
+        
+    }
+    
+    func imagePickerController(picker: MTImagePickerController, didFinishPickingWithAssetsModels models: [MTImagePickerAssetsModel]) {
         self.dataSource = models
         self.tableView.reloadData()
     }
+    
+    
     
     func btnPickTouch() {
         let textCount = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.viewWithTag(1001) as! UITextField

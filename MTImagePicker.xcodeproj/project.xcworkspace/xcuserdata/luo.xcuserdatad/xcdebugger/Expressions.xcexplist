@@ -3,6 +3,20 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MTImagePickerPhotosModel.((fetchAVPlayerItemAsync in _AF6651BCACFFEDFA890B45B2DB03DFEA)((AVPlayerItem) -&gt; ()) -&gt; ()).(closure #1):MTImagePickerPhotosModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "NSThread.currentThread()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MTImagePickerController.((photosDataSource in _E5518C1212C76253DDF9FBE4F727B7BB).getter).(closure #1):MTImagePickerController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MTImagePickerController.((photosDataSource in _E5518C1212C76253DDF9FBE4F727B7BB).getter).(closure #1).(fetchAlbums #1)() -&gt; [PHFetchResult]?:MTImagePickerController.swift">
+      </ContextState>
+      <ContextState
          contextName = "static ALAsset.getLib() -&gt; ALAssetsLibrary?:Extensions.swift">
          <PersistentStrings>
             <PersistentString

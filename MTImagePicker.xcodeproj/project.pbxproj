@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B115F3FC1D20C7C10051F937 /* MTImagePickerAssetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */; };
+		B115F3FE1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */; };
 		B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F2FD1CF32500008672D1 /* Image.xcassets */; };
 		B1B0F30C1CF32500008672D1 /* MTImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F30B1CF32500008672D1 /* MTImagePickerTests.swift */; };
 		B1B0F3171CF32501008672D1 /* MTImagePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3161CF32501008672D1 /* MTImagePickerUITests.swift */; };
@@ -73,6 +75,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B115F3FA1D20C5830051F937 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAssetsModel.swift; sourceTree = "<group>"; };
+		B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPhotosModel.swift; sourceTree = "<group>"; };
 		B1B0F2F31CF32500008672D1 /* MTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B0F2FD1CF32500008672D1 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		B1B0F3071CF32500008672D1 /* MTImagePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTImagePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +105,6 @@
 		B1D10D751CF6A7F600FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MTImagePicker.storyboard; sourceTree = "<group>"; };
 		B1D10D781CF6A7FA00FA32F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
 		B1D10D7A1CF6A8B200FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B1D10D7D1CF6A8DD00FA32F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */,
+				B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */,
+				B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,8 +416,10 @@
 				B1B0F3581CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */,
 				B1B0F3501CF3FDCE008672D1 /* FlashAlertView.swift in Sources */,
 				B1B0F3421CF3E073008672D1 /* Extensions.swift in Sources */,
+				B115F3FE1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift in Sources */,
 				B1B0F3361CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */,
 				B1B0F34C1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */,
+				B115F3FC1D20C7C10051F937 /* MTImagePickerAssetsModel.swift in Sources */,
 				B1B0F3661CF47B61008672D1 /* TableViewController.swift in Sources */,
 				B1B0F3391CF329CC008672D1 /* MTImagePickerController.swift in Sources */,
 				B1B0F3481CF3E101008672D1 /* MTImagePickerCell.swift in Sources */,
@@ -495,7 +503,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1D10D7A1CF6A8B200FA32F8 /* Base */,
-				B1D10D7D1CF6A8DD00FA32F8 /* zh-Hans */,
+				B115F3FA1D20C5830051F937 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

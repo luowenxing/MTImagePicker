@@ -33,7 +33,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            return 5
         } else {
             return dataSource.count
         }
@@ -54,7 +54,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 3 && indexPath.section == 0 {
+        if indexPath.row == 4 && indexPath.section == 0 {
             self.btnPickTouch()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -84,16 +84,22 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         let textCount = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.viewWithTag(1001) as! UITextField
         let photoSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))?.viewWithTag(1001) as! UISwitch
         let videoSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))?.viewWithTag(1001) as! UISwitch
+        let sourceSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))?.viewWithTag(1001) as! UISwitch
         var mediaTypes = [MTImagePickerMediaType]()
+        var source = MTImagePickerSource.ALAsset
         if photoSwitch.on == true {
             mediaTypes.append(MTImagePickerMediaType.Photo)
         }
         if videoSwitch.on == true {
             mediaTypes.append(MTImagePickerMediaType.Video)
         }
+        if sourceSwitch.on == false {
+            source = MTImagePickerSource.Photos
+        }
         
         let vc = MTImagePickerController.instance
         vc.mediaTypes = mediaTypes
+        vc.source = source
         vc.delegate = self
         if let text = textCount.text,maxCount = Int(text) {
             vc.maxCount = maxCount

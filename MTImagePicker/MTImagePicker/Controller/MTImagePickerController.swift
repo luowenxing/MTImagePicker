@@ -44,9 +44,10 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
             return self._source
         }
         set {
+            self._source = newValue
             if newValue == .Photos {
                 if #available(iOS 8.0, *) {
-                    self._source = .Photos
+                    
                 } else {
                     self._source = .ALAsset
                 }
@@ -131,6 +132,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         var dataSource = [MTImagePickerPhotosModel]()
         let options = PHFetchOptions()
         options.predicate = NSPredicate(format: "mediaType = %d or mediaType = %d", PHAssetMediaType.Image.rawValue,PHAssetMediaType.Video.rawValue)
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         let result = PHAsset.fetchAssetsWithOptions(options)
         result.enumerateObjectsUsingBlock(){
             (phassets, index, isStop) -> Void in
@@ -152,7 +154,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     private var selectedSource = Set<MTImagePickerModel>()
     private var initialScrollDone:Bool = false
     private lazy var lib = ALAsset.getLib()
-    private var _source:MTImagePickerSource = .ALAsset
+    private var _source:MTImagePickerSource = .Photos
     
     class var instance:MTImagePickerController {
         get {
@@ -195,7 +197,12 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         let model = self.dataSource[indexPath.row]
         if model.mediaType == .Video   {
             cell.videoView.hidden = false
-            cell.videoDuration.text = model.getVideoDuration().timeFormat()
+            model.getVideoDurationAsync(){
+                duration in
+                dispatch_async(dispatch_get_main_queue()){
+                    cell.videoDuration.text = duration.timeFormat()
+                }
+            }
         } else {
             cell.videoView.hidden = true
         }

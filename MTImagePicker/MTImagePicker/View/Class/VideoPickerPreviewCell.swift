@@ -64,12 +64,16 @@ class VideoPickerPreviewCell:UICollectionViewCell{
         }
         //此处耗时，且即使放入后台线程，还是阻塞UI线程，故放在滚动结束后调用
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            self.avPlayer.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: self.model.getUrl()))
-            self.observer = self.avPlayer.addBoundaryTimeObserverForTimes([NSValue(CMTime: self.avPlayer.currentItem!.asset.duration)], queue: nil){
-                [unowned self] in
-                dispatch_async(dispatch_get_main_queue()){
-                    self.avPlayer.seekToTime(CMTime(value: 0 , timescale: 30))
-                    self.btnPlay.hidden = false
+            if let playerItem = self.model.getAVPlayerItem() {
+                self.avPlayer.replaceCurrentItemWithPlayerItem(playerItem)
+                if let currentItem = self.avPlayer.currentItem {
+                    self.observer = self.avPlayer.addBoundaryTimeObserverForTimes([NSValue(CMTime: currentItem.asset.duration)], queue: nil){
+                        [unowned self] in
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.avPlayer.seekToTime(CMTime(value: 0 , timescale: 30))
+                            self.btnPlay.hidden = false
+                        }
+                    }
                 }
             }
         }

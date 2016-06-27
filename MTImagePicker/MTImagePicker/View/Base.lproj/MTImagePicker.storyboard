@@ -181,7 +181,7 @@
                                 <action selector="btnCancelTouch:" destination="M8Z-D7-a26" id="Oqv-tp-F0z"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Finish" id="6QZ-sk-cbE">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="6QZ-sk-cbE">
                             <connections>
                                 <action selector="btnFinishTouch:" destination="M8Z-D7-a26" id="DRH-ZH-vMu"/>
                             </connections>

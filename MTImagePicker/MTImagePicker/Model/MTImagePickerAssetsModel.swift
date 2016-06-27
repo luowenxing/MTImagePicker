@@ -9,7 +9,7 @@ import UIKit
 import AssetsLibrary
 import AVFoundation
 
-class MTImagePickerAssetsModel:MTImagePickerModel {
+class MTImagePickerAssetsModel : MTImagePickerModel {
     
     var asset:ALAsset!
     var lib:ALAssetsLibrary!

@@ -9,7 +9,7 @@ import UIKit
 import Photos
 
 @available(iOS 8.0, *)
-class MTImagePickerPhotosModel:MTImagePickerModel {
+class MTImagePickerPhotosModel : MTImagePickerModel {
     
     var phasset:PHAsset!
     init(mediaType: MTImagePickerMediaType, sortNumber: Int, source: MTImagePickerSource,phasset:PHAsset) {

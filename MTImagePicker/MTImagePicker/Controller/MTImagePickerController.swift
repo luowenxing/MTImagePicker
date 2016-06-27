@@ -25,8 +25,10 @@ enum MTImagePickerSource {
 }
 
 @objc protocol MTImagePickerControllerDelegate:NSObjectProtocol {
+    // Implement it when setting source to MTImagePickerSource.ALAsset
     optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithAssetsModels models:[MTImagePickerAssetsModel])
     
+    // Implement it when setting source to MTImagePickerSource.Photos
     @available(iOS 8.0, *)
     optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithPhotosModels models:[MTImagePickerPhotosModel])
     
@@ -38,7 +40,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     weak var delegate:MTImagePickerControllerDelegate?
     var mediaTypes:[MTImagePickerMediaType] = [.Photo]
     var maxCount: Int = Int.max
-    var ALAssetGroup:UInt32 = ALAssetsGroupAll
+    // Default is ALAsset
     var source:MTImagePickerSource {
         get {
             return self._source
@@ -131,21 +133,40 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     private lazy var photosDataSource:[MTImagePickerPhotosModel] = {
         var dataSource = [MTImagePickerPhotosModel]()
         let options = PHFetchOptions()
-        options.predicate = NSPredicate(format: "mediaType = %d or mediaType = %d", PHAssetMediaType.Image.rawValue,PHAssetMediaType.Video.rawValue)
+        var formats = [String]()
+        var arguments = [Int]()
+        for type in self.mediaTypes {
+            formats.append("mediaType = %d")
+            if type == .Photo {
+                arguments.append(PHAssetMediaType.Image.rawValue)
+            } else if type == .Video {
+                arguments.append(PHAssetMediaType.Video.rawValue)
+            }
+        }
+        options.predicate = NSPredicate(format: formats.joinWithSeparator(" or "), argumentArray: arguments)
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         let result = PHAsset.fetchAssetsWithOptions(options)
-        result.enumerateObjectsUsingBlock(){
-            (phassets, index, isStop) -> Void in
-            let phasset = phassets as! PHAsset
-            var mediaType:MTImagePickerMediaType = .Photo
-            if phasset.mediaType == PHAssetMediaType.Image {
-                mediaType = .Photo
-            }else {
-                mediaType = .Video
+        let loading = LoadingViewController()
+        loading.show("Loading...".localized)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            result.enumerateObjectsUsingBlock(){
+                (phassets, index, isStop) -> Void in
+                let phasset = phassets as! PHAsset
+                var mediaType:MTImagePickerMediaType = .Photo
+                if phasset.mediaType == PHAssetMediaType.Image {
+                    mediaType = .Photo
+                }else {
+                    mediaType = .Video
+                }
+                let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, source: .Photos, phasset: phasset)
+                dataSource.append(model)
             }
-            let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, source: .Photos, phasset: phasset)
-            dataSource.append(model)
-            
+            dispatch_async(dispatch_get_main_queue()){
+                loading.dismiss()
+                self.dataSource =  dataSource
+                self.collectionView.reloadData()
+                self.scrollToBottom()
+            }
         }
         return dataSource
     }()

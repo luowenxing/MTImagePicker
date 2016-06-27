@@ -32,6 +32,11 @@ imagePicker.maxCount = 10
 imagePicker.source = MTImagePickerSource.ALAsset
 //imagePicker.source = MTImagePickerSource.Photos (Work on iOS8+)
 ```
+* Wrap `imagePicker` in a `UINavigationController`.
+```
+let nc = UINavigationController(rootViewController: vc)
+self.presentViewController(nc, animated: true, completion: nil)
+```
 * Implement the delegate method accordding to the `source`.
 ```
 @objc protocol MTImagePickerControllerDelegate:NSObjectProtocol {

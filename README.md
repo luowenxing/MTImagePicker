@@ -1,5 +1,5 @@
 # MTImagePicker
-A WeiXin like multiple image/video picker using `ALAssetsLibrary` and compatible for iOS7 and higher
+A WeiXin like multiple image and video picker which is compatible for iOS7+.You can use  either `ALAssetsLibrary` or `Photos framework` by setting the source of `MTImagePickerController`.
 
 #Demo
 ![demo](https://github.com/luowenxing/MTImagePicker/blob/master/MTImagePicker/Demo/demo.gif)
@@ -19,20 +19,38 @@ pod 'MTImagePicker', '~> 1.0.1'
 ```
 
 #Usage
-The MTImagePicker is similiar to `UIImagePickerController`.It's easy to use the image picker following the sample code in demo like below
+* The MTImagePicker is similiar to `UIImagePickerController`.It's easy to use the image picker following the sample code in demo like below
 ```
 let imagePicker = MTImagePickerController.instance
 imagePicker.mediaTypes = [MTImagePickerMediaType.Photo,MTImagePickerMediaType.Video]
 imagePicker.delegate = self
 imagePicker.maxCount = 10
-let nc = UINavigationController(rootViewController: imagePicker)
+```
+* You can use  either `ALAssetsLibrary` or `Photos framework` by setting the source of `MTImagePickerController`
+```
+//default is MTImagePickerSource.ALAsset
+imagePicker.source = MTImagePickerSource.ALAsset
+//imagePicker.source = MTImagePickerSource.Photos (Work on iOS8+)
+```
+* Wrap `imagePicker` in a `UINavigationController`.
+```
+let nc = UINavigationController(rootViewController: vc)
 self.presentViewController(nc, animated: true, completion: nil)
 ```
-Implement the delegate method
+* Implement the delegate method accordding to the `source`.
 ```
 @objc protocol MTImagePickerControllerDelegate:NSObjectProtocol {
-    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithModels models:[MTImagePickerModel])
+
+    // Implement it when setting source to MTImagePickerSource.ALAsset
+    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithAssetsModels models:[MTImagePickerAssetsModel])
+    
+    // Implement it when setting source to MTImagePickerSource.Photos
+    @available(iOS 8.0, *)
+    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithPhotosModels models:[MTImagePickerPhotosModel])
+    
     optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
 }
 ```
 
+# TODO
+* Add Albums selecting support.

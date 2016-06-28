@@ -57,11 +57,8 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         }
     }
     
-    
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: MTImagePickerCollectionView!
     @IBOutlet weak var lbSelected: UILabel!
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var btnPreview: UIButton!
     
     //MARK: data source
@@ -80,7 +77,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     private lazy var alassetDataSource:[MTImagePickerAssetsModel] = {
         var dataSource = [MTImagePickerAssetsModel]()
         let loading = LoadingViewController()
-        if let lib = self.lib {
+        if let lib = ALAsset.getLib(self.showUnAuthorize) {
             let failureblock:(NSError!) ->Void = {
                 error in
                 let alert = FlashAlertView(message: "Access photo library failed".localized)
@@ -132,41 +129,46 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     @available(iOS 8.0, *)
     private lazy var photosDataSource:[MTImagePickerPhotosModel] = {
         var dataSource = [MTImagePickerPhotosModel]()
-        let options = PHFetchOptions()
-        var formats = [String]()
-        var arguments = [Int]()
-        for type in self.mediaTypes {
-            formats.append("mediaType = %d")
-            if type == .Photo {
-                arguments.append(PHAssetMediaType.Image.rawValue)
-            } else if type == .Video {
-                arguments.append(PHAssetMediaType.Video.rawValue)
-            }
-        }
-        options.predicate = NSPredicate(format: formats.joinWithSeparator(" or "), argumentArray: arguments)
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        let result = PHAsset.fetchAssetsWithOptions(options)
-        let loading = LoadingViewController()
-        loading.show("Loading...".localized)
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            result.enumerateObjectsUsingBlock(){
-                (phassets, index, isStop) -> Void in
-                let phasset = phassets as! PHAsset
-                var mediaType:MTImagePickerMediaType = .Photo
-                if phasset.mediaType == PHAssetMediaType.Image {
-                    mediaType = .Photo
-                }else {
-                    mediaType = .Video
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .Authorized || status == .NotDetermined {
+            let options = PHFetchOptions()
+            var formats = [String]()
+            var arguments = [Int]()
+            for type in self.mediaTypes {
+                formats.append("mediaType = %d")
+                if type == .Photo {
+                    arguments.append(PHAssetMediaType.Image.rawValue)
+                } else if type == .Video {
+                    arguments.append(PHAssetMediaType.Video.rawValue)
                 }
-                let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, source: .Photos, phasset: phasset)
-                dataSource.append(model)
             }
-            dispatch_async(dispatch_get_main_queue()){
-                loading.dismiss()
-                self.dataSource =  dataSource
-                self.collectionView.reloadData()
-                self.scrollToBottom()
+            options.predicate = NSPredicate(format: formats.joinWithSeparator(" or "), argumentArray: arguments)
+            options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            let result = PHAsset.fetchAssetsWithOptions(options)
+            let loading = LoadingViewController()
+            loading.show("Loading...".localized)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                result.enumerateObjectsUsingBlock(){
+                    (phassets, index, isStop) -> Void in
+                    let phasset = phassets as! PHAsset
+                    var mediaType:MTImagePickerMediaType = .Photo
+                    if phasset.mediaType == PHAssetMediaType.Image {
+                        mediaType = .Photo
+                    }else {
+                        mediaType = .Video
+                    }
+                    let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, source: .Photos, phasset: phasset)
+                    dataSource.append(model)
+                }
+                dispatch_async(dispatch_get_main_queue()){
+                    loading.dismiss()
+                    self.dataSource =  dataSource
+                    self.collectionView.reloadData()
+                    self.scrollToBottom()
+                }
             }
+        } else {
+            self.showUnAuthorize()
         }
         return dataSource
     }()
@@ -174,7 +176,6 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     
     private var selectedSource = Set<MTImagePickerModel>()
     private var initialScrollDone:Bool = false
-    private lazy var lib = ALAsset.getLib()
     private var _source:MTImagePickerSource = .Photos
     
     class var instance:MTImagePickerController {
@@ -231,9 +232,9 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         cell.indexPath = indexPath
         cell.btnCheck.selected = self.selectedSource.contains(model)
         cell.btnCheck.addTarget(self, action: #selector(MTImagePickerController.btnCheckTouch(_:)), forControlEvents: .TouchUpInside)
-        cell.leading.constant = self.leading.constant
-        cell.trailing.constant = self.leading.constant
-        cell.top.constant = self.leading.constant * 2
+        cell.leading.constant = self.collectionView.leading.constant
+        cell.trailing.constant = self.collectionView.leading.constant
+        cell.top.constant = self.collectionView.leading.constant * 2
         return cell
     }
     
@@ -261,6 +262,19 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         }
     }
     
+    func showUnAuthorize() {
+        dispatch_async(dispatch_get_main_queue()){
+            let alertView = UIAlertView(title: "Notice".localized, message: "照片访问权限被禁用，请前往系统设置->隐私->照片中，启用本程序对照片的访问权限", delegate: nil, cancelButtonTitle: "OK".localized)
+            alertView.show()
+        }
+    }
+    
+
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        self.collectionView.prevIndexPath = self.collectionView.indexPathsForVisibleItems().minElement(){ $0.row < $1.row }
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     //MARK: private methods
     
     private func scrollToBottom() {
@@ -271,10 +285,6 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     }
     
     private func initUI() {
-        let layout = (self.collectionView.collectionViewLayout as! MTImagePickerFlowLayout)
-        layout.prepareLayout()
-        self.trailing.constant = layout.space / 2.0
-        self.leading.constant = self.trailing.constant
         self.title = "All Photos".localized
     }
     
@@ -328,4 +338,10 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         self.lbSelected.text = String(self.selectedSource.count)
         self.btnPreview.enabled = false
     }
+}
+
+class MTImagePickerCollectionView:UICollectionView {
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    var prevIndexPath:NSIndexPath?
 }

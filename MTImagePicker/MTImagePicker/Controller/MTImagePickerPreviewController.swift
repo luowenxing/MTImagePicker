@@ -86,10 +86,24 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         } 
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.view.bounds.size.width+20, self.view.bounds.size.height);
+    // 旋转处理
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        if self.view.bounds.size != size {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            if let videoCell = self.collectionView.visibleCells().first as? VideoPickerPreviewCell {
+                coordinator.animateAlongsideTransition({ (_) in
+                    // CALayer 无法autolayout 需要重设frame
+                    videoCell.resetLayer()
+                }, completion: nil)
+            }
+        }
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(self.collectionView.bounds.width, self.collectionView.bounds.width);
+    }
+    
+    //MARK:UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if let videoCell = self.collectionView.visibleCells().first as? VideoPickerPreviewCell {
             videoCell.didScroll()

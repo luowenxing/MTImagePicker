@@ -313,13 +313,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-            timestampString = "488690795.934006"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
+            timestampString = "488769936.944717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "didEndScroll()"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "onImageSingleTap(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -329,60 +329,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-            timestampString = "488690796.305362"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
+            timestampString = "488769936.944717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "didEndScroll()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-            timestampString = "488690798.127734"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "didEndScroll()"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "onImageSingleTap(_:)"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2)"
+                  symbolName = "MTImagePicker.ImagePickerPreviewCell.onImageSingleTap (__ObjC.UITapGestureRecognizer) -&gt; ()"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.627713"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
+                  timestampString = "488774951.557563"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "680">
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2).(closure #1)"
+                  symbolName = "MTImagePicker.ImagePickerPreviewCell.onImageSingleTap (__ObjC.UITapGestureRecognizer) -&gt; ()"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.627797"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
+                  timestampString = "488774951.557648"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "40">
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "64">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -393,109 +377,174 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-            timestampString = "488690798.622882"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "didEndScroll()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2)"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.628401"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "1044">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2).(closure #1)"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.628488"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2).(closure #1).(closure #1)"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.628563"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-            timestampString = "488690799.084163"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
+            timestampString = "488769936.944717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "didEndScroll()"
+            landmarkName = "onImageDoubleTap(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
+            timestampString = "488769936.944717"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "onImageDoubleTap(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerPreviewController.swift"
+            timestampString = "488772340.664068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "viewWillTransitionToSize(_:withTransitionCoordinator:)"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2).(closure #1)"
+                  symbolName = "MTImagePicker.MTImagePickerPreviewController.viewWillTransitionToSize (__C.CGSize, withTransitionCoordinator : __ObjC.UIViewControllerTransitionCoordinator) -&gt; ()"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.629294"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerPreviewController.swift"
+                  timestampString = "488774951.558997"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "68">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "2208">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.VideoPickerPreviewCell.(didEndScroll () -&gt; ()).(closure #2).(closure #1).(closure #1)"
+                  symbolName = "MTImagePicker.MTImagePickerPreviewController.(viewWillTransitionToSize (__C.CGSize, withTransitionCoordinator : __ObjC.UIViewControllerTransitionCoordinator) -&gt; ()).(closure #1)"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
-                  timestampString = "488692050.629378"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerPreviewController.swift"
+                  timestampString = "488774951.559116"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/VideoPickerPreviewCell.swift"
+            timestampString = "488771518.05903"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "resetLayer()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+            timestampString = "488774528.593986"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "viewWillTransitionToSize(_:withTransitionCoordinator:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+            timestampString = "488774528.593986"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "viewWillTransitionToSize(_:withTransitionCoordinator:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
+            timestampString = "488774305.180373"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
+            timestampString = "488774951.466377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
+            timestampString = "488774951.466377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

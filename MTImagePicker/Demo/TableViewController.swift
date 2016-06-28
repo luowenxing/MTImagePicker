@@ -70,7 +70,8 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     
     @available(iOS 8.0, *)
     func imagePickerController(picker: MTImagePickerController, didFinishPickingWithPhotosModels models: [MTImagePickerPhotosModel]) {
-        
+        self.dataSource = models
+        self.tableView.reloadData()
     }
     
     func imagePickerController(picker: MTImagePickerController, didFinishPickingWithAssetsModels models: [MTImagePickerAssetsModel]) {

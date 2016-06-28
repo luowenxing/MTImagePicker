@@ -57,6 +57,10 @@ class VideoPickerPreviewCell:UICollectionViewCell{
         self.setTopAndBottomView(false)
     }
     
+    func resetLayer() {
+        self.playerLayer.frame = UIScreen.mainScreen().compatibleBounds
+    }
+    
     func didEndScroll() {
         self.model.getImageAsync(){
             image in

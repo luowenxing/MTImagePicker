@@ -42,20 +42,17 @@ extension ALAsset {
         return result
     }
     
-    class func getLib() -> ALAssetsLibrary? {
+    class func getLib(failure:()->Void) -> ALAssetsLibrary? {
         let status = ALAssetsLibrary.authorizationStatus()
         if status == .Authorized || status == .NotDetermined {
             return ALAssetsLibrary()
         } else {
-            dispatch_async(dispatch_get_main_queue()){
-                let alertView = UIAlertView(title: "Notice".localized, message: "照片访问权限被禁用，请前往系统设置->隐私->照片中，启用本程序对照片的访问权限", delegate: nil, cancelButtonTitle: "OK".localized)
-                alertView.show()
-            }
+            failure()
             return nil
         }
     }
-    
 }
+
 extension Int {
     func byteFormat( places:UInt = 2 ) -> String {
         if self < 0 {

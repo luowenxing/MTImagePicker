@@ -14,6 +14,14 @@
          contextName = "MTImagePickerController.((photosDataSource in _E5518C1212C76253DDF9FBE4F727B7BB).getter).(closure #1):MTImagePickerController.swift">
       </ContextState>
       <ContextState
+         contextName = "MTImagePickerPreviewController.viewWillTransitionToSize(CGSize, withTransitionCoordinator : UIViewControllerTransitionCoordinator) -&gt; ():MTImagePickerPreviewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.collectionView.indexPathsForVisibleItems().first?.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MTImagePickerController.((photosDataSource in _E5518C1212C76253DDF9FBE4F727B7BB).getter).(closure #1).(fetchAlbums #1)() -&gt; [PHFetchResult]?:MTImagePickerController.swift">
       </ContextState>
       <ContextState

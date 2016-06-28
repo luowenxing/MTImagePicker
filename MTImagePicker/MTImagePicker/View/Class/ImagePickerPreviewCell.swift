@@ -11,16 +11,14 @@ import UIKit
 class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     
     @IBOutlet weak var scrollview: UIScrollView!
-    private var imageView = UIImageView()
+    @IBOutlet weak var imageView: UIImageView!
+    
     weak var controller:MTImagePickerPreviewController?
     private var model:MTImagePickerModel!
     
     
     override func awakeFromNib() {
         scrollview.zoomScale = 1
-        imageView.bounds = UIScreen.mainScreen().compatibleBounds
-        scrollview.addSubview(imageView)
-        imageView.frame.origin = CGPointZero
         scrollview.contentSize = CGSizeZero
         scrollview.delegate = self
         // 支持单击全屏，双击放大
@@ -33,8 +31,6 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         doubleTapGesture.numberOfTouchesRequired = 1
         singTapGesture.requireGestureRecognizerToFail(doubleTapGesture)
         
-        imageView.userInteractionEnabled = true
-        imageView.contentMode = .ScaleAspectFit
         imageView.addGestureRecognizer(singTapGesture)
         imageView.addGestureRecognizer(doubleTapGesture)
     }
@@ -43,7 +39,6 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         scrollview.zoomScale = 1.0
         imageView.image = nil
     }
-    
     
     
     func initWithModel(model:MTImagePickerModel,controller:MTImagePickerPreviewController) {

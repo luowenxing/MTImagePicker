@@ -78,7 +78,7 @@
                                     <constraint firstItem="v9l-Hz-hPi" firstAttribute="height" secondItem="MLh-dh-Pzn" secondAttribute="height" id="zBf-f8-3RA"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-x3-zYg">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-x3-zYg" customClass="MTImagePickerCollectionView" customModule="MTImagePicker" customModuleProvider="target">
                                 <rect key="frame" x="2" y="64" width="596" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vq8-IA-eQf" customClass="MTImagePickerFlowLayout" customModule="MTImagePicker" customModuleProvider="target">
@@ -161,6 +161,8 @@
                                 <connections>
                                     <outlet property="dataSource" destination="M8Z-D7-a26" id="egb-0Q-4Sf"/>
                                     <outlet property="delegate" destination="M8Z-D7-a26" id="UH5-hv-cgK"/>
+                                    <outlet property="leading" destination="bn7-fY-tHo" id="8Bo-ft-xqO"/>
+                                    <outlet property="trailing" destination="Xbk-aQ-GNx" id="585-aU-8ww"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -192,8 +194,6 @@
                         <outlet property="btnPreview" destination="9ge-R4-XZw" id="J81-vp-scH"/>
                         <outlet property="collectionView" destination="wxQ-x3-zYg" id="5Eu-dR-TTl"/>
                         <outlet property="lbSelected" destination="htg-6y-iS6" id="mWl-T9-bCP"/>
-                        <outlet property="leading" destination="bn7-fY-tHo" id="TlD-U3-70E"/>
-                        <outlet property="trailing" destination="Xbk-aQ-GNx" id="U2n-aY-CLv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNB-ZI-ylp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,6 +230,19 @@
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="X7n-dW-BQo">
                                                     <rect key="frame" x="0.0" y="0.0" width="209" height="252"/>
+                                                    <subviews>
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-eX-4GD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="209" height="252"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" secondItem="HMI-eX-4GD" secondAttribute="height" id="2co-0W-0Qd"/>
+                                                        <constraint firstItem="HMI-eX-4GD" firstAttribute="top" secondItem="X7n-dW-BQo" secondAttribute="top" id="KXs-Wq-sQY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HMI-eX-4GD" secondAttribute="trailing" id="cnq-cC-FJF"/>
+                                                        <constraint firstAttribute="bottom" secondItem="HMI-eX-4GD" secondAttribute="bottom" id="tSW-rV-kba"/>
+                                                        <constraint firstAttribute="width" secondItem="HMI-eX-4GD" secondAttribute="width" id="xVw-fi-Sq6"/>
+                                                        <constraint firstItem="HMI-eX-4GD" firstAttribute="leading" secondItem="X7n-dW-BQo" secondAttribute="leading" id="ygc-sU-3m7"/>
+                                                    </constraints>
                                                 </scrollView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -241,6 +254,7 @@
                                             <constraint firstAttribute="trailing" secondItem="X7n-dW-BQo" secondAttribute="trailing" constant="20" id="k2H-iv-HVo"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imageView" destination="HMI-eX-4GD" id="ENE-Vh-dsS"/>
                                             <outlet property="scrollview" destination="X7n-dW-BQo" id="tYl-m2-TTO"/>
                                         </connections>
                                     </collectionViewCell>

@@ -10,14 +10,14 @@ import UIKit
 
 class MTImagePickerFlowLayout:UICollectionViewFlowLayout {
     var space:CGFloat!
+    var itemOfRow:Int = 4
     override func prepareLayout() {
         self.minimumLineSpacing = 0
         self.minimumInteritemSpacing = 0
         let bounds = UIScreen.mainScreen().compatibleBounds
-        let itemOfRow:CGFloat = 4
-        self.space = bounds.width  / itemOfRow / 20.0
+        self.space = bounds.width  / CGFloat(itemOfRow) / 20.0
         // - 1 避免精度丢失导致一行放不下4个
-        let width = ( bounds.width - self.space - 1 ) / itemOfRow
+        let width = ( bounds.width - self.space - 1 ) / CGFloat(itemOfRow)
         self.itemSize = CGSize(width: width, height: width)
         if let collectionView = (self.collectionView as? MTImagePickerCollectionView) {
             collectionView.leading.constant = self.space / 2.0
@@ -25,9 +25,12 @@ class MTImagePickerFlowLayout:UICollectionViewFlowLayout {
         }
     }
     
+    // 旋转之后重新布局，维持contentOffset和之前显示的cell一致
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
-        if let indexPath = (self.collectionView as? MTImagePickerCollectionView)?.prevIndexPath {
-            return CGPoint(x: 0, y: self.itemSize.width * CGFloat( indexPath.row / 4 ))
+        if let collectionView = self.collectionView as? MTImagePickerCollectionView,prevItemSize = collectionView.prevItemSize {
+            let rows = proposedContentOffset.y / prevItemSize.width
+            collectionView.prevItemSize = nil
+            return CGPoint(x: 0, y: self.itemSize.width * rows)
         }
         return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
     }

@@ -76,6 +76,7 @@ class VideoPickerPreviewCell:UICollectionViewCell{
                         dispatch_async(dispatch_get_main_queue()){
                             self.avPlayer.seekToTime(CMTime(value: 0 , timescale: 30))
                             self.btnPlay.hidden = false
+                            self.setTopAndBottomView(false)
                         }
                     }
                 }

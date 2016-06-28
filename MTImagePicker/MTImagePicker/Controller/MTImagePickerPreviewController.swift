@@ -100,7 +100,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.collectionView.bounds.width, self.collectionView.bounds.width);
+        return CGSizeMake(self.collectionView.bounds.width, self.collectionView.bounds.height);
     }
     
     //MARK:UIScrollViewDelegate

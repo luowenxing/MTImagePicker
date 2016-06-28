@@ -271,8 +271,10 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        self.collectionView.prevIndexPath = self.collectionView.indexPathsForVisibleItems().minElement(){ $0.row < $1.row }
-        self.collectionView.collectionViewLayout.invalidateLayout()
+        if self.view.bounds.size != size {
+            self.collectionView.prevItemSize = (self.collectionView.collectionViewLayout as! MTImagePickerFlowLayout).itemSize
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
     
     //MARK: private methods
@@ -343,5 +345,5 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
 class MTImagePickerCollectionView:UICollectionView {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
-    var prevIndexPath:NSIndexPath?
+    var prevItemSize:CGSize?
 }

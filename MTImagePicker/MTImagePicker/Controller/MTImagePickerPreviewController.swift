@@ -110,13 +110,19 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         }
     }
     
+    //防止visibleCells出现两个而不是一个，导致.first得到的是未显示的cell
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        self.performSelector(#selector(MTImagePickerPreviewController.didEndDecelerating), withObject: nil, afterDelay: 0)
+    }
+    
+    func didEndDecelerating() {
         let cell = self.collectionView.visibleCells().first
         if let videoCell = cell as? VideoPickerPreviewCell {
             videoCell.didEndScroll()
         } else if let imageCell = cell as? ImagePickerPreviewCell {
             imageCell.didEndScroll()
         }
+
     }
     
     @IBAction func btnBackTouch(sender: AnyObject) {

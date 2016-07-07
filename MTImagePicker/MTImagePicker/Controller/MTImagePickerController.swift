@@ -268,7 +268,6 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
             alertView.show()
         }
     }
-    
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         if self.view.bounds.size != size {

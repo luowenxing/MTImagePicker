@@ -13,7 +13,7 @@ class VideoPickerPreviewCell:UICollectionViewCell{
     
     weak var controller:MTImagePickerPreviewController?
     var model:MTImagePickerModel!
-    private var avPlayer:AVPlayer!
+    var avPlayer:AVPlayer!
     private var playerLayer:AVPlayerLayer!
     private var observer:AnyObject?
     
@@ -66,18 +66,16 @@ class VideoPickerPreviewCell:UICollectionViewCell{
             image in
             self.imageView.image = image
         }
-        //此处耗时，且即使放入后台线程，还是阻塞UI线程，故放在滚动结束后调用
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            if let playerItem = self.model.getAVPlayerItem() {
-                self.avPlayer.replaceCurrentItemWithPlayerItem(playerItem)
-                if let currentItem = self.avPlayer.currentItem {
-                    self.observer = self.avPlayer.addBoundaryTimeObserverForTimes([NSValue(CMTime: currentItem.asset.duration)], queue: nil){
-                        [unowned self] in
-                        dispatch_async(dispatch_get_main_queue()){
-                            self.avPlayer.seekToTime(CMTime(value: 0 , timescale: 30))
-                            self.btnPlay.hidden = false
-                            self.setTopAndBottomView(false)
-                        }
+        //此处耗时,故放在滚动结束后调用
+        if let playerItem = self.model.getAVPlayerItem() {
+            self.avPlayer.replaceCurrentItemWithPlayerItem(playerItem)
+            if let currentItem = self.avPlayer.currentItem {
+                self.observer = self.avPlayer.addBoundaryTimeObserverForTimes([NSValue(CMTime: currentItem.asset.duration)], queue: nil){
+                    [unowned self] in
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.avPlayer.seekToTime(CMTime(value: 0 , timescale: 30))
+                        self.btnPlay.hidden = false
+                        self.setTopAndBottomView(false)
                     }
                 }
             }

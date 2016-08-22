@@ -10,9 +10,9 @@ import UIKit
 import AVFoundation
 
 public class MTImagePickerModel:NSObject {
-    var mediaType:MTImagePickerMediaType
-    var source:MTImagePickerSource
-    var sortNumber = 0
+    public var mediaType:MTImagePickerMediaType
+    public var source:MTImagePickerSource
+    public var sortNumber = 0
     
     init(mediaType:MTImagePickerMediaType,sortNumber:Int,source:MTImagePickerSource) {
         self.mediaType = mediaType

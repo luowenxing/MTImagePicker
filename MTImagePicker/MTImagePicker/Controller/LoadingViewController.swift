@@ -12,24 +12,20 @@ class LoadingViewController: UIViewController {
 
     //use UIWindow show modal dialog
     var newWindow:UIWindow?
-    var prevWindow:UIWindow?
-    var showTimes = 0
     
     func show(){
-        if self.showTimes == 0{
-            if let keyWindow = UIApplication.sharedApplication().keyWindow {
-                self.prevWindow = keyWindow
-            }
-            let uiwindow = UIWindow(frame: UIScreen.mainScreen().compatibleBounds)
+        if self.newWindow == nil{
+            let uiwindow = UIWindow(frame: UIScreen.mainScreen().bounds)
             uiwindow.rootViewController = self
-            uiwindow.makeKeyAndVisible()
+            uiwindow.hidden = false
+            uiwindow.backgroundColor = UIColor.clearColor()
             self.newWindow = uiwindow
-            self.showTimes += 1
         }
     }
+    
     func dismiss(){
+        self.newWindow?.rootViewController = nil
         self.newWindow = nil
-        self.prevWindow?.makeKeyAndVisible()
     }
 
     

@@ -18,7 +18,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     var dismiss:((Set<MTImagePickerModel>) -> Void)?
     
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: MTImagePickerCollectionView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var btnCheck: UIButton!
     @IBOutlet weak var lbSelected: UILabel!
@@ -87,15 +87,15 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     }
     
     // 旋转处理
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        if self.view.bounds.size != size {
-            self.collectionView.collectionViewLayout.invalidateLayout()
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        if self.interfaceOrientation.isPortrait != toInterfaceOrientation.isPortrait {
             if let videoCell = self.collectionView.visibleCells().first as? VideoPickerPreviewCell {
-                coordinator.animateAlongsideTransition({ (_) in
-                    // CALayer 无法autolayout 需要重设frame
-                    videoCell.resetLayer()
-                }, completion: nil)
+                // CALayer 无法autolayout 需要重设frame
+                videoCell.resetLayer(UIScreen.mainScreen().compatibleBounds)
             }
+            self.collectionView.prevItemSize = (self.collectionView.collectionViewLayout as! MTImagePickerPreviewFlowLayout).itemSize
+            self.collectionView.prevOffset = self.collectionView.contentOffset.x
+            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
     

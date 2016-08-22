@@ -11,7 +11,7 @@ import Photos
 @available(iOS 8.0, *)
 public class MTImagePickerPhotosModel : MTImagePickerModel {
     
-    var phasset:PHAsset!
+    public var phasset:PHAsset!
     init(mediaType: MTImagePickerMediaType, sortNumber: Int, source: MTImagePickerSource,phasset:PHAsset) {
         super.init(mediaType: mediaType, sortNumber: sortNumber, source: source)
         self.phasset = phasset

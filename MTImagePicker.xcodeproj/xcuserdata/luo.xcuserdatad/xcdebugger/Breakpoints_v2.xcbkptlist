@@ -313,13 +313,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-            timestampString = "488769936.944717"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerPreviewController.swift"
+            timestampString = "493556522.870209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "onImageSingleTap(_:)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "willRotateToInterfaceOrientation(_:duration:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -329,253 +329,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-            timestampString = "488769936.944717"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerPreviewController.swift"
+            timestampString = "493556523.331437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "onImageSingleTap(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.ImagePickerPreviewCell.onImageSingleTap (__ObjC.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-                  timestampString = "493203615.731405"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "26">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.ImagePickerPreviewCell.onImageSingleTap (__ObjC.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-                  timestampString = "493203615.731505"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "65">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-            timestampString = "488769936.944717"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "onImageDoubleTap(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-            timestampString = "488769936.944717"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "onImageDoubleTap(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777020.899594"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.MTImagePickerFlowLayout.targetContentOffsetForProposedContentOffset (__C.CGPoint) -&gt; __C.CGPoint"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "493203615.732836"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.MTImagePickerFlowLayout.targetContentOffsetForProposedContentOffset (__C.CGPoint) -&gt; __C.CGPoint"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "493203615.732939"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "267">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777020.899594"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.MTImagePickerFlowLayout.targetContentOffsetForProposedContentOffset (__C.CGPoint) -&gt; __C.CGPoint"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "493203615.733737"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.MTImagePickerFlowLayout.targetContentOffsetForProposedContentOffset (__C.CGPoint) -&gt; __C.CGPoint"
-                  moduleName = "MTImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "493203615.733825"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "267">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777391.664137"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777391.664137"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777391.664137"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777277.538071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-            timestampString = "488777490.865941"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "willRotateToInterfaceOrientation(_:duration:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

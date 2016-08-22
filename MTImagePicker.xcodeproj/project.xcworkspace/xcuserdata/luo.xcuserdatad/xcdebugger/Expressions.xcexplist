@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MTImagePickerPreviewController.willRotateToInterfaceOrientation(UIInterfaceOrientation, duration : Double) -&gt; ():MTImagePickerPreviewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.collectionView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MTImagePickerPhotosModel.((fetchAVPlayerItemAsync in _AF6651BCACFFEDFA890B45B2DB03DFEA)((AVPlayerItem) -&gt; ()) -&gt; ()).(closure #1):MTImagePickerPhotosModel.swift">
          <PersistentStrings>
             <PersistentString

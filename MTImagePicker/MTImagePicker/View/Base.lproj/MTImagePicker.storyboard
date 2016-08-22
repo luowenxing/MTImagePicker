@@ -212,7 +212,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2e-0L-cZH">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2e-0L-cZH" customClass="MTImagePickerCollectionView" customModule="MTImagePicker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="620" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ozq-UI-oV7" customClass="MTImagePickerPreviewFlowLayout" customModule="MTImagePicker" customModuleProvider="target">
                                     <size key="itemSize" width="229" height="252"/>
@@ -230,19 +230,6 @@
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="X7n-dW-BQo">
                                                     <rect key="frame" x="0.0" y="0.0" width="209" height="252"/>
-                                                    <subviews>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-eX-4GD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="209" height="252"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" secondItem="HMI-eX-4GD" secondAttribute="height" id="2co-0W-0Qd"/>
-                                                        <constraint firstItem="HMI-eX-4GD" firstAttribute="top" secondItem="X7n-dW-BQo" secondAttribute="top" id="KXs-Wq-sQY"/>
-                                                        <constraint firstAttribute="trailing" secondItem="HMI-eX-4GD" secondAttribute="trailing" id="cnq-cC-FJF"/>
-                                                        <constraint firstAttribute="bottom" secondItem="HMI-eX-4GD" secondAttribute="bottom" id="tSW-rV-kba"/>
-                                                        <constraint firstAttribute="width" secondItem="HMI-eX-4GD" secondAttribute="width" id="xVw-fi-Sq6"/>
-                                                        <constraint firstItem="HMI-eX-4GD" firstAttribute="leading" secondItem="X7n-dW-BQo" secondAttribute="leading" id="ygc-sU-3m7"/>
-                                                    </constraints>
                                                 </scrollView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -254,7 +241,6 @@
                                             <constraint firstAttribute="trailing" secondItem="X7n-dW-BQo" secondAttribute="trailing" constant="20" id="k2H-iv-HVo"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageView" destination="HMI-eX-4GD" id="ENE-Vh-dsS"/>
                                             <outlet property="scrollview" destination="X7n-dW-BQo" id="tYl-m2-TTO"/>
                                         </connections>
                                     </collectionViewCell>

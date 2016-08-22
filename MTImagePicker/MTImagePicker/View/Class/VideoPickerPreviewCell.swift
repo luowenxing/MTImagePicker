@@ -53,6 +53,9 @@ class VideoPickerPreviewCell:UICollectionViewCell{
             self.avPlayer.pause()
             self.avPlayer.removeTimeObserver(observer)
             self.observer = nil
+            self.btnPlay.hidden = false
+            self.imageView.hidden = false
+            self.setTopAndBottomView(false)
         }
         self.setTopAndBottomView(false)
     }
@@ -62,6 +65,7 @@ class VideoPickerPreviewCell:UICollectionViewCell{
     }
     
     func didEndScroll() {
+        self.setTopAndBottomView(false)
         self.model.getImageAsync(){
             image in
             self.imageView.image = image
@@ -80,6 +84,10 @@ class VideoPickerPreviewCell:UICollectionViewCell{
                 }
             }
         }
+    }
+    
+    func resetLayer(frame:CGRect) {
+        self.playerLayer.frame = frame
     }
     
     func onVideoSingleTap(sernder:UITapGestureRecognizer) {

@@ -11,7 +11,7 @@ import UIKit
 class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     
     @IBOutlet weak var scrollview: UIScrollView!
-    @IBOutlet weak var imageView: UIImageView!
+    var imageView: UIImageView! = UIImageView()
     
     weak var controller:MTImagePickerPreviewController?
     private var model:MTImagePickerModel!
@@ -19,8 +19,15 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     
     override func awakeFromNib() {
         scrollview.zoomScale = 1
+        scrollview.minimumZoomScale = 1
+        scrollview.maximumZoomScale = 3
         scrollview.contentSize = CGSizeZero
         scrollview.delegate = self
+        
+        imageView.userInteractionEnabled = true
+        self.scrollview.addSubview(imageView)
+        scrollview.delegate = self
+        
         // 支持单击全屏，双击放大
         let singTapGesture = UITapGestureRecognizer(target: self, action: #selector(ImagePickerPreviewCell.onImageSingleTap(_:)))
         singTapGesture.numberOfTapsRequired = 1
@@ -37,14 +44,37 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     
     override func prepareForReuse() {
         scrollview.zoomScale = 1.0
+        scrollview.contentSize = CGSizeZero
         imageView.image = nil
+    }
+    
+    override func layoutSubviews() {
+        
+        super.layoutSubviews()
+        scrollview.zoomScale = 1.0
+        scrollview.contentSize = CGSizeZero
+        if let _image = imageView.image {
+            let bounds = UIScreen.mainScreen().compatibleBounds
+            let boundsDept = bounds.width / bounds.height
+            let imgDept = _image.size.width / _image.size.height
+            // 图片长宽和屏幕的宽高进行比较 设定基准边
+            if imgDept > boundsDept {
+                imageView.frame = CGRectMake(0, 0, bounds.width, bounds.width / imgDept)
+            } else {
+                imageView.frame = CGRectMake(0, 0, bounds.height * imgDept, bounds.height)
+            }
+            self.scrollview.layoutIfNeeded()
+            imageView.center = scrollview.center
+        }
+        
     }
     
     
     func initWithModel(model:MTImagePickerModel,controller:MTImagePickerPreviewController) {
         self.model = model
         self.controller = controller
-        imageView.image = model.getPreviewImage()
+        self.imageView.image = model.getPreviewImage()
+        self.layoutSubviews()
     }
     
     func onImageSingleTap(sender:UITapGestureRecognizer) {
@@ -76,8 +106,8 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(scrollView: UIScrollView) {
-        var xcenter = imageView.center.x
-        var ycenter = imageView.center.y
+        var xcenter = scrollView.center.x
+        var ycenter = scrollView.center.y
         
         xcenter = scrollView.contentSize.width > scrollView.frame.size.width ? scrollView.contentSize.width/2 : xcenter
         
@@ -90,5 +120,3 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         return imageView
     }
 }
-
-

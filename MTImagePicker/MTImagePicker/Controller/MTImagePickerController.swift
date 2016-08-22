@@ -292,9 +292,11 @@ public class MTImagePickerController :UIViewController,UICollectionViewDataSourc
         }
     }
     
-    override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        if self.view.bounds.size != size {
+    //旋转处理
+    override public func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        if self.interfaceOrientation.isPortrait != toInterfaceOrientation.isPortrait {
             self.collectionView.prevItemSize = (self.collectionView.collectionViewLayout as! MTImagePickerFlowLayout).itemSize
+            self.collectionView.prevOffset = self.collectionView.contentOffset.y
             self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
@@ -368,4 +370,5 @@ class MTImagePickerCollectionView:UICollectionView {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
     var prevItemSize:CGSize?
+    var prevOffset:CGFloat = 0
 }

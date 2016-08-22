@@ -11,7 +11,7 @@ import AVFoundation
 
 public class MTImagePickerAssetsModel : MTImagePickerModel {
     
-    var asset:ALAsset!
+    public var asset:ALAsset!
     var lib:ALAssetsLibrary!
     private lazy var rept:ALAssetRepresentation = {
         return self.asset.defaultRepresentation()

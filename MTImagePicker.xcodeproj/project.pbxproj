@@ -10,69 +10,25 @@
 		B115F3FC1D20C7C10051F937 /* MTImagePickerAssetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */; };
 		B115F3FE1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */; };
 		B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F2FD1CF32500008672D1 /* Image.xcassets */; };
-		B1B0F30C1CF32500008672D1 /* MTImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F30B1CF32500008672D1 /* MTImagePickerTests.swift */; };
-		B1B0F3171CF32501008672D1 /* MTImagePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3161CF32501008672D1 /* MTImagePickerUITests.swift */; };
 		B1B0F3361CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */; };
-		B1B0F3371CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */; };
-		B1B0F3381CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */; };
 		B1B0F3391CF329CC008672D1 /* MTImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */; };
-		B1B0F33A1CF329CC008672D1 /* MTImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */; };
-		B1B0F33B1CF329CC008672D1 /* MTImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */; };
 		B1B0F33D1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */; };
-		B1B0F33E1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */; };
-		B1B0F33F1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */; };
 		B1B0F3421CF3E073008672D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3411CF3E073008672D1 /* Extensions.swift */; };
-		B1B0F3431CF3E073008672D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3411CF3E073008672D1 /* Extensions.swift */; };
-		B1B0F3441CF3E073008672D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3411CF3E073008672D1 /* Extensions.swift */; };
 		B1B0F3481CF3E101008672D1 /* MTImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3471CF3E101008672D1 /* MTImagePickerCell.swift */; };
-		B1B0F3491CF3E101008672D1 /* MTImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3471CF3E101008672D1 /* MTImagePickerCell.swift */; };
-		B1B0F34A1CF3E101008672D1 /* MTImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3471CF3E101008672D1 /* MTImagePickerCell.swift */; };
 		B1B0F34C1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F34B1CF3FCE8008672D1 /* LoadingViewController.swift */; };
-		B1B0F34D1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F34B1CF3FCE8008672D1 /* LoadingViewController.swift */; };
-		B1B0F34E1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F34B1CF3FCE8008672D1 /* LoadingViewController.swift */; };
 		B1B0F3501CF3FDCE008672D1 /* FlashAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F34F1CF3FDCE008672D1 /* FlashAlertView.swift */; };
-		B1B0F3511CF3FDCE008672D1 /* FlashAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F34F1CF3FDCE008672D1 /* FlashAlertView.swift */; };
-		B1B0F3521CF3FDCE008672D1 /* FlashAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F34F1CF3FDCE008672D1 /* FlashAlertView.swift */; };
 		B1B0F3541CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3531CF40AFB008672D1 /* MTImagePickerFlowLayout.swift */; };
-		B1B0F3551CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3531CF40AFB008672D1 /* MTImagePickerFlowLayout.swift */; };
-		B1B0F3561CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3531CF40AFB008672D1 /* MTImagePickerFlowLayout.swift */; };
 		B1B0F3581CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3571CF42D68008672D1 /* VideoPickerPreviewCell.swift */; };
-		B1B0F3591CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3571CF42D68008672D1 /* VideoPickerPreviewCell.swift */; };
-		B1B0F35A1CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3571CF42D68008672D1 /* VideoPickerPreviewCell.swift */; };
 		B1B0F35C1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F35B1CF42D97008672D1 /* ImagePickerPreviewCell.swift */; };
-		B1B0F35D1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F35B1CF42D97008672D1 /* ImagePickerPreviewCell.swift */; };
-		B1B0F35E1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F35B1CF42D97008672D1 /* ImagePickerPreviewCell.swift */; };
 		B1B0F3621CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
-		B1B0F3631CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
-		B1B0F3641CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
 		B1B0F3661CF47B61008672D1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3651CF47B61008672D1 /* TableViewController.swift */; };
 		B1B0F36A1CF47B71008672D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3671CF47B71008672D1 /* AppDelegate.swift */; };
 		B1B0F36B1CF47B71008672D1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3681CF47B71008672D1 /* Info.plist */; };
+		B1C557491D65B00100405A55 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C557481D65B00100405A55 /* Image.xcassets */; };
 		B1D10D671CF6A4EE00FA32F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D6B1CF6A4EE00FA32F8 /* Localizable.strings */; };
-		B1D10D681CF6A4EE00FA32F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D6B1CF6A4EE00FA32F8 /* Localizable.strings */; };
-		B1D10D691CF6A4EE00FA32F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D6B1CF6A4EE00FA32F8 /* Localizable.strings */; };
 		B1D10D721CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D761CF6A7F600FA32F8 /* MTImagePicker.storyboard */; };
-		B1D10D731CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D761CF6A7F600FA32F8 /* MTImagePicker.storyboard */; };
-		B1D10D741CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D761CF6A7F600FA32F8 /* MTImagePicker.storyboard */; };
 		B1D10D791CF6A8B200FA32F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D7B1CF6A8B200FA32F8 /* Main.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B1B0F3081CF32500008672D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1B0F2EB1CF32500008672D1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1B0F2F21CF32500008672D1;
-			remoteInfo = MTImagePicker;
-		};
-		B1B0F3131CF32501008672D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1B0F2EB1CF32500008672D1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1B0F2F21CF32500008672D1;
-			remoteInfo = MTImagePicker;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B115F3FA1D20C5830051F937 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -80,12 +36,6 @@
 		B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPhotosModel.swift; sourceTree = "<group>"; };
 		B1B0F2F31CF32500008672D1 /* MTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B0F2FD1CF32500008672D1 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
-		B1B0F3071CF32500008672D1 /* MTImagePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTImagePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B0F30B1CF32500008672D1 /* MTImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTImagePickerTests.swift; sourceTree = "<group>"; };
-		B1B0F30D1CF32500008672D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1B0F3121CF32501008672D1 /* MTImagePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTImagePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B0F3161CF32501008672D1 /* MTImagePickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTImagePickerUITests.swift; sourceTree = "<group>"; };
-		B1B0F3181CF32501008672D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPreviewController.swift; sourceTree = "<group>"; };
 		B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerController.swift; sourceTree = "<group>"; };
 		B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerModel.swift; sourceTree = "<group>"; };
@@ -100,6 +50,7 @@
 		B1B0F3651CF47B61008672D1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B1B0F3671CF47B71008672D1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B0F3681CF47B71008672D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1C557481D65B00100405A55 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		B1D10D6A1CF6A4EE00FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B1D10D6D1CF6A50C00FA32F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B1D10D751CF6A7F600FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MTImagePicker.storyboard; sourceTree = "<group>"; };
@@ -115,20 +66,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1B0F3041CF32500008672D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1B0F30F1CF32500008672D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -136,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				B1B0F2F51CF32500008672D1 /* MTImagePicker */,
-				B1B0F30A1CF32500008672D1 /* MTImagePickerTests */,
-				B1B0F3151CF32501008672D1 /* MTImagePickerUITests */,
 				B1B0F2F41CF32500008672D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,8 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				B1B0F2F31CF32500008672D1 /* MTImagePicker.app */,
-				B1B0F3071CF32500008672D1 /* MTImagePickerTests.xctest */,
-				B1B0F3121CF32501008672D1 /* MTImagePickerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,24 +92,6 @@
 				B1B0F3601CF451CB008672D1 /* Demo */,
 			);
 			path = MTImagePicker;
-			sourceTree = "<group>";
-		};
-		B1B0F30A1CF32500008672D1 /* MTImagePickerTests */ = {
-			isa = PBXGroup;
-			children = (
-				B1B0F30B1CF32500008672D1 /* MTImagePickerTests.swift */,
-				B1B0F30D1CF32500008672D1 /* Info.plist */,
-			);
-			path = MTImagePickerTests;
-			sourceTree = "<group>";
-		};
-		B1B0F3151CF32501008672D1 /* MTImagePickerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B1B0F3161CF32501008672D1 /* MTImagePickerUITests.swift */,
-				B1B0F3181CF32501008672D1 /* Info.plist */,
-			);
-			path = MTImagePickerUITests;
 			sourceTree = "<group>";
 		};
 		B1B0F3241CF32627008672D1 /* MTImagePicker */ = {
@@ -265,6 +180,7 @@
 				B1D10D7B1CF6A8B200FA32F8 /* Main.storyboard */,
 				B1B0F3651CF47B61008672D1 /* TableViewController.swift */,
 				B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */,
+				B1C557481D65B00100405A55 /* Image.xcassets */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -289,42 +205,6 @@
 			productReference = B1B0F2F31CF32500008672D1 /* MTImagePicker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B1B0F3061CF32500008672D1 /* MTImagePickerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1B0F31E1CF32501008672D1 /* Build configuration list for PBXNativeTarget "MTImagePickerTests" */;
-			buildPhases = (
-				B1B0F3031CF32500008672D1 /* Sources */,
-				B1B0F3041CF32500008672D1 /* Frameworks */,
-				B1B0F3051CF32500008672D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1B0F3091CF32500008672D1 /* PBXTargetDependency */,
-			);
-			name = MTImagePickerTests;
-			productName = MTImagePickerTests;
-			productReference = B1B0F3071CF32500008672D1 /* MTImagePickerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B1B0F3111CF32500008672D1 /* MTImagePickerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1B0F3211CF32501008672D1 /* Build configuration list for PBXNativeTarget "MTImagePickerUITests" */;
-			buildPhases = (
-				B1B0F30E1CF32500008672D1 /* Sources */,
-				B1B0F30F1CF32500008672D1 /* Frameworks */,
-				B1B0F3101CF32500008672D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1B0F3141CF32501008672D1 /* PBXTargetDependency */,
-			);
-			name = MTImagePickerUITests;
-			productName = MTImagePickerUITests;
-			productReference = B1B0F3121CF32501008672D1 /* MTImagePickerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -338,14 +218,6 @@
 					B1B0F2F21CF32500008672D1 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = U653R7WNB4;
-					};
-					B1B0F3061CF32500008672D1 = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = B1B0F2F21CF32500008672D1;
-					};
-					B1B0F3111CF32500008672D1 = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = B1B0F2F21CF32500008672D1;
 					};
 				};
 			};
@@ -364,8 +236,6 @@
 			projectRoot = "";
 			targets = (
 				B1B0F2F21CF32500008672D1 /* MTImagePicker */,
-				B1B0F3061CF32500008672D1 /* MTImagePickerTests */,
-				B1B0F3111CF32500008672D1 /* MTImagePickerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -380,27 +250,8 @@
 				B1D10D791CF6A8B200FA32F8 /* Main.storyboard in Resources */,
 				B1D10D721CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */,
 				B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */,
+				B1C557491D65B00100405A55 /* Image.xcassets in Resources */,
 				B1B0F3621CF4564D008672D1 /* LaunchScreen.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1B0F3051CF32500008672D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1B0F3631CF4564D008672D1 /* LaunchScreen.storyboard in Resources */,
-				B1D10D681CF6A4EE00FA32F8 /* Localizable.strings in Resources */,
-				B1D10D731CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1B0F3101CF32500008672D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1B0F3641CF4564D008672D1 /* LaunchScreen.storyboard in Resources */,
-				B1D10D691CF6A4EE00FA32F8 /* Localizable.strings in Resources */,
-				B1D10D741CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,56 +279,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1B0F3031CF32500008672D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1B0F3551CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */,
-				B1B0F3511CF3FDCE008672D1 /* FlashAlertView.swift in Sources */,
-				B1B0F3591CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */,
-				B1B0F34D1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */,
-				B1B0F35D1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */,
-				B1B0F3431CF3E073008672D1 /* Extensions.swift in Sources */,
-				B1B0F3371CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */,
-				B1B0F3491CF3E101008672D1 /* MTImagePickerCell.swift in Sources */,
-				B1B0F33A1CF329CC008672D1 /* MTImagePickerController.swift in Sources */,
-				B1B0F33E1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */,
-				B1B0F30C1CF32500008672D1 /* MTImagePickerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1B0F30E1CF32500008672D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1B0F3561CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */,
-				B1B0F3521CF3FDCE008672D1 /* FlashAlertView.swift in Sources */,
-				B1B0F35A1CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */,
-				B1B0F34E1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */,
-				B1B0F35E1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */,
-				B1B0F3441CF3E073008672D1 /* Extensions.swift in Sources */,
-				B1B0F3381CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */,
-				B1B0F34A1CF3E101008672D1 /* MTImagePickerCell.swift in Sources */,
-				B1B0F33B1CF329CC008672D1 /* MTImagePickerController.swift in Sources */,
-				B1B0F33F1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */,
-				B1B0F3171CF32501008672D1 /* MTImagePickerUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B1B0F3091CF32500008672D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1B0F2F21CF32500008672D1 /* MTImagePicker */;
-			targetProxy = B1B0F3081CF32500008672D1 /* PBXContainerItemProxy */;
-		};
-		B1B0F3141CF32501008672D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1B0F2F21CF32500008672D1 /* MTImagePicker */;
-			targetProxy = B1B0F3131CF32501008672D1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B1D10D6B1CF6A4EE00FA32F8 /* Localizable.strings */ = {
@@ -604,7 +406,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePicker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -618,55 +420,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePicker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		B1B0F31F1CF32501008672D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MTImagePickerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePickerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MTImagePicker.app/MTImagePicker";
-			};
-			name = Debug;
-		};
-		B1B0F3201CF32501008672D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MTImagePickerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePickerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MTImagePicker.app/MTImagePicker";
-			};
-			name = Release;
-		};
-		B1B0F3221CF32501008672D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MTImagePickerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePickerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = MTImagePicker;
-			};
-			name = Debug;
-		};
-		B1B0F3231CF32501008672D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MTImagePickerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.MTImagePickerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = MTImagePicker;
 			};
 			name = Release;
 		};
@@ -687,24 +443,6 @@
 			buildConfigurations = (
 				B1B0F31C1CF32501008672D1 /* Debug */,
 				B1B0F31D1CF32501008672D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1B0F31E1CF32501008672D1 /* Build configuration list for PBXNativeTarget "MTImagePickerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1B0F31F1CF32501008672D1 /* Debug */,
-				B1B0F3201CF32501008672D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1B0F3211CF32501008672D1 /* Build configuration list for PBXNativeTarget "MTImagePickerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1B0F3221CF32501008672D1 /* Debug */,
-				B1B0F3231CF32501008672D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

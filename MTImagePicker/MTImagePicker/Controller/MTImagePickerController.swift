@@ -14,17 +14,17 @@ import Photos
 
 
 
-enum MTImagePickerMediaType {
+@objc public enum MTImagePickerMediaType:Int {
     case Photo
     case Video
 }
 
-enum MTImagePickerSource {
+@objc public enum MTImagePickerSource:Int {
     case ALAsset
     case Photos
 }
 
-@objc protocol MTImagePickerControllerDelegate:NSObjectProtocol {
+@objc public  protocol MTImagePickerControllerDelegate:NSObjectProtocol {
     // Implement it when setting source to MTImagePickerSource.ALAsset
     optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithAssetsModels models:[MTImagePickerAssetsModel])
     
@@ -35,13 +35,36 @@ enum MTImagePickerSource {
     optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
 }
 
-class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
-
-    weak var delegate:MTImagePickerControllerDelegate?
-    var mediaTypes:[MTImagePickerMediaType] = [.Photo]
-    var maxCount: Int = Int.max
+public class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+    
+    public weak var delegate:MTImagePickerControllerDelegate?
+    public var mediaTypes:[MTImagePickerMediaType] = [MTImagePickerMediaType.Photo]
+    // OC project support,for [MTImagePickerMediaType] can not be represented in OC Class
+    public var mediaTypesNSArray:NSArray {
+        get {
+            let arr = NSMutableArray()
+            for mediaType in self.mediaTypes {
+                arr.addObject(mediaType.rawValue)
+            }
+            return arr
+        }
+        set {
+            self.mediaTypes.removeAll()
+            for mediaType in newValue {
+                if let intType = mediaType as? Int {
+                    if intType == 0 {
+                        self.mediaTypes.append(.Photo)
+                    } else if intType == 1 {
+                        self.mediaTypes.append(.Video)
+                    }
+                }
+            }
+        }
+    }
+    
+    public var maxCount: Int = Int.max
     // Default is ALAsset
-    var source:MTImagePickerSource {
+    public var source:MTImagePickerSource {
         get {
             return self._source
         }
@@ -125,7 +148,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         return dataSource
     }()
     
-
+    
     @available(iOS 8.0, *)
     private lazy var photosDataSource:[MTImagePickerPhotosModel] = {
         var dataSource = [MTImagePickerPhotosModel]()
@@ -178,7 +201,7 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     private var initialScrollDone:Bool = false
     private var _source:MTImagePickerSource = .Photos
     
-    class var instance:MTImagePickerController {
+    public class var instance:MTImagePickerController {
         get {
             let storyboard = UIStoryboard(name: "MTImagePicker", bundle: NSBundle.mainBundle())
             let vc = storyboard.instantiateViewControllerWithIdentifier("MTImagePickerController") as! MTImagePickerController
@@ -187,19 +210,19 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     }
     
     //MARK: Lifecycle
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
         self.lbSelected.text = String(self.selectedSource.count)
         self.btnPreview.enabled = !(self.selectedSource.count == 0)
     }
-
-    override func viewDidLayoutSubviews() {
+    
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !self.initialScrollDone {
             self.initialScrollDone = true
@@ -208,13 +231,13 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
     }
     
     //MARK: UICollectionViewDelegate
-
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.dataSource.count
     }
     
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! MTImagePickerCell
         let model = self.dataSource[indexPath.row]
         if model.mediaType == .Video   {
@@ -238,9 +261,9 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.pushToImageSelectorPreviewController(indexPath, dataSource: self.dataSource)
-
+        
     }
     
     func btnCheckTouch(sender:UIButton) {
@@ -268,8 +291,8 @@ class MTImagePickerController :UIViewController,UICollectionViewDataSource,UICol
             alertView.show()
         }
     }
-
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    
+    override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         if self.view.bounds.size != size {
             self.collectionView.prevItemSize = (self.collectionView.collectionViewLayout as! MTImagePickerFlowLayout).itemSize
             self.collectionView.collectionViewLayout.invalidateLayout()

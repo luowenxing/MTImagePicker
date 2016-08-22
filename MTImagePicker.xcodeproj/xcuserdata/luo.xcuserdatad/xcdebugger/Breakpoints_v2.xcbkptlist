@@ -346,12 +346,12 @@
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-                  timestampString = "488788124.719687"
+                  timestampString = "493203615.731405"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "26">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -361,12 +361,12 @@
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/ImagePickerPreviewCell.swift"
-                  timestampString = "488788124.719805"
+                  timestampString = "493203615.731505"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "65">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -426,12 +426,12 @@
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "488788124.722412"
+                  timestampString = "493203615.732836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "25">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -441,12 +441,12 @@
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "488788124.722493"
+                  timestampString = "493203615.732939"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
-                  offsetFromSymbolStart = "400">
+                  offsetFromSymbolStart = "267">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -474,12 +474,12 @@
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "488788124.723125"
+                  timestampString = "493203615.733737"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "25">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -489,12 +489,12 @@
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/View/Class/MTImagePickerFlowLayout.swift"
-                  timestampString = "488788124.723223"
+                  timestampString = "493203615.733825"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
-                  offsetFromSymbolStart = "400">
+                  offsetFromSymbolStart = "267">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -576,22 +576,6 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "targetContentOffsetForProposedContentOffset(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerPreviewController.swift"
-            timestampString = "488788124.334314"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "collectionView(_:layout:sizeForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

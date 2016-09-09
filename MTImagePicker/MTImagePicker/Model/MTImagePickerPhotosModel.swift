@@ -12,8 +12,8 @@ import Photos
 public class MTImagePickerPhotosModel : MTImagePickerModel {
     
     public var phasset:PHAsset!
-    init(mediaType: MTImagePickerMediaType, sortNumber: Int, source: MTImagePickerSource,phasset:PHAsset) {
-        super.init(mediaType: mediaType, sortNumber: sortNumber, source: source)
+    init(mediaType: MTImagePickerMediaType, sortNumber: Int,phasset:PHAsset) {
+        super.init(mediaType: mediaType, sortNumber: sortNumber)
         self.phasset = phasset
     }
     
@@ -115,3 +115,47 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
     
     
 }
+
+@available(iOS 8.0, *)
+class MTImagePickerPhotosAlbumModel:MTImagePickerAlbumModel {
+    
+    private var collection:PHAssetCollection
+    private var mediaTypes:[MTImagePickerMediaType]
+    
+    init(collection:PHAssetCollection,mediaTypes:[MTImagePickerMediaType]) {
+        self.collection = collection
+        self.mediaTypes = mediaTypes
+    }
+    
+    override func getAlbumCount() -> Int {
+        return self.collection.estimatedAssetCount
+    }
+    
+    override func getAlbumName() -> String? {
+        return self.collection.localizedTitle
+    }
+    
+    override func getAlbumImage() -> UIImage? {
+        let result = PHAsset.fetchAssetsInAssetCollection(self.collection, options: nil)
+        if let asset = result.objectAtIndex(0) as? PHAsset {
+            let scale = UIScreen.mainScreen().scale
+            let size = CGSizeMake( 50 * scale, 50 * scale)
+            var image:UIImage?
+            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: .AspectFit, options: nil) {
+                img,infoDict in
+                image = img
+                
+            }
+            return image
+        }
+        return nil
+    }
+    
+    override func getMTImagePickerModelsListAsync(complete: [MTImagePickerModel] -> Void) {
+//        let result = PHAsset.fetchAssetsInAssetCollection(self.collection, options: nil
+    }
+}
+
+
+
+

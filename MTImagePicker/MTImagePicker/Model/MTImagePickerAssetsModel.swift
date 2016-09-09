@@ -12,16 +12,17 @@ import AVFoundation
 public class MTImagePickerAssetsModel : MTImagePickerModel {
     
     public var asset:ALAsset!
-    var lib:ALAssetsLibrary!
+    var lib:ALAssetsLibrary = ALAsset.lib
+    
     private lazy var rept:ALAssetRepresentation = {
         return self.asset.defaultRepresentation()
     }()
     
-    init(mediaType:MTImagePickerMediaType,sortNumber:Int,source:MTImagePickerSource, asset:ALAsset,lib:ALAssetsLibrary) {
-        super.init(mediaType: mediaType, sortNumber: sortNumber,source:source)
+    init(mediaType:MTImagePickerMediaType,sortNumber:Int, asset:ALAsset) {
+        super.init(mediaType: mediaType, sortNumber: sortNumber)
         self.asset = asset
-        self.lib = lib
     }
+    
     override func getFileName() -> String? {
         return self.rept.filename()
     }
@@ -56,3 +57,60 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
     }
     
 }
+
+
+class MTImagePickerAssetsAlbumModel:MTImagePickerAlbumModel {
+    
+    private var group:ALAssetsGroup
+    private var mediaTypes:[MTImagePickerMediaType]
+    
+    init(group:ALAssetsGroup,mediaTypes:[MTImagePickerMediaType]) {
+        self.group = group
+        self.mediaTypes = mediaTypes
+        
+        var filter:ALAssetsFilter!
+        let containsPhoto = mediaTypes.contains(.Photo)
+        let containsVideo = mediaTypes.contains(.Video)
+        filter = containsPhoto ? ALAssetsFilter.allPhotos() : nil
+        filter = containsVideo ? ALAssetsFilter.allVideos() : nil
+        filter = containsPhoto && containsVideo ? ALAssetsFilter.allAssets() : nil
+        if let Fliter = filter {
+            self.group.setAssetsFilter(Fliter)
+        }
+    }
+    
+    override func getAlbumCount() -> Int {
+        return self.group.numberOfAssets()
+    }
+    
+    override func getAlbumName() -> String? {
+        return self.group.valueForProperty(ALAssetsGroupPropertyName) as? String
+    }
+    
+    override func getAlbumImage() -> UIImage? {
+        return UIImage(CGImage: self.group.posterImage().takeUnretainedValue())
+    }
+    
+    override func getMTImagePickerModelsListAsync(complete: [MTImagePickerModel] -> Void) {
+        var models = [MTImagePickerModel]()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.group.enumerateAssetsUsingBlock { (result, index, success) in
+                if let asset = result {
+                    let ALAssetType = result.valueForProperty(ALAssetPropertyType) as! NSString
+                    let mediaType:MTImagePickerMediaType = ALAssetType.isEqualToString(ALAssetTypePhoto) ? .Photo : .Video
+                    let model = MTImagePickerAssetsModel(mediaType: mediaType, sortNumber: index, asset:asset)
+                    models.append(model)
+                }
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                complete(models)
+            }
+        }
+        
+    }
+    
+    
+    
+}
+
+

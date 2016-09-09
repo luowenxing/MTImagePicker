@@ -101,12 +101,11 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         let vc = MTImagePickerController.instance
         vc.mediaTypes = mediaTypes
         vc.source = source
-        vc.delegate = self
+        vc.imagePickerDelegate = self
         if let text = textCount.text,maxCount = Int(text) {
             vc.maxCount = maxCount
         }
-        let nc = UINavigationController(rootViewController: vc)
-        self.presentViewController(nc, animated: true, completion: nil)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
 }

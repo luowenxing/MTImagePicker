@@ -51,6 +51,8 @@ extension ALAsset {
             return nil
         }
     }
+    
+     @nonobjc static let lib:ALAssetsLibrary = ALAssetsLibrary()
 }
 
 extension Int {

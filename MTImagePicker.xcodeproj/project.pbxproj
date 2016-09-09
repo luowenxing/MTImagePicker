@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		B115F3FC1D20C7C10051F937 /* MTImagePickerAssetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */; };
 		B115F3FE1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */; };
+		B19BF6D71D82AAD600371F4F /* MTImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BF6D61D82AAD600371F4F /* MTImagePickerController.swift */; };
+		B1A616471D7E6E7200B874E2 /* MTImagePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A616461D7E6E7000B874E2 /* MTImagePickerDataSource.swift */; };
+		B1A616491D7E6FB800B874E2 /* MTImagePickerAlbumsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A616481D7E6FB800B874E2 /* MTImagePickerAlbumsController.swift */; };
 		B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F2FD1CF32500008672D1 /* Image.xcassets */; };
 		B1B0F3361CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */; };
-		B1B0F3391CF329CC008672D1 /* MTImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */; };
+		B1B0F3391CF329CC008672D1 /* MTImagePickerAssetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3351CF329CC008672D1 /* MTImagePickerAssetsController.swift */; };
 		B1B0F33D1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */; };
 		B1B0F3421CF3E073008672D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3411CF3E073008672D1 /* Extensions.swift */; };
 		B1B0F3481CF3E101008672D1 /* MTImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3471CF3E101008672D1 /* MTImagePickerCell.swift */; };
@@ -34,10 +37,14 @@
 		B115F3FA1D20C5830051F937 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAssetsModel.swift; sourceTree = "<group>"; };
 		B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPhotosModel.swift; sourceTree = "<group>"; };
+		B19BF6D61D82AAD600371F4F /* MTImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerController.swift; sourceTree = "<group>"; };
+		B19BF6D91D82E64000371F4F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
+		B1A616461D7E6E7000B874E2 /* MTImagePickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerDataSource.swift; sourceTree = "<group>"; };
+		B1A616481D7E6FB800B874E2 /* MTImagePickerAlbumsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAlbumsController.swift; sourceTree = "<group>"; };
 		B1B0F2F31CF32500008672D1 /* MTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B0F2FD1CF32500008672D1 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPreviewController.swift; sourceTree = "<group>"; };
-		B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerController.swift; sourceTree = "<group>"; };
+		B1B0F3351CF329CC008672D1 /* MTImagePickerAssetsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAssetsController.swift; sourceTree = "<group>"; };
 		B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerModel.swift; sourceTree = "<group>"; };
 		B1B0F3411CF3E073008672D1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B1B0F3471CF3E101008672D1 /* MTImagePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerCell.swift; sourceTree = "<group>"; };
@@ -54,7 +61,6 @@
 		B1D10D6A1CF6A4EE00FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B1D10D6D1CF6A50C00FA32F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B1D10D751CF6A7F600FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MTImagePicker.storyboard; sourceTree = "<group>"; };
-		B1D10D781CF6A7FA00FA32F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
 		B1D10D7A1CF6A8B200FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				B1B0F3341CF329CC008672D1 /* MTImagePickerPreviewController.swift */,
-				B1B0F3351CF329CC008672D1 /* MTImagePickerController.swift */,
+				B1B0F3351CF329CC008672D1 /* MTImagePickerAssetsController.swift */,
+				B1A616481D7E6FB800B874E2 /* MTImagePickerAlbumsController.swift */,
+				B19BF6D61D82AAD600371F4F /* MTImagePickerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,6 +129,7 @@
 				B1B0F33C1CF32A0F008672D1 /* MTImagePickerModel.swift */,
 				B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */,
 				B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */,
+				B1A616461D7E6E7000B874E2 /* MTImagePickerDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,16 +275,19 @@
 				B1B0F3541CF40AFB008672D1 /* MTImagePickerFlowLayout.swift in Sources */,
 				B1B0F3581CF42D68008672D1 /* VideoPickerPreviewCell.swift in Sources */,
 				B1B0F3501CF3FDCE008672D1 /* FlashAlertView.swift in Sources */,
+				B1A616491D7E6FB800B874E2 /* MTImagePickerAlbumsController.swift in Sources */,
 				B1B0F3421CF3E073008672D1 /* Extensions.swift in Sources */,
 				B115F3FE1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift in Sources */,
 				B1B0F3361CF329CC008672D1 /* MTImagePickerPreviewController.swift in Sources */,
 				B1B0F34C1CF3FCE8008672D1 /* LoadingViewController.swift in Sources */,
 				B115F3FC1D20C7C10051F937 /* MTImagePickerAssetsModel.swift in Sources */,
 				B1B0F3661CF47B61008672D1 /* TableViewController.swift in Sources */,
-				B1B0F3391CF329CC008672D1 /* MTImagePickerController.swift in Sources */,
+				B19BF6D71D82AAD600371F4F /* MTImagePickerController.swift in Sources */,
+				B1B0F3391CF329CC008672D1 /* MTImagePickerAssetsController.swift in Sources */,
 				B1B0F3481CF3E101008672D1 /* MTImagePickerCell.swift in Sources */,
 				B1B0F35C1CF42D97008672D1 /* ImagePickerPreviewCell.swift in Sources */,
 				B1B0F33D1CF32A0F008672D1 /* MTImagePickerModel.swift in Sources */,
+				B1A616471D7E6E7200B874E2 /* MTImagePickerDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +307,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1D10D751CF6A7F600FA32F8 /* Base */,
-				B1D10D781CF6A7FA00FA32F8 /* zh-Hans */,
+				B19BF6D91D82E64000371F4F /* zh-Hans */,
 			);
 			name = MTImagePicker.storyboard;
 			path = ..;
@@ -405,6 +417,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,6 +432,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";

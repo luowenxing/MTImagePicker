@@ -40,5 +40,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "static MTImagePickerDataSource.(fetchByALAsset([MTImagePickerMediaType], complete : ([MTImagePickerAlbumModel]) -&gt; ()) -&gt; ()).(closure #1):MTImagePickerDataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Bool(success.memory)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

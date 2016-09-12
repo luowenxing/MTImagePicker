@@ -6,7 +6,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Image Picker Albums Controller-->
+        <!--Photos-->
         <scene sceneID="goQ-aH-x36">
             <objects>
                 <tableViewController storyboardIdentifier="MTImagePickerAlbumsController" id="L80-pg-0Ok" customClass="MTImagePickerAlbumsController" customModule="MTImagePicker" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                             <outlet property="delegate" destination="L80-pg-0Ok" id="bpE-Cb-p9A"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="U0U-zN-h3A">
+                    <navigationItem key="navigationItem" title="Photos" id="U0U-zN-h3A">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="hMg-2h-T92">
                             <connections>
                                 <action selector="btnCancelTouch:" destination="L80-pg-0Ok" id="HA3-3b-VVD"/>

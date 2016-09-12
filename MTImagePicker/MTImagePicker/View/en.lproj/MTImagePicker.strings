@@ -1,27 +1,27 @@
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "6QZ-sk-cbE"; */
-"6QZ-sk-cbE.title" = "取消";
+"6QZ-sk-cbE.title" = "Cancel";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "9ge-R4-XZw"; */
-"9ge-R4-XZw.normalTitle" = "完成";
+"9ge-R4-XZw.normalTitle" = "Done";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Pmm-gC-cDb"; */
 "Pmm-gC-cDb.text" = "Label";
 
 /* Class = "UILabel"; text = "Selected"; ObjectID = "QEe-H5-UK7"; */
-"QEe-H5-UK7.text" = "已选";
+"QEe-H5-UK7.text" = "Selected";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "RAx-t8-aIT"; */
 "RAx-t8-aIT.text" = "0";
 
 /* Class = "UINavigationItem"; title = "Photos"; ObjectID = "U0U-zN-h3A"; */
-"U0U-zN-h3A.title" = "照片";
+"U0U-zN-h3A.title" = "Photos";
 
 /* Class = "UILabel"; text = "00:00"; ObjectID = "bnW-yS-C70"; */
 "bnW-yS-C70.text" = "00:00";
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "hMg-2h-T92"; */
-"hMg-2h-T92.title" = "取消";
+"hMg-2h-T92.title" = "Cancel";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "htg-6y-iS6"; */
 "htg-6y-iS6.text" = "0";
@@ -30,4 +30,4 @@
 "uM3-WZ-zud.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Preview"; ObjectID = "v9l-Hz-hPi"; */
-"v9l-Hz-hPi.normalTitle" = "预览";
+"v9l-Hz-hPi.normalTitle" = "Preview";

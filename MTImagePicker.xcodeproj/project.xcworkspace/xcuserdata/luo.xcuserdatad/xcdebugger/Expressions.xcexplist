@@ -3,10 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MTImagePickerPreviewController.willRotateToInterfaceOrientation(UIInterfaceOrientation, duration : Double) -&gt; ():MTImagePickerPreviewController.swift">
+         contextName = "static MTImagePickerDataSource.(fetchByALAsset([MTImagePickerMediaType], complete : ([MTImagePickerAlbumModel]) -&gt; ()) -&gt; ()).((enumeratorPromise #1)(UInt32) -&gt; ([MTImagePickerAlbumModel]) -&gt; Promise&lt;[MTImagePickerAlbumModel]&gt;).((makePromise #1)([MTImagePickerAlbumModel]) -&gt; Promise&lt;[MTImagePickerAlbumModel]&gt;).(closure #1).(closure #1):MTImagePickerDataSource.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.collectionView">
+               value = "varModels.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static MTImagePickerDataSource.(fetchByALAsset([MTImagePickerMediaType], complete : ([MTImagePickerAlbumModel]) -&gt; ()) -&gt; ()).(closure #1):MTImagePickerDataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Bool(success.memory)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static MTImagePickerDataSource.(fetchByALAsset([MTImagePickerMediaType], complete : ([MTImagePickerAlbumModel]) -&gt; ()) -&gt; ()).((enumeratorPromise #1)(UInt32) -&gt; Promise&lt;()&gt;).(closure #1).(closure #1):MTImagePickerDataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "model.getAlbumName()">
+            </PersistentString>
+            <PersistentString
+               value = "models.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -20,6 +39,14 @@
       </ContextState>
       <ContextState
          contextName = "MTImagePickerController.((photosDataSource in _E5518C1212C76253DDF9FBE4F727B7BB).getter).(closure #1):MTImagePickerController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static MTImagePickerDataSource.(fetchByALAsset([MTImagePickerMediaType], complete : ([MTImagePickerAlbumModel]) -&gt; ()) -&gt; ()).((enumeratorPromise #1)(UInt32) -&gt; ([MTImagePickerAlbumModel]) -&gt; Promise&lt;[MTImagePickerAlbumModel]&gt;).((makePromise #1)([MTImagePickerAlbumModel]) -&gt; Promise&lt;[MTImagePickerAlbumModel]&gt;).(closure #1):MTImagePickerDataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "models">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MTImagePickerPreviewController.viewWillTransitionToSize(CGSize, withTransitionCoordinator : UIViewControllerTransitionCoordinator) -&gt; ():MTImagePickerPreviewController.swift">
@@ -41,10 +68,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static MTImagePickerDataSource.(fetchByALAsset([MTImagePickerMediaType], complete : ([MTImagePickerAlbumModel]) -&gt; ()) -&gt; ()).(closure #1):MTImagePickerDataSource.swift">
+         contextName = "MTImagePickerPreviewController.willRotateToInterfaceOrientation(UIInterfaceOrientation, duration : Double) -&gt; ():MTImagePickerPreviewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Bool(success.memory)">
+               value = "self.collectionView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

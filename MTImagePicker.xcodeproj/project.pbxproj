@@ -37,8 +37,8 @@
 		B115F3FA1D20C5830051F937 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAssetsModel.swift; sourceTree = "<group>"; };
 		B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPhotosModel.swift; sourceTree = "<group>"; };
+		B161772A1D86BC9E004AE1F3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
 		B19BF6D61D82AAD600371F4F /* MTImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerController.swift; sourceTree = "<group>"; };
-		B19BF6D91D82E64000371F4F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
 		B1A616461D7E6E7000B874E2 /* MTImagePickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerDataSource.swift; sourceTree = "<group>"; };
 		B1A616481D7E6FB800B874E2 /* MTImagePickerAlbumsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAlbumsController.swift; sourceTree = "<group>"; };
 		B1B0F2F31CF32500008672D1 /* MTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,7 +307,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1D10D751CF6A7F600FA32F8 /* Base */,
-				B19BF6D91D82E64000371F4F /* zh-Hans */,
+				B161772A1D86BC9E004AE1F3 /* zh-Hans */,
 			);
 			name = MTImagePicker.storyboard;
 			path = ..;

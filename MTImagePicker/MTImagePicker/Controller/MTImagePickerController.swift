@@ -82,10 +82,6 @@ public class MTImagePickerController:UINavigationController {
                 controller.maxCount = self.maxCount
                 controller.source = self.source
                 self.assetController = controller
-                MTImagePickerDataSource.fetchDefault(self.source, mediaTypes: self.mediaTypes) {
-                    controller.groupModel = $0
-                    self.pushViewController(controller, animated: false)
-                }
             } else {
                 self.popToRootViewControllerAnimated(false)
             }
@@ -141,12 +137,21 @@ public class MTImagePickerController:UINavigationController {
         }
     }
     
+    public override func viewWillAppear(animated: Bool) {
+        if let controller = self.assetController {
+            MTImagePickerDataSource.fetchDefault(self.source, mediaTypes: self.mediaTypes) {
+                controller.groupModel = $0
+                self.pushViewController(controller, animated: false)
+            }
+        }
+    }
+    
     public weak var _delegate:MTImagePickerControllerDelegate?
     private var _mediaTypes = [MTImagePickerMediaType.Photo]
     private var _maxCount:Int = Int.max
     private var _defaultAll:Bool = true
     private var _source = MTImagePickerSource.ALAsset
     private weak var albumController:MTImagePickerAlbumsController?
-    private weak var assetController:MTImagePickerAssetsController?
+    private var assetController:MTImagePickerAssetsController?
 
 }

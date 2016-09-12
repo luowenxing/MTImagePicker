@@ -41,6 +41,7 @@ class MTImagePickerAlbumsController :UITableViewController {
     }
     
     override func viewDidLoad() {
+        self.tableView.tableFooterView = UIView()
         MTImagePickerDataSource.fetch(self.source, mediaTypes: self.mediaTypes, complete: { (dataSource) in
             self.dataSource = dataSource
             self.tableView.reloadData()
@@ -61,6 +62,7 @@ class MTImagePickerAlbumsController :UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let model = self.dataSource[indexPath.row]
         self.pushToMTImagePickerController(model,animate: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func pushToMTImagePickerController(model:MTImagePickerAlbumModel,animate:Bool) {

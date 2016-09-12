@@ -67,16 +67,6 @@ class MTImagePickerAssetsAlbumModel:MTImagePickerAlbumModel {
     init(group:ALAssetsGroup,mediaTypes:[MTImagePickerMediaType]) {
         self.group = group
         self.mediaTypes = mediaTypes
-        
-        var filter:ALAssetsFilter!
-        let containsPhoto = mediaTypes.contains(.Photo)
-        let containsVideo = mediaTypes.contains(.Video)
-        filter = containsPhoto ? ALAssetsFilter.allPhotos() : nil
-        filter = containsVideo ? ALAssetsFilter.allVideos() : nil
-        filter = containsPhoto && containsVideo ? ALAssetsFilter.allAssets() : nil
-        if let Fliter = filter {
-            self.group.setAssetsFilter(Fliter)
-        }
     }
     
     override func getAlbumCount() -> Int {

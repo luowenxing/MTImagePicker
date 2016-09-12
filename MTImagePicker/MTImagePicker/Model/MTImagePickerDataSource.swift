@@ -44,18 +44,25 @@ class MTImagePickerDataSource {
     
     class func fetchByALAsset(mediaTypes:[MTImagePickerMediaType],complete:[MTImagePickerAlbumModel] -> Void) {
         var models = [MTImagePickerAlbumModel]()
-        ALAsset.lib.enumerateGroupsWithTypes(ALAssetsGroupAll, usingBlock: {
+        ALAsset.lib.enumerateGroupsWithTypes(ALAssetsGroupAll|ALAssetsGroupLibrary, usingBlock: {
             (Group, success) in
             if let group = Group {
+                var filter:ALAssetsFilter?
+                let containsPhoto = mediaTypes.contains(.Photo)
+                let containsVideo = mediaTypes.contains(.Video)
+                filter = containsPhoto ? ALAssetsFilter.allPhotos() : filter
+                filter = containsVideo ? ALAssetsFilter.allVideos() : filter
+                filter = containsPhoto && containsVideo ? ALAssetsFilter.allAssets() : filter
+                if let Fliter = filter {
+                    group.setAssetsFilter(Fliter)
+                }
                 if group.numberOfAssets() > 0 {
                     let model = MTImagePickerAssetsAlbumModel(group: group, mediaTypes: mediaTypes)
-                    models.append(model)
+                    models.insert(model, atIndex: 0)
                 }
             } else {
                 print("stop")
-                dispatch_async(dispatch_get_main_queue()) {
-                    complete(models)
-                }
+                complete(models)
             }
         }){
             (NSError) in

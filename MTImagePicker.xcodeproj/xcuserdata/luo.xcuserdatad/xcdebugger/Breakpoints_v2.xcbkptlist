@@ -4,48 +4,194 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SwiftErrorBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+            timestampString = "495369010.245652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MTImagePicker.MTImagePickerAlbumsController.viewDidLoad () -&gt; ()"
+                  moduleName = "MTImagePicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+                  timestampString = "495368698.544099"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MTImagePicker.MTImagePickerAlbumsController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "MTImagePicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+                  timestampString = "495368698.544188"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+            timestampString = "495369010.245652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+            timestampString = "495369010.245652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+            timestampString = "495369010.245652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MTImagePicker.MTImagePickerAlbumsController.viewDidLoad () -&gt; ()"
+                  moduleName = "MTImagePicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+                  timestampString = "495368698.545547"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MTImagePicker.MTImagePickerAlbumsController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "MTImagePicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerAlbumsController.swift"
+                  timestampString = "495368698.545627"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
-            timestampString = "495117643.229839"
+            timestampString = "495368568.739692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "MTImagePickerController"
-            landmarkType = "3">
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.MTImagePickerController.defaultAll.setter : Swift.Bool"
+                  symbolName = "MTImagePicker.MTImagePickerController.viewWillAppear (Swift.Bool) -&gt; ()"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
-                  timestampString = "495118332.379495"
+                  timestampString = "495368698.546123"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "328">
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "100">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MTImagePicker.MTImagePickerController.(defaultAll.setter : Swift.Bool).(closure #1)"
+                  symbolName = "MTImagePicker.MTImagePickerController.(viewWillAppear (Swift.Bool) -&gt; ()).(closure #1)"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
-                  timestampString = "495118332.379614"
+                  timestampString = "495368698.546199"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -58,13 +204,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
-            timestampString = "495117643.747396"
+            timestampString = "495368570.899933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "MTImagePickerController"
-            landmarkType = "3">
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +220,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
-            timestampString = "495117644.197405"
+            timestampString = "495368571.237078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "MTImagePickerController"
-            landmarkType = "3">
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,44 +235,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/Model/MTImagePickerDataSource.swift"
-            timestampString = "495118291.337883"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+            timestampString = "495368632.732752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "fetchDefault(_:mediaTypes:complete:)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static MTImagePicker.MTImagePickerDataSource.(fetchDefault (MTImagePicker.MTImagePickerSource, mediaTypes : Swift.Array&lt;MTImagePicker.MTImagePickerMediaType&gt;, complete : (MTImagePicker.MTImagePickerAlbumModel) -&gt; ()) -&gt; ()).(closure #1)"
+                  symbolName = "MTImagePicker.MTImagePickerController.viewWillAppear (Swift.Bool) -&gt; ()"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Model/MTImagePickerDataSource.swift"
-                  timestampString = "495118332.391038"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+                  timestampString = "495368698.547418"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static MTImagePicker.MTImagePickerDataSource.(fetchDefault (MTImagePicker.MTImagePickerSource, mediaTypes : Swift.Array&lt;MTImagePicker.MTImagePickerMediaType&gt;, complete : (MTImagePicker.MTImagePickerAlbumModel) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "MTImagePicker.MTImagePickerController.viewWillAppear (Swift.Bool) -&gt; ()"
                   moduleName = "MTImagePicker"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Model/MTImagePickerDataSource.swift"
-                  timestampString = "495118332.391123"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+                  timestampString = "495368698.547498"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -137,13 +283,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/Model/MTImagePickerDataSource.swift"
-            timestampString = "495118291.73354"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+            timestampString = "495368633.160393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "fetchDefault(_:mediaTypes:complete:)"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +299,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MTImagePicker/MTImagePicker/Model/MTImagePickerDataSource.swift"
-            timestampString = "495118292.102973"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+            timestampString = "495368633.767848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "fetchDefault(_:mediaTypes:complete:)"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MTImagePicker.MTImagePickerController.viewWillAppear (Swift.Bool) -&gt; ()"
+                  moduleName = "MTImagePicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+                  timestampString = "495368698.54839"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MTImagePicker.MTImagePickerController.(viewWillAppear (Swift.Bool) -&gt; ()).(closure #1)"
+                  moduleName = "MTImagePicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luo/Documents/MTImagePicker/MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+                  timestampString = "495368698.548475"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "180">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MTImagePicker/MTImagePicker/Controller/MTImagePickerController.swift"
+            timestampString = "495368634.037828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

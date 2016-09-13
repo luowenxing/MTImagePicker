@@ -67,7 +67,6 @@ class MTImagePickerDataSource {
                     models.insert(model, atIndex: 0)
                 }
             } else {
-                print("stop")
                 complete(models)
             }
         }){
@@ -140,7 +139,6 @@ class MTImagePickerDataSource {
             for (_, result) in results.enumerate() {
                 result.enumerateObjectsUsingBlock({ (collection, index, isStop) -> Void in
                     let album = collection as! PHAssetCollection
-                    print(album.localizedTitle)
                     let assetResults = PHAsset.fetchAssetsInAssetCollection(album, options: options)
                     var count = 0
                     switch album.assetCollectionType {

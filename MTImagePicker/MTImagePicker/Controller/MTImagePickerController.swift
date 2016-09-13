@@ -27,11 +27,7 @@ import UIKit
 
 
 public class MTImagePickerController:UINavigationController {
-    
-    deinit {
-        print("deinit MTImagePickerController")
-    }
-    
+
     public weak var imagePickerDelegate:MTImagePickerControllerDelegate? {
         get {
             return self._delegate
@@ -39,7 +35,6 @@ public class MTImagePickerController:UINavigationController {
         set {
             self._delegate = newValue
             self.albumController?.delegate = newValue
-            self.assetController?.delegate = newValue
         }
     }
     
@@ -71,24 +66,12 @@ public class MTImagePickerController:UINavigationController {
         }
     }
     
-    public var defaultAll:Bool {
+    public var defaultShowCameraRoll:Bool {
         get {
             return self._defaultAll
         }
         set {
-            if newValue {
-                let controller = MTImagePickerAssetsController.instance
-                controller.delegate = self.imagePickerDelegate
-                controller.maxCount = self.maxCount
-                controller.source = self.source
-                MTImagePickerDataSource.fetchDefault(self.source, mediaTypes: self.mediaTypes) {
-                    controller.groupModel = $0
-                    self.pushViewController(controller, animated: false)
-                }
-                self.assetController = controller
-            } else {
-                self.popToRootViewControllerAnimated(false)
-            }
+            self._defaultAll = newValue
         }
     }
     public var source:MTImagePickerSource {
@@ -105,7 +88,6 @@ public class MTImagePickerController:UINavigationController {
                 }
             }
             self.albumController?.source = self._source
-            self.assetController?.source = self._source
         }
     }
     
@@ -131,6 +113,19 @@ public class MTImagePickerController:UINavigationController {
         }
     }
     
+    public override func viewWillAppear(animated: Bool) {
+        if self.defaultShowCameraRoll {
+            let controller = MTImagePickerAssetsController.instance
+            controller.delegate = self.imagePickerDelegate
+            controller.maxCount = self.maxCount
+            controller.source = self.source
+            MTImagePickerDataSource.fetchDefault(self.source, mediaTypes: self.mediaTypes) {
+                controller.groupModel = $0
+                self.pushViewController(controller, animated: false)
+            }
+        }
+    }
+    
     class var instance:MTImagePickerController {
         get {
             let controller = MTImagePickerAlbumsController.instance
@@ -146,6 +141,5 @@ public class MTImagePickerController:UINavigationController {
     private var _defaultAll:Bool = true
     private var _source = MTImagePickerSource.ALAsset
     private weak var albumController:MTImagePickerAlbumsController?
-    private var assetController:MTImagePickerAssetsController?
 
 }

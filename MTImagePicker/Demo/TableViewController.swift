@@ -92,7 +92,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         let sourceSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0))?.viewWithTag(1001) as! UISwitch
         var mediaTypes = [MTImagePickerMediaType]()
         var source = MTImagePickerSource.ALAsset
-        var defaultAll = false
+        var defaultShowCameraRoll = false
         if photoSwitch.on == true {
             mediaTypes.append(MTImagePickerMediaType.Photo)
         }
@@ -103,7 +103,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
             source = MTImagePickerSource.Photos
         }
         if defaultAllSwitch.on == true {
-            defaultAll = true
+            defaultShowCameraRoll = true
         }
         
         // 使用示例
@@ -114,7 +114,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         if let text = textCount.text,maxCount = Int(text) {
             vc.maxCount = maxCount
         }
-        vc.defaultAll = defaultAll
+        vc.defaultShowCameraRoll = defaultShowCameraRoll
         self.presentViewController(vc, animated: true, completion: nil)
     }
 

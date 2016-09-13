@@ -28,12 +28,11 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
         return fileName
     }
     
-    override func getThumbImage()-> UIImage? {
+    override func getThumbImage(size:CGSize)-> UIImage? {
         var img:UIImage?
         let options = PHImageRequestOptions()
         options.deliveryMode = .FastFormat
         options.synchronous = true
-        let size = CGSize(width: 75, height: 75)
         PHImageManager.defaultManager().requestImageForAsset(self.phasset, targetSize: size, contentMode: .AspectFill, options: options) {
             image,infoDict in
             img = image
@@ -52,7 +51,6 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
         PHImageManager.defaultManager().requestImageForAsset(self.phasset, targetSize: size, contentMode: .AspectFit, options: options) {
             image,infoDict in
             img = image
-            
         }
         return img
     }
@@ -119,40 +117,46 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
 @available(iOS 8.0, *)
 class MTImagePickerPhotosAlbumModel:MTImagePickerAlbumModel {
     
-    private var collection:PHAssetCollection
-    private var mediaTypes:[MTImagePickerMediaType]
+    private var result:PHFetchResult
+    private var _albumCount:Int
+    private var _albumName:String?
     
-    init(collection:PHAssetCollection,mediaTypes:[MTImagePickerMediaType]) {
-        self.collection = collection
-        self.mediaTypes = mediaTypes
+    init(result:PHFetchResult,albumCount:Int,albumName:String?) {
+        self.result = result
+        self._albumName = albumName
+        self._albumCount = albumCount
     }
     
     override func getAlbumCount() -> Int {
-        return self.collection.estimatedAssetCount
+        return self._albumCount
     }
     
     override func getAlbumName() -> String? {
-        return self.collection.localizedTitle
+        return self._albumName
     }
     
-    override func getAlbumImage() -> UIImage? {
-        let result = PHAsset.fetchAssetsInAssetCollection(self.collection, options: nil)
-        if let asset = result.objectAtIndex(0) as? PHAsset {
-            let scale = UIScreen.mainScreen().scale
-            let size = CGSizeMake( 50 * scale, 50 * scale)
-            var image:UIImage?
-            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: .AspectFit, options: nil) {
-                img,infoDict in
-                image = img
-                
-            }
-            return image
+    override func getAlbumImage(size:CGSize) -> UIImage? {
+        if let asset = self.result.objectAtIndex(0) as? PHAsset {
+            let model = MTImagePickerPhotosModel(mediaType: .Photo, sortNumber: 0, phasset: asset)
+            return model.getThumbImage(size)
         }
         return nil
     }
     
     override func getMTImagePickerModelsListAsync(complete: [MTImagePickerModel] -> Void) {
-//        let result = PHAsset.fetchAssetsInAssetCollection(self.collection, options: nil
+        var models = [MTImagePickerModel]()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.result.enumerateObjectsUsingBlock({ (asset, index, isStop) -> Void in
+                if let phasset = asset as? PHAsset {
+                    let mediaType:MTImagePickerMediaType = phasset.mediaType == .Image ? .Photo : .Video
+                    let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, phasset: phasset)
+                    models.append(model)
+                }
+            })
+            dispatch_async(dispatch_get_main_queue()) {
+                complete(models)
+            }
+        }
     }
 }
 

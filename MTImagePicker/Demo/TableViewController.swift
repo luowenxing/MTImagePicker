@@ -33,7 +33,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            return 6
         } else {
             return dataSource.count
         }
@@ -46,7 +46,9 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         } else {
             let model = self.dataSource[indexPath.row]
             let cell = self.tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath)
-            (cell.viewWithTag(1001) as! UIImageView).image = model.getThumbImage()
+            // 不推荐的写法，此处为了简便所以这样实现
+            let imageView = (cell.viewWithTag(1001) as! UIImageView)
+            imageView.image = model.getThumbImage(imageView.frame.size)
             (cell.viewWithTag(1002) as! UILabel).text = model.getFileSize().byteFormat()
             (cell.viewWithTag(1003) as! UILabel).text = model.getFileName()
             return cell
@@ -54,7 +56,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 4 && indexPath.section == 0 {
+        if indexPath.row == 5 && indexPath.section == 0 {
             self.btnPickTouch()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -82,12 +84,15 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     
     
     func btnPickTouch() {
+        // 不推荐的写法，此处为了简便所以这样实现。
         let textCount = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.viewWithTag(1001) as! UITextField
         let photoSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))?.viewWithTag(1001) as! UISwitch
         let videoSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))?.viewWithTag(1001) as! UISwitch
-        let sourceSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))?.viewWithTag(1001) as! UISwitch
+        let defaultAllSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))?.viewWithTag(1001) as! UISwitch
+        let sourceSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0))?.viewWithTag(1001) as! UISwitch
         var mediaTypes = [MTImagePickerMediaType]()
         var source = MTImagePickerSource.ALAsset
+        var defaultAll = false
         if photoSwitch.on == true {
             mediaTypes.append(MTImagePickerMediaType.Photo)
         }
@@ -97,7 +102,11 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         if sourceSwitch.on == false {
             source = MTImagePickerSource.Photos
         }
+        if defaultAllSwitch.on == true {
+            defaultAll = true
+        }
         
+        // 使用示例
         let vc = MTImagePickerController.instance
         vc.mediaTypes = mediaTypes
         vc.source = source
@@ -105,6 +114,7 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         if let text = textCount.text,maxCount = Int(text) {
             vc.maxCount = maxCount
         }
+        vc.defaultAll = defaultAll
         self.presentViewController(vc, animated: true, completion: nil)
     }
 

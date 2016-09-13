@@ -44,17 +44,20 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let loading = LoadingViewController()
+        loading.show("Loading...".localized)
         self.groupModel?.getMTImagePickerModelsListAsync { (models) in
+            loading.dismiss()
             self.dataSource = models
             self.collectionView.reloadData()
             self.scrollToBottom()
         }
+
         self.initUI()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.collectionView.reloadData()
         self.lbSelected.text = String(self.selectedSource.count)
         self.btnPreview.enabled = !(self.selectedSource.count == 0)
     }
@@ -88,7 +91,7 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
         } else {
             cell.videoView.hidden = true
         }
-        cell.imageView.image = model.getThumbImage()
+        cell.imageView.image = model.getThumbImage(cell.imageView.frame.size)
         cell.indexPath = indexPath
         cell.btnCheck.selected = self.selectedSource.contains(model)
         cell.btnCheck.addTarget(self, action: #selector(MTImagePickerAssetsController.btnCheckTouch(_:)), forControlEvents: .TouchUpInside)

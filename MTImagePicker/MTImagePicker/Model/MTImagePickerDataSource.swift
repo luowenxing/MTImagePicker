@@ -21,7 +21,10 @@ class MTImagePickerDataSource {
         if type == .ALAsset {
             MTImagePickerDataSource.fetchByALAsset(mediaTypes) { complete($0) }
         } else if type == .Photos {
-            MTImagePickerDataSource.fetchByALAsset(mediaTypes) { complete($0) }
+            if #available(iOS 8.0, *) {
+                
+                MTImagePickerDataSource.fetchByPhotos(mediaTypes) { complete($0) }
+            }
         }
     }
     
@@ -34,15 +37,18 @@ class MTImagePickerDataSource {
                 }
             }
         } else if type == .Photos {
-            MTImagePickerDataSource.fetchByALAsset(mediaTypes) {
-                if let model = ($0.maxElement { $0.getAlbumCount() < $1.getAlbumCount() }) {
-                    complete(model)
+            if #available(iOS 8.0, *) {
+                MTImagePickerDataSource.fetchByPhotos(mediaTypes) {
+                    if let model = ($0.maxElement { $0.getAlbumCount() < $1.getAlbumCount() }) {
+                        complete(model)
+                    }
                 }
             }
         }
     }
     
     class func fetchByALAsset(mediaTypes:[MTImagePickerMediaType],complete:[MTImagePickerAlbumModel] -> Void) {
+        
         var models = [MTImagePickerAlbumModel]()
         ALAsset.lib.enumerateGroupsWithTypes(ALAssetsGroupAll|ALAssetsGroupLibrary, usingBlock: {
             (Group, success) in
@@ -57,7 +63,7 @@ class MTImagePickerDataSource {
                     group.setAssetsFilter(Fliter)
                 }
                 if group.numberOfAssets() > 0 {
-                    let model = MTImagePickerAssetsAlbumModel(group: group, mediaTypes: mediaTypes)
+                    let model = MTImagePickerAssetsAlbumModel(group: group)
                     models.insert(model, atIndex: 0)
                 }
             } else {
@@ -72,18 +78,90 @@ class MTImagePickerDataSource {
     
     @available(iOS 8.0, *)
     class func fetchByPhotos(mediaTypes:[MTImagePickerMediaType],complete:[MTImagePickerAlbumModel] -> Void) {
-        var models = [MTImagePickerAlbumModel]()
-        let options = PHFetchOptions()
-        options.predicate = NSPredicate(format: "estimatedAssetCount > 0")
-        let userAlbums = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.Album, subtype: PHAssetCollectionSubtype.Any, options: options)
-        userAlbums.enumerateObjectsUsingBlock {
-            if let collection = $0.0 as? PHAssetCollection {
-                let model = MTImagePickerPhotosAlbumModel(collection: collection, mediaTypes: mediaTypes)
-                models.append(model)
+        
+        func chargeAuthorizationStatus(status: PHAuthorizationStatus,onAuthorized:() -> Void) {
+            switch (status) {
+            case .Authorized:
+                onAuthorized()
+            case .Denied:
+                MTImagePickerDataSource.showUnAuthorize()
+                break
+            case .Restricted:
+                MTImagePickerDataSource.showUnAuthorize()
+                break
+            case .NotDetermined:
+                PHPhotoLibrary.requestAuthorization({ (status) -> Void in
+                    guard status != .NotDetermined else {
+                        return
+                    }
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        chargeAuthorizationStatus(status,onAuthorized: onAuthorized )
+                    })
+                })
             }
         }
-        complete(models)
+        
+        chargeAuthorizationStatus(PHPhotoLibrary.authorizationStatus()) {
+            var models = [MTImagePickerAlbumModel]()
+            func fetchAlbums() -> [PHFetchResult] {
+                let userAlbumsOptions = PHFetchOptions()
+                userAlbumsOptions.predicate = NSPredicate(format: "estimatedAssetCount > 0")
+                userAlbumsOptions.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+                var albums = [PHFetchResult]()
+                albums.append(
+                    PHAssetCollection.fetchAssetCollectionsWithType(
+                        PHAssetCollectionType.SmartAlbum,
+                        subtype: PHAssetCollectionSubtype.AlbumRegular,
+                        options: nil)
+                )
+                albums.append(
+                    PHAssetCollection.fetchAssetCollectionsWithType(
+                        PHAssetCollectionType.Album,
+                        subtype: PHAssetCollectionSubtype.Any,
+                        options: userAlbumsOptions)
+                )
+                return albums
+            }
+            
+            let results = fetchAlbums()
+            let options = PHFetchOptions()
+            var formats = [String]()
+            var arguments = [Int]()
+            for type in mediaTypes {
+                formats.append("mediaType = %d")
+                if type == .Photo {
+                    arguments.append(PHAssetMediaType.Image.rawValue)
+                } else if type == .Video {
+                    arguments.append(PHAssetMediaType.Video.rawValue)
+                }
+            }
+            options.predicate = NSPredicate(format: formats.joinWithSeparator(" or "), argumentArray: arguments)
+            options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            for (_, result) in results.enumerate() {
+                result.enumerateObjectsUsingBlock({ (collection, index, isStop) -> Void in
+                    let album = collection as! PHAssetCollection
+                    print(album.localizedTitle)
+                    let assetResults = PHAsset.fetchAssetsInAssetCollection(album, options: options)
+                    var count = 0
+                    switch album.assetCollectionType {
+                    case .Album:
+                        count = assetResults.count
+                    case .SmartAlbum:
+                        count = assetResults.count
+                    case .Moment:
+                        count = 0
+                    }
+                    if count > 0 {
+                        let model = MTImagePickerPhotosAlbumModel(result: assetResults, albumCount: count, albumName: album.localizedTitle)
+                        models.append(model)
+                    }
+                })
+            }
+            complete(models)
+        }
     }
+    
+    
     
     class func showUnAuthorize() {
         dispatch_async(dispatch_get_main_queue()){

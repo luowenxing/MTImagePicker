@@ -18,7 +18,7 @@ class MTImagePickerAlbumCell:UITableViewCell {
     func setup(model:MTImagePickerAlbumModel) {
         self.lbAlbumCount.text = "(\(model.getAlbumCount()))"
         self.lbAlbumName.text = model.getAlbumName()
-        self.posterImageView.image = model.getAlbumImage()
+        self.posterImageView.image = model.getAlbumImage(self.posterImageView.frame.size)
     }
 }
 

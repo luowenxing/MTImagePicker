@@ -22,7 +22,7 @@ public class MTImagePickerModel:NSObject {
         fatalError("getFileName has not been implemented")
     }
     
-    func getThumbImage()-> UIImage? {
+    func getThumbImage(size:CGSize)-> UIImage? {
         fatalError("getThumbImage has not been implemented")
     }
     
@@ -54,7 +54,7 @@ class MTImagePickerAlbumModel:NSObject {
         fatalError("getAlbumName has not been implemented")
     }
     
-    func getAlbumImage() -> UIImage? {
+    func getAlbumImage(size:CGSize) -> UIImage? {
         fatalError("getAlbumImage has not been implemented")
     }
     

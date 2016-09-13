@@ -1,14 +1,24 @@
 
-/* Class = "UILabel"; text = "最大选择数"; ObjectID = "1KW-fS-332"; */
+/* Class = "UILabel"; text = "maxCount"; ObjectID = "1KW-fS-332"; */
 "1KW-fS-332.text" = "最大选择数";
 
-/* Class = "UILabel"; text = "照片"; ObjectID = "GFp-bF-Hfj"; */
+/* Class = "UINavigationItem"; title = "Demo"; ObjectID = "Aag-dG-SKR"; */
+"Aag-dG-SKR.title" = "Demo";
+
+/* Class = "UILabel"; text = "Photo"; ObjectID = "GFp-bF-Hfj"; */
 "GFp-bF-Hfj.text" = "照片";
 
-/* Class = "UILabel"; text = "调用选择图片"; ObjectID = "GVP-0U-LM1"; */
+/* Class = "UILabel"; text = "Call Image Picker"; ObjectID = "GVP-0U-LM1"; */
 "GVP-0U-LM1.text" = "调用选择图片";
 
-/* Class = "UILabel"; text = "视频"; ObjectID = "inP-6e-pvO"; */
+/* Class = "UITextField"; text = "10"; ObjectID = "b6L-Gh-v9J"; */
+"b6L-Gh-v9J.text" = "10";
+
+/* Class = "UILabel"; text = "Video"; ObjectID = "inP-6e-pvO"; */
 "inP-6e-pvO.text" = "视频";
 
+/* Class = "UILabel"; text = "DefaultShowAll"; ObjectID = "pvw-7e-mXB"; */
+"pvw-7e-mXB.text" = "默认显示所有照片";
+
+/* Class = "UILabel"; text = "Use Assets(On)/Photos(Off)"; ObjectID = "sGX-gN-hyp"; */
 "sGX-gN-hyp.text" = "使用Assets(On)/Photos(Off)";

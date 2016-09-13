@@ -27,7 +27,7 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
         return self.rept.filename()
     }
     
-    override func getThumbImage()-> UIImage? {
+    override func getThumbImage(size:CGSize)-> UIImage? {
         return UIImage(CGImage: self.asset.thumbnail().takeUnretainedValue())
     }
     
@@ -62,11 +62,9 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
 class MTImagePickerAssetsAlbumModel:MTImagePickerAlbumModel {
     
     private var group:ALAssetsGroup
-    private var mediaTypes:[MTImagePickerMediaType]
     
-    init(group:ALAssetsGroup,mediaTypes:[MTImagePickerMediaType]) {
+    init(group:ALAssetsGroup) {
         self.group = group
-        self.mediaTypes = mediaTypes
     }
     
     override func getAlbumCount() -> Int {
@@ -77,7 +75,7 @@ class MTImagePickerAssetsAlbumModel:MTImagePickerAlbumModel {
         return self.group.valueForProperty(ALAssetsGroupPropertyName) as? String
     }
     
-    override func getAlbumImage() -> UIImage? {
+    override func getAlbumImage(size:CGSize) -> UIImage? {
         return UIImage(CGImage: self.group.posterImage().takeUnretainedValue())
     }
     

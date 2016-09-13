@@ -23,8 +23,9 @@ pod 'MTImagePicker', '~> 1.0.1'
 ```
 let imagePicker = MTImagePickerController.instance
 imagePicker.mediaTypes = [MTImagePickerMediaType.Photo,MTImagePickerMediaType.Video]
-imagePicker.delegate = self
-imagePicker.maxCount = 10
+imagePicker.imagePickerDelegate = self
+imagePicker.maxCount = 10 // max select count
+imagePicker.defaultShowCameraRoll = true // when set to true would show Camera Roll Album like WeChat by default. 
 ```
 * You can use  either `ALAssetsLibrary` or `Photos framework` by setting the source of `MTImagePickerController`
 ```
@@ -32,10 +33,9 @@ imagePicker.maxCount = 10
 imagePicker.source = MTImagePickerSource.ALAsset
 //imagePicker.source = MTImagePickerSource.Photos (Work on iOS8+)
 ```
-* Wrap `imagePicker` in a `UINavigationController`.
+* Call `presentViewController` 
 ```
-let nc = UINavigationController(rootViewController: vc)
-self.presentViewController(nc, animated: true, completion: nil)
+self.presentViewController(imagePicker, animated: true, completion: nil)
 ```
 * Implement the delegate method accordding to the `source`.
 ```
@@ -53,4 +53,4 @@ self.presentViewController(nc, animated: true, completion: nil)
 ```
 
 # TODO
-* Add Albums selecting support.
+* ~~Add Albums selecting support.~~ Done.

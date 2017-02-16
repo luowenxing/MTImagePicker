@@ -26,12 +26,11 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 6
         } else {
@@ -39,30 +38,31 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(String(indexPath.row), forIndexPath: indexPath)
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: String(indexPath.row), for: indexPath as IndexPath)
             return cell
         } else {
             let model = self.dataSource[indexPath.row]
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath)
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath as IndexPath)
             // 不推荐的写法，此处为了简便所以这样实现
             let imageView = (cell.viewWithTag(1001) as! UIImageView)
-            imageView.image = model.getThumbImage(imageView.frame.size)
+            imageView.image = model.getThumbImage(size: imageView.frame.size)
             (cell.viewWithTag(1002) as! UILabel).text = model.getFileSize().byteFormat()
             (cell.viewWithTag(1003) as! UILabel).text = model.getFileName()
             return cell
         }
+
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 5 && indexPath.section == 0 {
             self.btnPickTouch()
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 44
         } else {
@@ -85,24 +85,24 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
     
     func btnPickTouch() {
         // 不推荐的写法，此处为了简便所以这样实现。
-        let textCount = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.viewWithTag(1001) as! UITextField
-        let photoSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))?.viewWithTag(1001) as! UISwitch
-        let videoSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))?.viewWithTag(1001) as! UISwitch
-        let defaultAllSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))?.viewWithTag(1001) as! UISwitch
-        let sourceSwitch = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0))?.viewWithTag(1001) as! UISwitch
+        let textCount = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.viewWithTag(1001) as! UITextField
+        let photoSwitch = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0))?.viewWithTag(1001) as! UISwitch
+        let videoSwitch = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.viewWithTag(1001) as! UISwitch
+        let defaultAllSwitch = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0))?.viewWithTag(1001) as! UISwitch
+        let sourceSwitch = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0))?.viewWithTag(1001) as! UISwitch
         var mediaTypes = [MTImagePickerMediaType]()
         var source = MTImagePickerSource.ALAsset
         var defaultShowCameraRoll = false
-        if photoSwitch.on == true {
+        if photoSwitch.isOn == true {
             mediaTypes.append(MTImagePickerMediaType.Photo)
         }
-        if videoSwitch.on == true {
+        if videoSwitch.isOn == true {
             mediaTypes.append(MTImagePickerMediaType.Video)
         }
-        if sourceSwitch.on == false {
+        if sourceSwitch.isOn == false {
             source = MTImagePickerSource.Photos
         }
-        if defaultAllSwitch.on == true {
+        if defaultAllSwitch.isOn == true {
             defaultShowCameraRoll = true
         }
         
@@ -111,11 +111,11 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         vc.mediaTypes = mediaTypes
         vc.source = source
         vc.imagePickerDelegate = self
-        if let text = textCount.text,maxCount = Int(text) {
+        if let text = textCount.text,let maxCount = Int(text) {
             vc.maxCount = maxCount
         }
         vc.defaultShowCameraRoll = defaultShowCameraRoll
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
 
 }

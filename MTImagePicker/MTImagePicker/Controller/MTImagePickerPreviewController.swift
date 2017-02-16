@@ -13,7 +13,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     
     var dataSource:[MTImagePickerModel]!
     var selectedSource:Set<MTImagePickerModel>!
-    var initialIndexPath:NSIndexPath?
+    var initialIndexPath:IndexPath?
     var maxCount:Int!
     var dismiss:((Set<MTImagePickerModel>) -> Void)?
     
@@ -26,8 +26,8 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     
     class var instance:MTImagePickerPreviewController {
         get {
-            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: NSBundle.mainBundle())
-            let vc = storyboard.instantiateViewControllerWithIdentifier("MTImagePickerPreviewController") as! MTImagePickerPreviewController
+            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.main)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MTImagePickerPreviewController") as! MTImagePickerPreviewController
             return vc
         }
     }
@@ -37,20 +37,22 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         self.lbSelected.text = String(self.selectedSource.count)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.scrollViewDidEndDecelerating(self.collectionView)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     
@@ -59,39 +61,39 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         if !self.initialScrollDone {
             self.initialScrollDone = true
             if let initialIndexPath = self.initialIndexPath {
-                self.collectionView.scrollToItemAtIndexPath(initialIndexPath , atScrollPosition: .None, animated: false)
+                self.collectionView.scrollToItem(at: initialIndexPath, at: .right, animated: false)
             }
         }
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = self.dataSource[indexPath.row]
-        self.btnCheck.selected = self.selectedSource.contains(model)
+        self.btnCheck.isSelected = self.selectedSource.contains(model)
         if model.mediaType == .Photo {
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! ImagePickerPreviewCell
+            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath as IndexPath) as! ImagePickerPreviewCell
             cell.layer.shouldRasterize = true
-            cell.layer.rasterizationScale = UIScreen.mainScreen().scale
+            cell.layer.rasterizationScale = UIScreen.main.scale
             cell.initWithModel(model, controller: self)
             return cell
         } else {
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("VideoCell", forIndexPath: indexPath) as! VideoPickerPreviewCell
+            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath as IndexPath) as! VideoPickerPreviewCell
             cell.layer.shouldRasterize = true
-            cell.layer.rasterizationScale = UIScreen.mainScreen().scale
-            cell.initWithModel(model,controller:self)
+            cell.layer.rasterizationScale = UIScreen.main.scale
+            cell.initWithModel(model: model,controller:self)
             return cell
         } 
     }
     
     // 旋转处理
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         if self.interfaceOrientation.isPortrait != toInterfaceOrientation.isPortrait {
-            if let videoCell = self.collectionView.visibleCells().first as? VideoPickerPreviewCell {
+            if let videoCell = self.collectionView.visibleCells.first as? VideoPickerPreviewCell {
                 // CALayer 无法autolayout 需要重设frame
-                videoCell.resetLayer(UIScreen.mainScreen().compatibleBounds)
+                videoCell.resetLayer(frame: UIScreen.main.compatibleBounds)
             }
             self.collectionView.prevItemSize = (self.collectionView.collectionViewLayout as! MTImagePickerPreviewFlowLayout).itemSize
             self.collectionView.prevOffset = self.collectionView.contentOffset.x
@@ -99,24 +101,24 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.collectionView.bounds.width, self.collectionView.bounds.height);
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.collectionView.bounds.width, height: self.collectionView.bounds.height)
     }
     
     //MARK:UIScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if let videoCell = self.collectionView.visibleCells().first as? VideoPickerPreviewCell {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let videoCell = self.collectionView.visibleCells.first as? VideoPickerPreviewCell {
             videoCell.didScroll()
         }
     }
     
     //防止visibleCells出现两个而不是一个，导致.first得到的是未显示的cell
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        self.performSelector(#selector(MTImagePickerPreviewController.didEndDecelerating), withObject: nil, afterDelay: 0)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.perform(#selector(MTImagePickerPreviewController.didEndDecelerating), with: nil, afterDelay: 0)
     }
     
     func didEndDecelerating() {
-        let cell = self.collectionView.visibleCells().first
+        let cell = self.collectionView.visibleCells.first
         if let videoCell = cell as? VideoPickerPreviewCell {
             videoCell.didEndScroll()
         } else if let imageCell = cell as? ImagePickerPreviewCell {
@@ -125,24 +127,24 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
 
     }
     
-    @IBAction func btnBackTouch(sender: AnyObject) {
+    @IBAction func btnBackTouch(_ sender: AnyObject) {
         self.dismiss?(self.selectedSource)
-        self.navigationController?.popViewControllerAnimated(true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnCheckTouch(sender: UIButton) {
-        if self.selectedSource.count < self.maxCount || sender.selected == true {
-            sender.selected = !sender.selected
-            if let indexPath = self.collectionView.indexPathsForVisibleItems().first {
+    @IBAction func btnCheckTouch(_ sender: UIButton) {
+        if self.selectedSource.count < self.maxCount || sender.isSelected == true {
+            sender.isSelected = !sender.isSelected
+            if let indexPath = self.collectionView.indexPathsForVisibleItems.first {
                 let model = self.dataSource[indexPath.row]
-                if sender.selected {
+                if sender.isSelected {
                     self.selectedSource.insert(model)
-                    sender.heartbeatsAnimation(0.15)
+                    sender.heartbeatsAnimation(duration: 0.15)
                 }else {
                     self.selectedSource.remove(model)
                 }
                 self.lbSelected.text = String(self.selectedSource.count)
-                self.lbSelected.heartbeatsAnimation(0.15)
+                self.lbSelected.heartbeatsAnimation(duration: 0.15)
             }
         } else {
             let alertView = FlashAlertView(message: "Maxium selected".localized, delegate: nil)

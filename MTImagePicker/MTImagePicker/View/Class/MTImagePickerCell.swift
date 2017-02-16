@@ -19,5 +19,5 @@ class MTImagePickerCell:UICollectionViewCell {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var top: NSLayoutConstraint!
     
-    var indexPath:NSIndexPath!
+    var indexPath:IndexPath!
 }

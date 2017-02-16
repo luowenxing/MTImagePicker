@@ -26,8 +26,8 @@ class VideoPickerPreviewCell:UICollectionViewCell{
         self.playerLayer = AVPlayerLayer()
         self.playerLayer.player = self.avPlayer
         self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
-        self.playerLayer.frame = UIScreen.mainScreen().compatibleBounds
-        self.avPlayerView.layer.insertSublayer(self.playerLayer, atIndex: 0)
+        self.playerLayer.frame = UIScreen.main.compatibleBounds
+        self.avPlayerView.layer.insertSublayer(self.playerLayer, at: 0)
         
         let singTapGesture = UITapGestureRecognizer(target: self, action: #selector(VideoPickerPreviewCell.onVideoSingleTap(_:)))
         singTapGesture.numberOfTapsRequired = 1
@@ -36,9 +36,9 @@ class VideoPickerPreviewCell:UICollectionViewCell{
     }
     
     override func prepareForReuse() {
-        self.imageView.hidden = false
-        self.avPlayerView.hidden = true
-        self.btnPlay.hidden = false
+        self.imageView.isHidden = false
+        self.avPlayerView.isHidden = true
+        self.btnPlay.isHidden = false
     }
     
     func initWithModel(model:MTImagePickerModel,controller:MTImagePickerPreviewController) {
@@ -53,33 +53,33 @@ class VideoPickerPreviewCell:UICollectionViewCell{
             self.avPlayer.pause()
             self.avPlayer.removeTimeObserver(observer)
             self.observer = nil
-            self.btnPlay.hidden = false
-            self.imageView.hidden = false
-            self.setTopAndBottomView(false)
+            self.btnPlay.isHidden = false
+            self.imageView.isHidden = false
+            self.setTopAndBottomView(hidden: false)
         }
-        self.setTopAndBottomView(false)
+        self.setTopAndBottomView(hidden: false)
     }
     
     func resetLayer() {
-        self.playerLayer.frame = UIScreen.mainScreen().compatibleBounds
+        self.playerLayer.frame = UIScreen.main.compatibleBounds
     }
     
     func didEndScroll() {
-        self.setTopAndBottomView(false)
+        self.setTopAndBottomView(hidden: false)
         self.model.getImageAsync(){
             image in
             self.imageView.image = image
         }
         //此处耗时,故放在滚动结束后调用
         if let playerItem = self.model.getAVPlayerItem() {
-            self.avPlayer.replaceCurrentItemWithPlayerItem(playerItem)
+            self.avPlayer.replaceCurrentItem(with: playerItem)
             if let currentItem = self.avPlayer.currentItem {
-                self.observer = self.avPlayer.addBoundaryTimeObserverForTimes([NSValue(CMTime: currentItem.asset.duration)], queue: nil){
+                self.avPlayer.addBoundaryTimeObserver(forTimes: [currentItem.asset.duration as NSValue], queue: nil) {
                     [unowned self] in
-                    dispatch_async(dispatch_get_main_queue()){
-                        self.avPlayer.seekToTime(CMTime(value: 0 , timescale: 30))
-                        self.btnPlay.hidden = false
-                        self.setTopAndBottomView(false)
+                    DispatchQueue.main.async {
+                        self.avPlayer.seek(to: CMTime(value: 0 , timescale: 30))
+                        self.btnPlay.isHidden = false
+                        self.setTopAndBottomView(hidden: false)
                     }
                 }
             }
@@ -90,33 +90,33 @@ class VideoPickerPreviewCell:UICollectionViewCell{
         self.playerLayer.frame = frame
     }
     
-    func onVideoSingleTap(sernder:UITapGestureRecognizer) {
+    func onVideoSingleTap(_ sernder:UITapGestureRecognizer) {
         self.playerPlayOrPause()
     }
     
-    @IBAction func btnPlayTouch(sender:UIButton) {
+    @IBAction func btnPlayTouch(_ sender:UIButton) {
         self.playerPlayOrPause()
     }
     
     func setTopAndBottomView(hidden:Bool) {
         if let controller = self.controller {
-            controller.topView.hidden = hidden
-            controller.bottomView.hidden = hidden
+            controller.topView.isHidden = hidden
+            controller.bottomView.isHidden = hidden
         }
     }
     
     func playerPlayOrPause() {
-        if self.avPlayer.status == .ReadyToPlay {
-            self.imageView.hidden = true
-            self.avPlayerView.hidden = false
+        if self.avPlayer.status == .readyToPlay {
+            self.imageView.isHidden = true
+            self.avPlayerView.isHidden = false
             if self.avPlayer.rate != 1.0 {
-                self.btnPlay.hidden = true
+                self.btnPlay.isHidden = true
                 self.avPlayer.play()
-                self.setTopAndBottomView(true)
+                self.setTopAndBottomView(hidden: true)
             } else{
-                self.btnPlay.hidden = false
+                self.btnPlay.isHidden = false
                 self.avPlayer.pause()
-                self.setTopAndBottomView(false)
+                self.setTopAndBottomView(hidden: false)
             }
         }
     }

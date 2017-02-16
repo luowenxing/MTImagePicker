@@ -16,13 +16,13 @@ import UIKit
 
 @objc public protocol MTImagePickerControllerDelegate:NSObjectProtocol {
     // Implement it when setting source to MTImagePickerSource.ALAsset
-    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithAssetsModels models:[MTImagePickerAssetsModel])
+    @objc optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithAssetsModels models:[MTImagePickerAssetsModel])
     
     // Implement it when setting source to MTImagePickerSource.Photos
     @available(iOS 8.0, *)
-    optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithPhotosModels models:[MTImagePickerPhotosModel])
+    @objc optional func imagePickerController(picker:MTImagePickerController, didFinishPickingWithPhotosModels models:[MTImagePickerPhotosModel])
     
-    optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
+    @objc optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
 }
 
 
@@ -95,7 +95,7 @@ public class MTImagePickerController:UINavigationController {
         get {
             let arr = NSMutableArray()
             for mediaType in self.mediaTypes {
-                arr.addObject(mediaType.rawValue)
+                arr.add(mediaType.rawValue)
             }
             return arr
         }
@@ -113,13 +113,13 @@ public class MTImagePickerController:UINavigationController {
         }
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         if self.defaultShowCameraRoll {
             let controller = MTImagePickerAssetsController.instance
             controller.delegate = self.imagePickerDelegate
             controller.maxCount = self.maxCount
             controller.source = self.source
-            MTImagePickerDataSource.fetchDefault(self.source, mediaTypes: self.mediaTypes) {
+            MTImagePickerDataSource.fetchDefault(type: self.source, mediaTypes: self.mediaTypes) {
                 controller.groupModel = $0
                 self.pushViewController(controller, animated: false)
             }

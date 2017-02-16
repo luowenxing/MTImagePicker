@@ -28,28 +28,28 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
     }
     
     override func getThumbImage(size:CGSize)-> UIImage? {
-        return UIImage(CGImage: self.asset.thumbnail().takeUnretainedValue())
+        return UIImage(cgImage: self.asset.thumbnail().takeUnretainedValue())
     }
     
     override func getPreviewImage() -> UIImage?{
-        return UIImage(CGImage: self.asset.aspectRatioThumbnail().takeUnretainedValue())
+        return UIImage(cgImage: self.asset.aspectRatioThumbnail().takeUnretainedValue())
     }
     
-    override func getImageAsync(complete:(UIImage?) -> Void) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            let image = UIImage(CGImage: self.rept.fullScreenImage().takeUnretainedValue())
-            dispatch_async(dispatch_get_main_queue()){
+    override func getImageAsync(complete:@escaping (UIImage?) -> Void) {
+        DispatchQueue.global(priority: .default).async {
+            let image = UIImage(cgImage: self.rept.fullScreenImage().takeUnretainedValue())
+            DispatchQueue.main.async {
                 complete(image)
             }
         }
     }
     
-    override func getVideoDurationAsync(complete:(Double) -> Void) {
-        complete(self.asset.valueForProperty(ALAssetPropertyDuration).doubleValue)
+    override func getVideoDurationAsync(complete:@escaping (Double) -> Void) {
+        complete((self.asset.value(forProperty: ALAssetPropertyDuration) as AnyObject).doubleValue)
     }
     
     override func getAVPlayerItem() -> AVPlayerItem? {
-        return AVPlayerItem(URL: self.rept.url())
+        return AVPlayerItem(url: self.rept.url())
     }
     
     override func getFileSize() -> Int {
@@ -72,29 +72,29 @@ class MTImagePickerAssetsAlbumModel:MTImagePickerAlbumModel {
     }
     
     override func getAlbumName() -> String? {
-        return self.group.valueForProperty(ALAssetsGroupPropertyName) as? String
+        return self.group.value(forProperty: ALAssetsGroupPropertyName) as? String
     }
     
     override func getAlbumImage(size:CGSize) -> UIImage? {
-        return UIImage(CGImage: self.group.posterImage().takeUnretainedValue())
+        return UIImage(cgImage: self.group.posterImage().takeUnretainedValue())
     }
     
-    override func getMTImagePickerModelsListAsync(complete: [MTImagePickerModel] -> Void) {
+    override func getMTImagePickerModelsListAsync(complete: @escaping ([MTImagePickerModel]) -> Void) {
         var models = [MTImagePickerModel]()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            self.group.enumerateAssetsUsingBlock { (result, index, success) in
+        DispatchQueue.global(priority: .default).async {
+            self.group.enumerateAssets({ (result, index, success) in
                 if let asset = result {
-                    let ALAssetType = result.valueForProperty(ALAssetPropertyType) as! NSString
-                    let mediaType:MTImagePickerMediaType = ALAssetType.isEqualToString(ALAssetTypePhoto) ? .Photo : .Video
+                    let ALAssetType = result?.value(forProperty: ALAssetPropertyType) as! NSString
+                    let mediaType:MTImagePickerMediaType = ALAssetType.isEqual(to: ALAssetTypePhoto) ? .Photo : .Video
                     let model = MTImagePickerAssetsModel(mediaType: mediaType, sortNumber: index, asset:asset)
                     models.append(model)
                 }
-            }
-            dispatch_async(dispatch_get_main_queue()) {
+
+            })
+            DispatchQueue.main.async {
                 complete(models)
             }
         }
-        
     }
     
     

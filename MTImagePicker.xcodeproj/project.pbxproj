@@ -227,6 +227,7 @@
 					B1B0F2F21CF32500008672D1 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = U653R7WNB4;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -422,6 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -437,6 +439,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

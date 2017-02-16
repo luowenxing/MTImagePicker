@@ -17,29 +17,29 @@ import AssetsLibrary
 
 class MTImagePickerDataSource {
     
-    class func fetch(type:MTImagePickerSource,mediaTypes:[MTImagePickerMediaType],complete:[MTImagePickerAlbumModel] -> Void) {
+    class func fetch(type:MTImagePickerSource,mediaTypes:[MTImagePickerMediaType],complete:@escaping  ([MTImagePickerAlbumModel]) -> Void) {
         if type == .ALAsset {
-            MTImagePickerDataSource.fetchByALAsset(mediaTypes) { complete($0) }
+            MTImagePickerDataSource.fetchByALAsset(mediaTypes: mediaTypes) { complete($0) }
         } else if type == .Photos {
             if #available(iOS 8.0, *) {
                 
-                MTImagePickerDataSource.fetchByPhotos(mediaTypes) { complete($0) }
+                MTImagePickerDataSource.fetchByPhotos(mediaTypes: mediaTypes) { complete($0) }
             }
         }
     }
     
     // 可优化 这里简单复用代码，取数量最多的group作为默认所有相片的group
-    class func fetchDefault(type:MTImagePickerSource,mediaTypes:[MTImagePickerMediaType],complete:MTImagePickerAlbumModel -> Void) {
+    class func fetchDefault(type:MTImagePickerSource,mediaTypes:[MTImagePickerMediaType],complete:@escaping  (MTImagePickerAlbumModel) -> Void) {
         if type == .ALAsset {
-            MTImagePickerDataSource.fetchByALAsset(mediaTypes) {
-                if let model = ($0.maxElement { $0.getAlbumCount() < $1.getAlbumCount() }) {
+            MTImagePickerDataSource.fetchByALAsset(mediaTypes: mediaTypes) {
+                if let model = ($0.max { $0.getAlbumCount() < $1.getAlbumCount() }) {
                     complete(model)
                 }
             }
         } else if type == .Photos {
             if #available(iOS 8.0, *) {
-                MTImagePickerDataSource.fetchByPhotos(mediaTypes) {
-                    if let model = ($0.maxElement { $0.getAlbumCount() < $1.getAlbumCount() }) {
+                MTImagePickerDataSource.fetchByPhotos(mediaTypes: mediaTypes) {
+                    if let model = ($0.max { $0.getAlbumCount() < $1.getAlbumCount() }) {
                         complete(model)
                     }
                 }
@@ -47,7 +47,7 @@ class MTImagePickerDataSource {
         }
     }
     
-    class func fetchByALAsset(mediaTypes:[MTImagePickerMediaType],complete:[MTImagePickerAlbumModel] -> Void) {
+    class func fetchByALAsset(mediaTypes:[MTImagePickerMediaType],complete:@escaping ([MTImagePickerAlbumModel]) -> Void) {
         
         var models = [MTImagePickerAlbumModel]()
         ALAsset.lib.enumerateGroupsWithTypes(ALAssetsGroupAll|ALAssetsGroupLibrary, usingBlock: {
@@ -64,7 +64,7 @@ class MTImagePickerDataSource {
                 }
                 if group.numberOfAssets() > 0 {
                     let model = MTImagePickerAssetsAlbumModel(group: group)
-                    models.insert(model, atIndex: 0)
+                    models.insert(model, at: 0)
                 }
             } else {
                 complete(models)
@@ -76,48 +76,48 @@ class MTImagePickerDataSource {
     }
     
     @available(iOS 8.0, *)
-    class func fetchByPhotos(mediaTypes:[MTImagePickerMediaType],complete:[MTImagePickerAlbumModel] -> Void) {
+    class func fetchByPhotos(mediaTypes:[MTImagePickerMediaType],complete:@escaping ([MTImagePickerAlbumModel]) -> Void) {
         
-        func chargeAuthorizationStatus(status: PHAuthorizationStatus,onAuthorized:() -> Void) {
+        func chargeAuthorizationStatus(status: PHAuthorizationStatus,onAuthorized:@escaping () -> Void) {
             switch (status) {
-            case .Authorized:
+            case .authorized:
                 onAuthorized()
-            case .Denied:
+            case .denied:
                 MTImagePickerDataSource.showUnAuthorize()
                 break
-            case .Restricted:
+            case .restricted:
                 MTImagePickerDataSource.showUnAuthorize()
                 break
-            case .NotDetermined:
+            case .notDetermined:
                 PHPhotoLibrary.requestAuthorization({ (status) -> Void in
-                    guard status != .NotDetermined else {
+                    guard status != .notDetermined else {
                         return
                     }
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        chargeAuthorizationStatus(status,onAuthorized: onAuthorized )
-                    })
+                    DispatchQueue.main.async {
+                        chargeAuthorizationStatus(status: status,onAuthorized: onAuthorized )
+                    }
                 })
             }
         }
         
-        chargeAuthorizationStatus(PHPhotoLibrary.authorizationStatus()) {
+        chargeAuthorizationStatus(status: PHPhotoLibrary.authorizationStatus()) {
             var models = [MTImagePickerAlbumModel]()
-            func fetchAlbums() -> [PHFetchResult] {
+            func fetchAlbums() -> [PHFetchResult<AnyObject>] {
                 let userAlbumsOptions = PHFetchOptions()
                 userAlbumsOptions.predicate = NSPredicate(format: "estimatedAssetCount > 0")
                 userAlbumsOptions.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
-                var albums = [PHFetchResult]()
+                var albums = [PHFetchResult<AnyObject>]()
                 albums.append(
-                    PHAssetCollection.fetchAssetCollectionsWithType(
-                        PHAssetCollectionType.SmartAlbum,
-                        subtype: PHAssetCollectionSubtype.AlbumRegular,
-                        options: nil)
+                    PHAssetCollection.fetchAssetCollections(
+                        with: PHAssetCollectionType.smartAlbum,
+                        subtype: PHAssetCollectionSubtype.albumRegular,
+                        options: nil) as! PHFetchResult<AnyObject>
                 )
                 albums.append(
-                    PHAssetCollection.fetchAssetCollectionsWithType(
-                        PHAssetCollectionType.Album,
-                        subtype: PHAssetCollectionSubtype.Any,
-                        options: userAlbumsOptions)
+                    PHAssetCollection.fetchAssetCollections(
+                        with: PHAssetCollectionType.album,
+                        subtype: PHAssetCollectionSubtype.any,
+                        options: userAlbumsOptions) as! PHFetchResult<AnyObject>
                 )
                 return albums
             }
@@ -129,28 +129,28 @@ class MTImagePickerDataSource {
             for type in mediaTypes {
                 formats.append("mediaType = %d")
                 if type == .Photo {
-                    arguments.append(PHAssetMediaType.Image.rawValue)
+                    arguments.append(PHAssetMediaType.image.rawValue)
                 } else if type == .Video {
-                    arguments.append(PHAssetMediaType.Video.rawValue)
+                    arguments.append(PHAssetMediaType.video.rawValue)
                 }
             }
-            options.predicate = NSPredicate(format: formats.joinWithSeparator(" or "), argumentArray: arguments)
+            options.predicate = NSPredicate(format: formats.joined(separator: " or "), argumentArray: arguments)
             options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-            for (_, result) in results.enumerate() {
-                result.enumerateObjectsUsingBlock({ (collection, index, isStop) -> Void in
+            for (_, result) in results.enumerated() {
+                result.enumerateObjects({ (collection, index, isStop) -> Void in
                     let album = collection as! PHAssetCollection
-                    let assetResults = PHAsset.fetchAssetsInAssetCollection(album, options: options)
+                    let assetResults = PHAsset.fetchAssets(in: album, options: options)
                     var count = 0
                     switch album.assetCollectionType {
-                    case .Album:
+                    case .album:
                         count = assetResults.count
-                    case .SmartAlbum:
+                    case .smartAlbum:
                         count = assetResults.count
-                    case .Moment:
+                    case .moment:
                         count = 0
                     }
                     if count > 0 {
-                        let model = MTImagePickerPhotosAlbumModel(result: assetResults, albumCount: count, albumName: album.localizedTitle)
+                        let model = MTImagePickerPhotosAlbumModel(result: assetResults as! PHFetchResult<AnyObject>, albumCount: count, albumName: album.localizedTitle)
                         models.append(model)
                     }
                 })
@@ -162,7 +162,7 @@ class MTImagePickerDataSource {
     
     
     class func showUnAuthorize() {
-        dispatch_async(dispatch_get_main_queue()){
+        DispatchQueue.main.async {
             let alertView = UIAlertView(title: "Notice".localized, message: "照片访问权限被禁用，请前往系统设置->隐私->照片中，启用本程序对照片的访问权限".localized, delegate: nil, cancelButtonTitle: "OK".localized)
             alertView.show()
         }

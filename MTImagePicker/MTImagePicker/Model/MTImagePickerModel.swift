@@ -30,11 +30,11 @@ public class MTImagePickerModel:NSObject {
         fatalError("getPreviewImage has not been implemented")
     }
     
-    func getImageAsync(complete:(UIImage?) -> Void) {
+    func getImageAsync(complete: @escaping (UIImage?) -> Void) {
         fatalError("getImageAsync has not been implemented")
     }
     
-    func getVideoDurationAsync(complete:(Double) -> Void) {
+    func getVideoDurationAsync(complete: @escaping (Double) -> Void) {
         fatalError("getVideoDurationAsync has not been implemented")
     }
     
@@ -62,7 +62,7 @@ class MTImagePickerAlbumModel:NSObject {
         fatalError("getAlbumCount has not been implemented")
     }
     
-    func getMTImagePickerModelsListAsync(complete:[MTImagePickerModel] -> Void) {
+    func getMTImagePickerModelsListAsync(complete: @escaping ([MTImagePickerModel]) -> Void) {
         fatalError("getMTImagePickerModelsAsync has not been implemented")
     }
     

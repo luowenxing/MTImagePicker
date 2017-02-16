@@ -14,7 +14,7 @@ extension UIScreen {
     var compatibleBounds:CGRect{//iOS7 mainScreen bounds 不随设备旋转
         var rect = self.bounds
         if NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_8_0 {
-            let orientation = UIApplication.sharedApplication().statusBarOrientation
+            let orientation = UIApplication.shared.statusBarOrientation
             if orientation.isLandscape{
                 rect.size.width = self.bounds.height
                 rect.size.height = self.bounds.width
@@ -27,24 +27,23 @@ extension UIScreen {
 
 extension ALAsset {
     class func getAssetFromUrlSync(lib:ALAssetsLibrary,url:NSURL) -> ALAsset? {
-        let sema = dispatch_semaphore_create(0)
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)
+        let sema = DispatchSemaphore(value: 0)
         var result:ALAsset?
-        dispatch_async(queue){
-            lib.assetForURL(url, resultBlock: { (asset) in
+        DispatchQueue.global(priority: .default).async {
+            lib.asset(for: url as URL!, resultBlock: { (asset) in
                 result = asset
-                dispatch_semaphore_signal(sema)
-                }, failureBlock: { (error) in
-                    dispatch_semaphore_signal(sema)
+                sema.signal()
+            }, failureBlock: { (error) in
+                sema.signal()
             })
         }
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER)
+        sema.wait()
         return result
     }
     
     class func getLib(failure:()->Void) -> ALAssetsLibrary? {
         let status = ALAssetsLibrary.authorizationStatus()
-        if status == .Authorized || status == .NotDetermined {
+        if status == .authorized || status == .notDetermined {
             return ALAssetsLibrary()
         } else {
             failure()
@@ -88,16 +87,16 @@ extension Double {
 
 extension UIView {
     func heartbeatsAnimation(duration:Double) {
-        UIView.animateWithDuration(duration, animations: {
-            self.transform = CGAffineTransformMakeScale(1.15, 1.15)
+        UIView.animate(withDuration: duration, animations: {
+            self.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
         }){
             _ in
-            UIView.animateWithDuration(duration, animations: {
-                self.transform = CGAffineTransformMakeScale(0.9, 0.9)
+            UIView.animate(withDuration: duration, animations: {
+                self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }){
                 _ in
-                UIView.animateWithDuration(duration){
-                    self.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                UIView.animate(withDuration: duration){
+                    self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 }
             }
         }

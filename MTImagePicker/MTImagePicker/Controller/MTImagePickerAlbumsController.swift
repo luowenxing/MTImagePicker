@@ -18,7 +18,7 @@ class MTImagePickerAlbumCell:UITableViewCell {
     func setup(model:MTImagePickerAlbumModel) {
         self.lbAlbumCount.text = "(\(model.getAlbumCount()))"
         self.lbAlbumName.text = model.getAlbumName()
-        self.posterImageView.image = model.getAlbumImage(self.posterImageView.frame.size)
+        self.posterImageView.image = model.getAlbumImage(size: self.posterImageView.frame.size)
     }
 }
 
@@ -34,37 +34,38 @@ class MTImagePickerAlbumsController :UITableViewController {
     
     class var instance:MTImagePickerAlbumsController {
         get {
-            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: NSBundle.mainBundle())
-            let vc = storyboard.instantiateViewControllerWithIdentifier("MTImagePickerAlbumsController") as! MTImagePickerAlbumsController
+            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.main)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MTImagePickerAlbumsController") as! MTImagePickerAlbumsController
             return vc
         }
     }
     
     override func viewDidLoad() {
         self.tableView.tableFooterView = UIView()
-        MTImagePickerDataSource.fetch(self.source, mediaTypes: self.mediaTypes, complete: { (dataSource) in
+        MTImagePickerDataSource.fetch(type: self.source, mediaTypes: self.mediaTypes, complete: { (dataSource) in
             self.dataSource = dataSource
             self.tableView.reloadData()
         })
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.dataSource[indexPath.row]
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("MTImagePickerAlbumCell", forIndexPath: indexPath)
-        (cell as? MTImagePickerAlbumCell)?.setup(model)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "MTImagePickerAlbumCell", for: indexPath as IndexPath)
+        (cell as? MTImagePickerAlbumCell)?.setup(model: model)
         return cell
+
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.dataSource[indexPath.row]
-        self.pushToMTImagePickerController(model,animate: true)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.pushToMTImagePickerController(model: model,animate: true)
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
-    
+
     func pushToMTImagePickerController(model:MTImagePickerAlbumModel,animate:Bool) {
         let controller = MTImagePickerAssetsController.instance
         controller.groupModel = model
@@ -73,8 +74,8 @@ class MTImagePickerAlbumsController :UITableViewController {
         controller.source = self.source
         self.navigationController?.pushViewController(controller, animated: animate)
     }
-    @IBAction func btnCancelTouch(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func btnCancelTouch(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

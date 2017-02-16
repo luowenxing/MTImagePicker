@@ -15,10 +15,10 @@ class LoadingViewController: UIViewController {
     
     func show(){
         if self.newWindow == nil{
-            let uiwindow = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let uiwindow = UIWindow(frame: UIScreen.main.bounds)
             uiwindow.rootViewController = self
-            uiwindow.hidden = false
-            uiwindow.backgroundColor = UIColor.clearColor()
+            uiwindow.isHidden = false
+            uiwindow.backgroundColor = UIColor.clear
             self.newWindow = uiwindow
         }
     }
@@ -41,23 +41,23 @@ class LoadingViewController: UIViewController {
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         spining.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.boldSystemFontOfSize(16)
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let viewConstraints = [
-            NSLayoutConstraint(item: loadingView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: loadingView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0)]
+            NSLayoutConstraint(item: loadingView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: -20),
+            NSLayoutConstraint(item: loadingView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)]
         view.addSubview(loadingView)
         view.addConstraints(viewConstraints)
     
         let loadingViewConstraints = [
-            NSLayoutConstraint(item: spining , attribute: .CenterX, relatedBy: .Equal, toItem: loadingView , attribute: .CenterX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: spining , attribute: .Top, relatedBy: .Equal, toItem: loadingView , attribute: .Top, multiplier: 1, constant: 14),
-            NSLayoutConstraint(item: titleLabel , attribute: .CenterX, relatedBy: .Equal, toItem: loadingView , attribute: .CenterX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: titleLabel , attribute: .Top, relatedBy: .Equal, toItem: spining , attribute: .Bottom, multiplier: 1, constant: 8),
-            NSLayoutConstraint(item: titleLabel , attribute: .Leading, relatedBy: .Equal, toItem: loadingView , attribute: .Leading, multiplier: 1, constant: 14),
-            NSLayoutConstraint(item: loadingView , attribute: .Bottom, relatedBy: .Equal, toItem: titleLabel , attribute: .Bottom, multiplier: 1, constant: 14)
+            NSLayoutConstraint(item: spining , attribute: .centerX, relatedBy: .equal, toItem: loadingView , attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: spining , attribute: .top, relatedBy: .equal, toItem: loadingView , attribute: .top, multiplier: 1, constant: 14),
+            NSLayoutConstraint(item: titleLabel , attribute: .centerX, relatedBy: .equal, toItem: loadingView , attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: titleLabel , attribute: .top, relatedBy: .equal, toItem: spining , attribute: .bottom, multiplier: 1, constant: 8),
+            NSLayoutConstraint(item: titleLabel , attribute: .leading, relatedBy: .equal, toItem: loadingView , attribute: .leading, multiplier: 1, constant: 14),
+            NSLayoutConstraint(item: loadingView , attribute: .bottom, relatedBy: .equal, toItem: titleLabel , attribute: .bottom, multiplier: 1, constant: 14)
         ]
         loadingView.addSubview(spining)
         loadingView.addSubview(titleLabel)

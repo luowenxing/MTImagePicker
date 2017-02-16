@@ -31,9 +31,9 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
     override func getThumbImage(size:CGSize)-> UIImage? {
         var img:UIImage?
         let options = PHImageRequestOptions()
-        options.deliveryMode = .FastFormat
-        options.synchronous = true
-        PHImageManager.defaultManager().requestImageForAsset(self.phasset, targetSize: size, contentMode: .AspectFill, options: options) {
+        options.deliveryMode = .fastFormat
+        options.isSynchronous = true
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFill, options: options) {
             image,infoDict in
             img = image
             
@@ -44,29 +44,29 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
     override func getPreviewImage() -> UIImage?{
         var img:UIImage?
         let options = PHImageRequestOptions()
-        options.deliveryMode = .FastFormat
-        options.synchronous = true
-        var size = UIScreen.mainScreen().compatibleBounds.size
+        options.deliveryMode = .fastFormat
+        options.isSynchronous = true
+        var size = UIScreen.main.compatibleBounds.size
         size = CGSize(width: size.width / 3.0 , height: size.height / 3.0)
-        PHImageManager.defaultManager().requestImageForAsset(self.phasset, targetSize: size, contentMode: .AspectFit, options: options) {
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFit, options: options) {
             image,infoDict in
             img = image
         }
         return img
     }
     
-    override func getImageAsync(complete:(UIImage?) -> Void) {
+    override func getImageAsync(complete:@escaping (UIImage?) -> Void) {
         let options = PHImageRequestOptions()
-        options.deliveryMode = .HighQualityFormat
-        let size = UIScreen.mainScreen().compatibleBounds.size
-        PHImageManager.defaultManager().requestImageForAsset(self.phasset, targetSize: size, contentMode: .AspectFit, options: options) {
+        options.deliveryMode = .highQualityFormat
+        let size = UIScreen.main.compatibleBounds.size
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFit, options: options) {
             image,infoDict in
             complete(image)
         }
     }
     
-    override func getVideoDurationAsync(complete:(Double) -> Void) {
-        PHImageManager.defaultManager().requestAVAssetForVideo(self.phasset, options: nil){
+    override func getVideoDurationAsync(complete:@escaping (Double) -> Void) {
+        PHImageManager.default().requestAVAsset(forVideo: self.phasset, options: nil){
             avasset,_,_ in
             if let asset = avasset{
                 let duration = Double(asset.duration.value) / Double(asset.duration.timescale)
@@ -92,22 +92,22 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
     
     private func fetchAVPlayerItemSync() -> AVPlayerItem? {
         var playerItem:AVPlayerItem?
-        let sem = dispatch_semaphore_create(0)
-        PHImageManager.defaultManager().requestPlayerItemForVideo(self.phasset, options: nil){
+        let sem = DispatchSemaphore(value: 0)
+        PHImageManager.default().requestPlayerItem(forVideo: self.phasset, options: nil){
             item,infoDict in
             playerItem = item
-            dispatch_semaphore_signal(sem)
+            sem.signal()
         }
-        dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)
+        sem.wait()
         return playerItem
     }
     
-    private func fetchDataSync(complete:(NSData?, String?, UIImageOrientation, [NSObject : AnyObject]?) -> Void) {
+    private func fetchDataSync(complete:@escaping (NSData?, String?, UIImageOrientation, [AnyHashable : Any]?) -> Void) {
         let requestOptions = PHImageRequestOptions()
-        requestOptions.synchronous = true
-        PHImageManager.defaultManager().requestImageDataForAsset(self.phasset, options: requestOptions){
+        requestOptions.isSynchronous = true
+        PHImageManager.default().requestImageData(for: self.phasset, options: requestOptions){
             (data,dataUTI,orientation,infoDict) in
-            complete(data, dataUTI, orientation, infoDict)
+            complete(data as NSData?, dataUTI, orientation, infoDict)
         }
     }
     
@@ -117,11 +117,11 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
 @available(iOS 8.0, *)
 class MTImagePickerPhotosAlbumModel:MTImagePickerAlbumModel {
     
-    private var result:PHFetchResult
+    private var result:PHFetchResult<AnyObject>
     private var _albumCount:Int
     private var _albumName:String?
     
-    init(result:PHFetchResult,albumCount:Int,albumName:String?) {
+    init(result:PHFetchResult<AnyObject>,albumCount:Int,albumName:String?) {
         self.result = result
         self._albumName = albumName
         self._albumCount = albumCount
@@ -136,24 +136,24 @@ class MTImagePickerPhotosAlbumModel:MTImagePickerAlbumModel {
     }
     
     override func getAlbumImage(size:CGSize) -> UIImage? {
-        if let asset = self.result.objectAtIndex(0) as? PHAsset {
+        if let asset = self.result.object(at: 0) as? PHAsset {
             let model = MTImagePickerPhotosModel(mediaType: .Photo, sortNumber: 0, phasset: asset)
-            return model.getThumbImage(size)
+            return model.getThumbImage(size: size)
         }
         return nil
     }
     
-    override func getMTImagePickerModelsListAsync(complete: [MTImagePickerModel] -> Void) {
+    override func getMTImagePickerModelsListAsync(complete: @escaping ([MTImagePickerModel]) -> Void) {
         var models = [MTImagePickerModel]()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            self.result.enumerateObjectsUsingBlock({ (asset, index, isStop) -> Void in
+        DispatchQueue.global(qos: .default).async {
+            self.result.enumerateObjects({ (asset, index, isStop) -> Void in
                 if let phasset = asset as? PHAsset {
-                    let mediaType:MTImagePickerMediaType = phasset.mediaType == .Image ? .Photo : .Video
+                    let mediaType:MTImagePickerMediaType = phasset.mediaType == .image ? .Photo : .Video
                     let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, phasset: phasset)
                     models.append(model)
                 }
             })
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 complete(models)
             }
         }

@@ -21,10 +21,10 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         scrollview.zoomScale = 1
         scrollview.minimumZoomScale = 1
         scrollview.maximumZoomScale = 3
-        scrollview.contentSize = CGSizeZero
+        scrollview.contentSize = .zero
         scrollview.delegate = self
         
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         self.scrollview.addSubview(imageView)
         scrollview.delegate = self
         
@@ -36,7 +36,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(ImagePickerPreviewCell.onImageDoubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         doubleTapGesture.numberOfTouchesRequired = 1
-        singTapGesture.requireGestureRecognizerToFail(doubleTapGesture)
+        singTapGesture.require(toFail: doubleTapGesture)
         
         imageView.addGestureRecognizer(singTapGesture)
         imageView.addGestureRecognizer(doubleTapGesture)
@@ -44,7 +44,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     
     override func prepareForReuse() {
         scrollview.zoomScale = 1.0
-        scrollview.contentSize = CGSizeZero
+        scrollview.contentSize = .zero
         imageView.image = nil
     }
     
@@ -52,35 +52,36 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         
         super.layoutSubviews()
         scrollview.zoomScale = 1.0
-        scrollview.contentSize = CGSizeZero
+        scrollview.contentSize = .zero
         if let _image = imageView.image {
-            let bounds = UIScreen.mainScreen().compatibleBounds
+            let bounds = UIScreen.main.compatibleBounds
             let boundsDept = bounds.width / bounds.height
             let imgDept = _image.size.width / _image.size.height
             // 图片长宽和屏幕的宽高进行比较 设定基准边
             if imgDept > boundsDept {
-                imageView.frame = CGRectMake(0, 0, bounds.width, bounds.width / imgDept)
+                imageView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.width / imgDept)
             } else {
-                imageView.frame = CGRectMake(0, 0, bounds.height * imgDept, bounds.height)
+                imageView.frame = CGRect(x: 0, y: 0, width:bounds.height * imgDept, height: bounds.height)
             }
             self.scrollview.layoutIfNeeded()
+            self.scrollview.frame.origin = CGPoint.zero
             imageView.center = scrollview.center
         }
         
     }
     
     
-    func initWithModel(model:MTImagePickerModel,controller:MTImagePickerPreviewController) {
+    func initWithModel(_ model:MTImagePickerModel,controller:MTImagePickerPreviewController) {
         self.model = model
         self.controller = controller
         self.imageView.image = model.getPreviewImage()
         self.layoutSubviews()
     }
     
-    func onImageSingleTap(sender:UITapGestureRecognizer) {
+    func onImageSingleTap(_ sender:UITapGestureRecognizer) {
         if let controller = self.controller {
-            controller.topView.hidden = !controller.topView.hidden
-            controller.bottomView.hidden = !controller.bottomView.hidden
+            controller.topView.isHidden = !controller.topView.isHidden
+            controller.bottomView.isHidden = !controller.bottomView.isHidden
         }
     }
     
@@ -91,28 +92,28 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         }
     }
     
-    func onImageDoubleTap(sender:UITapGestureRecognizer) {
+    func onImageDoubleTap(_ sender:UITapGestureRecognizer) {
         let zoomScale = scrollview.zoomScale
         if zoomScale <= 1.0 {
-            let loc = sender.locationInView(sender.view) as CGPoint
+            let loc = sender.location(in: sender.view) as CGPoint
             let wh:CGFloat = 1
             let x:CGFloat = loc.x - 0.5
             let y:CGFloat = loc.y - 0.5
-            let rect = CGRectMake(x, y, wh, wh)
-            scrollview.zoomToRect(rect, animated: true)
+            let rect = CGRect(x: x, y: y, width: wh, height: wh)
+            scrollview.zoom(to: rect, animated: true)
         } else {
             scrollview.setZoomScale(1.0, animated: true)
         }
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         var xcenter = scrollView.center.x
         var ycenter = scrollView.center.y
         
         xcenter = scrollView.contentSize.width > scrollView.frame.size.width ? scrollView.contentSize.width/2 : xcenter
         
         ycenter = scrollView.contentSize.height > scrollView.frame.size.height ? scrollView.contentSize.height/2 : ycenter
-        imageView.center = CGPointMake(xcenter, ycenter)
+        imageView.center = CGPoint(x: xcenter, y: ycenter)
     }
     
     

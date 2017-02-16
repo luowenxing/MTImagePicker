@@ -8,14 +8,24 @@
 
 import UIKit
 
+//
+//  FlashAlertView.swift
+//  CMBMobile
+//
+//  Created by Yst－WHB on 3/23/15.
+//  Copyright (c) 2015 Yst－WHB. All rights reserved.
+//
+
+import UIKit
+
 class FlashAlertView: UIAlertView {
-    private var flashTime: NSTimeInterval = 1.25
+    fileprivate var flashTime: TimeInterval = 1.25
     
     init(message: String, delegate: UIAlertViewDelegate? = nil) {
         self.init(title: nil, message: message, delegate: delegate, cancelButtonTitle: nil)
     }
     
-    init(message: String, delegate: UIAlertViewDelegate? = nil, flashTime: NSTimeInterval) {
+    init(message: String, delegate: UIAlertViewDelegate? = nil, flashTime: TimeInterval) {
         self.init(title: nil, message: message, delegate: delegate, cancelButtonTitle: nil)
         self.flashTime = flashTime
     }
@@ -29,13 +39,13 @@ class FlashAlertView: UIAlertView {
     }
     
     override func show() {
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             super.show()
-            NSTimer.scheduledTimerWithTimeInterval(self.flashTime, target: self, selector: #selector(FlashAlertView.hideAlertView), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: self.flashTime, target: self, selector: #selector(FlashAlertView.hideAlertView), userInfo: nil, repeats: false)
         })
     }
     
     func hideAlertView() {
-        self.dismissWithClickedButtonIndex(0, animated: true)
+        self.dismiss(withClickedButtonIndex: 0, animated: true)
     }
 }

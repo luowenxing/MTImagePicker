@@ -14,14 +14,14 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     var imageView: UIImageView! = UIImageView()
     
     weak var controller:MTImagePickerPreviewController?
-    private var model:MTImagePickerModel!
+    fileprivate var model:MTImagePickerModel!
     
     
     override func awakeFromNib() {
         scrollview.zoomScale = 1
         scrollview.minimumZoomScale = 1
         scrollview.maximumZoomScale = 3
-        scrollview.contentSize = .zero
+        scrollview.contentSize = CGSize.zero
         scrollview.delegate = self
         
         imageView.isUserInteractionEnabled = true
@@ -38,13 +38,13 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         doubleTapGesture.numberOfTouchesRequired = 1
         singTapGesture.require(toFail: doubleTapGesture)
         
-        imageView.addGestureRecognizer(singTapGesture)
-        imageView.addGestureRecognizer(doubleTapGesture)
+        self.addGestureRecognizer(singTapGesture)
+        self.addGestureRecognizer(doubleTapGesture)
     }
     
     override func prepareForReuse() {
         scrollview.zoomScale = 1.0
-        scrollview.contentSize = .zero
+        scrollview.contentSize = CGSize.zero
         imageView.image = nil
     }
     
@@ -52,7 +52,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         
         super.layoutSubviews()
         scrollview.zoomScale = 1.0
-        scrollview.contentSize = .zero
+        scrollview.contentSize = CGSize.zero
         if let _image = imageView.image {
             let bounds = UIScreen.main.compatibleBounds
             let boundsDept = bounds.width / bounds.height
@@ -61,7 +61,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
             if imgDept > boundsDept {
                 imageView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.width / imgDept)
             } else {
-                imageView.frame = CGRect(x: 0, y: 0, width:bounds.height * imgDept, height: bounds.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: bounds.height * imgDept, height: bounds.height)
             }
             self.scrollview.layoutIfNeeded()
             self.scrollview.frame.origin = CGPoint.zero
@@ -117,7 +117,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     }
     
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
 }

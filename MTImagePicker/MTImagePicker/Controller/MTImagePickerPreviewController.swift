@@ -17,6 +17,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     var maxCount:Int!
     var dismiss:((Set<MTImagePickerModel>) -> Void)?
     
+    @IBOutlet weak var lbIndex: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var collectionView: MTImagePickerCollectionView!
     @IBOutlet weak var bottomView: UIView!
@@ -35,20 +36,18 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lbSelected.text = String(self.selectedSource.count)
+        self.lbIndex.text = "\(initialIndexPath?.row ?? 0 + 1)/\(dataSource.count)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        self.scrollViewDidEndDecelerating(self.collectionView)
     }
     
     override var prefersStatusBarHidden: Bool {
         get {
             return true
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.scrollViewDidEndDecelerating(self.collectionView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,7 +71,6 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = self.dataSource[indexPath.row]
-        self.btnCheck.isSelected = self.selectedSource.contains(model)
         if model.mediaType == .Photo {
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath as IndexPath) as! ImagePickerPreviewCell
             cell.layer.shouldRasterize = true
@@ -124,7 +122,11 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         } else if let imageCell = cell as? ImagePickerPreviewCell {
             imageCell.didEndScroll()
         }
-
+        if let index = self.collectionView.indexPathsForVisibleItems.first {
+            self.lbIndex.text = "\(index.row + 1)/\(dataSource.count)"
+            let model = self.dataSource[index.row]
+            self.btnCheck.isSelected = self.selectedSource.contains(model)
+        }
     }
     
     @IBAction func btnBackTouch(_ sender: AnyObject) {

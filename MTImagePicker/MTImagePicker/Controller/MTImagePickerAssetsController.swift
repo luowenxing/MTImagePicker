@@ -58,6 +58,7 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.collectionView.reloadData()
         self.lbSelected.text = String(self.selectedSource.count)
         self.btnPreview.isEnabled = !(self.selectedSource.count == 0)
     }
@@ -163,6 +164,7 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
         vc.dismiss = {
             selectedSource in
             self.selectedSource = selectedSource
+            self.collectionView.reloadData()
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }

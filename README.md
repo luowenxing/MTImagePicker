@@ -1,12 +1,12 @@
 # MTImagePicker
 A WeiXin like multiple image and video picker which is compatible for iOS7+.You can use  either `ALAssetsLibrary` or `Photos framework` by setting the source of `MTImagePickerController`.
 
-#Demo
+# Demo
 ![demo](https://github.com/luowenxing/MTImagePicker/blob/master/MTImagePicker/Demo/demo.gif)
 
 # Requirement
 * iOS7.0+
-* Build success in Xcode 7.3 Swift 2.2
+* Build success in Xcode 8 Swift 3.0
 
 # Installation
 * There is no ohter dependency in `MTImagePicker`.Recommanded Simply drag the `MTImagePicker/MTImagePicker` folder to your project.
@@ -15,10 +15,10 @@ A WeiXin like multiple image and video picker which is compatible for iOS7+.You 
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
-pod 'MTImagePicker', '~> 1.0.1'
+pod 'MTImagePicker', '~> 3.0.1'
 ```
 
-#Usage
+# Usage
 * The MTImagePicker is similiar to `UIImagePickerController`.It's easy to use the image picker following the sample code in demo like below
 ```
 let imagePicker = MTImagePickerController.instance

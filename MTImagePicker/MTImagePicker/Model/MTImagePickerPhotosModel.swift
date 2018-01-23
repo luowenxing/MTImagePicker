@@ -33,7 +33,7 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
         let options = PHImageRequestOptions()
         options.deliveryMode = .fastFormat
         options.isSynchronous = true
-        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFill, options: options) {
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: options) {
             image,infoDict in
             img = image
             
@@ -46,9 +46,7 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
         let options = PHImageRequestOptions()
         options.deliveryMode = .fastFormat
         options.isSynchronous = true
-        var size = UIScreen.main.compatibleBounds.size
-        size = CGSize(width: size.width / 3.0 , height: size.height / 3.0)
-        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFit, options: options) {
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options) {
             image,infoDict in
             img = image
         }
@@ -58,8 +56,7 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
     override func getImageAsync(complete:@escaping (UIImage?) -> Void) {
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
-        let size = UIScreen.main.compatibleBounds.size
-        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFit, options: options) {
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options) {
             image,infoDict in
             complete(image)
         }

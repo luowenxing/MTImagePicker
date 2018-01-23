@@ -45,7 +45,7 @@ class FlashAlertView: UIAlertView {
         })
     }
     
-    func hideAlertView() {
+    @objc func hideAlertView() {
         self.dismiss(withClickedButtonIndex: 0, animated: true)
     }
 }

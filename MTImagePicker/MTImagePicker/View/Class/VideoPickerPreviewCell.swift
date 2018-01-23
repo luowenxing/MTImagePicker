@@ -25,7 +25,7 @@ class VideoPickerPreviewCell:UICollectionViewCell{
         self.avPlayer = AVPlayer()
         self.playerLayer = AVPlayerLayer()
         self.playerLayer.player = self.avPlayer
-        self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        self.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         self.playerLayer.frame = UIScreen.main.compatibleBounds
         self.avPlayerView.layer.insertSublayer(self.playerLayer, at: 0)
         
@@ -90,7 +90,7 @@ class VideoPickerPreviewCell:UICollectionViewCell{
         self.playerLayer.frame = frame
     }
     
-    func onVideoSingleTap(_ sernder:UITapGestureRecognizer) {
+    @objc func onVideoSingleTap(_ sernder:UITapGestureRecognizer) {
         self.playerPlayOrPause()
     }
     

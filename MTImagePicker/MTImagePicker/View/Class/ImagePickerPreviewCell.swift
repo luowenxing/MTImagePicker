@@ -78,7 +78,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         self.layoutSubviews()
     }
     
-    func onImageSingleTap(_ sender:UITapGestureRecognizer) {
+    @objc func onImageSingleTap(_ sender:UITapGestureRecognizer) {
         if let controller = self.controller {
             controller.topView.isHidden = !controller.topView.isHidden
             controller.bottomView.isHidden = !controller.bottomView.isHidden
@@ -92,7 +92,7 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
         }
     }
     
-    func onImageDoubleTap(_ sender:UITapGestureRecognizer) {
+    @objc func onImageDoubleTap(_ sender:UITapGestureRecognizer) {
         let zoomScale = scrollview.zoomScale
         if zoomScale <= 1.0 {
             let loc = sender.location(in: sender.view) as CGPoint

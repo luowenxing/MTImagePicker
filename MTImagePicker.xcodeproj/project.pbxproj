@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A87A0951201594E0008B773F /* MTImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87A0953201594E0008B773F /* MTImagePicker.storyboard */; };
 		B115F3FC1D20C7C10051F937 /* MTImagePickerAssetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */; };
 		B115F3FE1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */; };
 		B19BF6D71D82AAD600371F4F /* MTImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BF6D61D82AAD600371F4F /* MTImagePickerController.swift */; };
@@ -26,17 +27,16 @@
 		B1B0F3621CF4564D008672D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3611CF4564D008672D1 /* LaunchScreen.storyboard */; };
 		B1B0F3661CF47B61008672D1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3651CF47B61008672D1 /* TableViewController.swift */; };
 		B1B0F36A1CF47B71008672D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0F3671CF47B71008672D1 /* AppDelegate.swift */; };
-		B1B0F36B1CF47B71008672D1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1B0F3681CF47B71008672D1 /* Info.plist */; };
 		B1C557491D65B00100405A55 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C557481D65B00100405A55 /* Image.xcassets */; };
 		B1D10D671CF6A4EE00FA32F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D6B1CF6A4EE00FA32F8 /* Localizable.strings */; };
-		B1D10D721CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D761CF6A7F600FA32F8 /* MTImagePicker.storyboard */; };
 		B1D10D791CF6A8B200FA32F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D10D7B1CF6A8B200FA32F8 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A87A0952201594E0008B773F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MTImagePicker.storyboard; sourceTree = "<group>"; };
+		A87A0957201594E4008B773F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
 		B115F3FB1D20C7C10051F937 /* MTImagePickerAssetsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerAssetsModel.swift; sourceTree = "<group>"; };
 		B115F3FD1D20C7EE0051F937 /* MTImagePickerPhotosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerPhotosModel.swift; sourceTree = "<group>"; };
-		B161772A1D86BC9E004AE1F3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MTImagePicker.strings"; sourceTree = "<group>"; };
 		B161772C1D86D312004AE1F3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		B19BF6D61D82AAD600371F4F /* MTImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerController.swift; sourceTree = "<group>"; };
 		B1A616461D7E6E7000B874E2 /* MTImagePickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTImagePickerDataSource.swift; sourceTree = "<group>"; };
@@ -60,7 +60,6 @@
 		B1C557481D65B00100405A55 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		B1D10D6A1CF6A4EE00FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B1D10D6D1CF6A50C00FA32F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		B1D10D751CF6A7F600FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MTImagePicker.storyboard; sourceTree = "<group>"; };
 		B1D10D7A1CF6A8B200FA32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A87A094E201594D6008B773F /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				A87A0953201594E0008B773F /* MTImagePicker.storyboard */,
+			);
+			path = IB;
+			sourceTree = "<group>";
+		};
 		B1B0F2EA1CF32500008672D1 = {
 			isa = PBXGroup;
 			children = (
@@ -137,8 +144,8 @@
 		B1B0F3271CF32659008672D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A87A094E201594D6008B773F /* IB */,
 				B1B0F3451CF3E0D0008672D1 /* Class */,
-				B1B0F3461CF3E0D0008672D1 /* IB */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,14 +169,6 @@
 				B1B0F35B1CF42D97008672D1 /* ImagePickerPreviewCell.swift */,
 			);
 			path = Class;
-			sourceTree = "<group>";
-		};
-		B1B0F3461CF3E0D0008672D1 /* IB */ = {
-			isa = PBXGroup;
-			children = (
-				B1D10D761CF6A7F600FA32F8 /* MTImagePicker.storyboard */,
-			);
-			path = IB;
 			sourceTree = "<group>";
 		};
 		B1B0F35F1CF45194008672D1 /* Resource */ = {
@@ -221,13 +220,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = Luo;
 				TargetAttributes = {
 					B1B0F2F21CF32500008672D1 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = U653R7WNB4;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -255,13 +254,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1B0F36B1CF47B71008672D1 /* Info.plist in Resources */,
 				B1D10D671CF6A4EE00FA32F8 /* Localizable.strings in Resources */,
 				B1D10D791CF6A8B200FA32F8 /* Main.storyboard in Resources */,
-				B1D10D721CF6A7F600FA32F8 /* MTImagePicker.storyboard in Resources */,
 				B1B0F2FE1CF32500008672D1 /* Image.xcassets in Resources */,
 				B1C557491D65B00100405A55 /* Image.xcassets in Resources */,
 				B1B0F3621CF4564D008672D1 /* LaunchScreen.storyboard in Resources */,
+				A87A0951201594E0008B773F /* MTImagePicker.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +293,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A87A0953201594E0008B773F /* MTImagePicker.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A87A0952201594E0008B773F /* Base */,
+				A87A0957201594E4008B773F /* zh-Hans */,
+			);
+			name = MTImagePicker.storyboard;
+			sourceTree = "<group>";
+		};
 		B1D10D6B1CF6A4EE00FA32F8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -302,16 +309,6 @@
 				B1D10D6D1CF6A50C00FA32F8 /* zh-Hans */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		B1D10D761CF6A7F600FA32F8 /* MTImagePicker.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1D10D751CF6A7F600FA32F8 /* Base */,
-				B161772A1D86BC9E004AE1F3 /* zh-Hans */,
-			);
-			name = MTImagePicker.storyboard;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		B1D10D7B1CF6A8B200FA32F8 /* Main.storyboard */ = {
@@ -330,18 +327,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -363,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -376,18 +382,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -403,9 +418,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -419,12 +435,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U653R7WNB4;
 				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -436,12 +453,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U653R7WNB4;
 				INFOPLIST_FILE = "$(SRCROOT)/MTImagePicker/Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmbchina.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

@@ -46,13 +46,16 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
         super.viewDidLoad()
         let loading = LoadingViewController()
         loading.show(text: "Loading...".localized)
+        if let title = self.groupModel.getAlbumName() {
+            self.title = title
+        }
         self.groupModel?.getMTImagePickerModelsListAsync { (models) in
             loading.dismiss()
             self.dataSource = models
             self.collectionView.reloadData()
             self.scrollToBottom()
         }
-
+        
         self.initUI()
     }
     
@@ -107,7 +110,7 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
         
     }
     
-    func btnCheckTouch(_ sender:UIButton) {
+    @objc func btnCheckTouch(_ sender:UIButton) {
         if self.selectedSource.count < self.maxCount || sender.isSelected == true {
             sender.isSelected = !sender.isSelected
             let indexPath = (sender.superview?.superview as! MTImagePickerCell).indexPath

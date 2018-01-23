@@ -115,7 +115,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         self.perform(#selector(MTImagePickerPreviewController.didEndDecelerating), with: nil, afterDelay: 0)
     }
     
-    func didEndDecelerating() {
+    @objc func didEndDecelerating() {
         let cell = self.collectionView.visibleCells.first
         if let videoCell = cell as? VideoPickerPreviewCell {
             videoCell.didEndScroll()

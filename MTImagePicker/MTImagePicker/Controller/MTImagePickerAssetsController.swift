@@ -15,23 +15,15 @@ import Photos
 
 class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
-    weak var delegate:MTImagePickerControllerDelegate?
-    var maxCount: Int = Int.max
+    weak var delegate:MTImagePickerDataSourceDelegate!
     var groupModel:MTImagePickerAlbumModel!
-    var source:MTImagePickerSource = .ALAsset
     
     @IBOutlet weak var collectionView: MTImagePickerCollectionView!
     @IBOutlet weak var lbSelected: UILabel!
     @IBOutlet weak var btnPreview: UIButton!
     
     private var dataSource = [MTImagePickerModel]()
-    private var selectedSource = Set<MTImagePickerModel>()
     private var initialScrollDone:Bool = false
-    private var navigation:MTImagePickerController {
-        get {
-            return self.navigationController as! MTImagePickerController
-        }
-    }
     
     class var instance:MTImagePickerAssetsController {
         get {
@@ -44,26 +36,24 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loading = LoadingViewController()
-        loading.show(text: "Loading...".localized)
         if let title = self.groupModel.getAlbumName() {
             self.title = title
         }
+        let loading = LoadingViewController()
+        loading.show(text: "Loading...".localized)
         self.groupModel?.getMTImagePickerModelsListAsync { (models) in
             loading.dismiss()
             self.dataSource = models
             self.collectionView.reloadData()
             self.scrollToBottom()
         }
-        
-        self.initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
-        self.lbSelected.text = String(self.selectedSource.count)
-        self.btnPreview.isEnabled = !(self.selectedSource.count == 0)
+        self.lbSelected.text = String(delegate.selectedSource.count)
+        self.btnPreview.isEnabled = !(delegate.selectedSource.count == 0)
     }
     
     override func viewDidLayoutSubviews() {
@@ -97,7 +87,7 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
         }
         cell.imageView.image = model.getThumbImage(size: cell.imageView.frame.size)
         cell.indexPath = indexPath
-        cell.btnCheck.isSelected = self.selectedSource.contains(model)
+        cell.btnCheck.isSelected = delegate.selectedSource.contains(model)
         cell.btnCheck.addTarget(self, action: #selector(MTImagePickerAssetsController.btnCheckTouch(_:)), for: .touchUpInside)
         cell.leading.constant = self.collectionView.leading.constant
         cell.trailing.constant = self.collectionView.leading.constant
@@ -111,27 +101,22 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
     }
     
     @objc func btnCheckTouch(_ sender:UIButton) {
-        if self.selectedSource.count < self.maxCount || sender.isSelected == true {
+        if delegate.selectedSource.count < delegate.maxCount || sender.isSelected == true {
             sender.isSelected = !sender.isSelected
-            let indexPath = (sender.superview?.superview as! MTImagePickerCell).indexPath
+            let index = (sender.superview?.superview as! MTImagePickerCell).indexPath.row
             if sender.isSelected {
-                self.selectedSource.insert(self.dataSource[(indexPath?.row)!])
+               delegate.selectedSource.append(self.dataSource[index])
                 sender.heartbeatsAnimation(duration: 0.15)
             }else {
-                self.selectedSource.remove(self.dataSource[(indexPath?.row)!])
+                if let removeIndex = delegate.selectedSource.index(of: self.dataSource[index]) {
+                    delegate.selectedSource.remove(at: removeIndex)
+                }
             }
-            self.lbSelected.text = String(self.selectedSource.count)
+            self.lbSelected.text = String(delegate.selectedSource.count)
             self.lbSelected.heartbeatsAnimation(duration: 0.15)
-            self.btnPreview.isEnabled = !(self.selectedSource.count == 0)
+            self.btnPreview.isEnabled = !(delegate.selectedSource.count == 0)
         } else {
             let alertView = FlashAlertView(message: "Maxium selected".localized, delegate: nil)
-            alertView.show()
-        }
-    }
-    
-    func showUnAuthorize() {
-        DispatchQueue.main.async {
-            let alertView = UIAlertView(title: "Notice".localized, message: "照片访问权限被禁用，请前往系统设置->隐私->照片中，启用本程序对照片的访问权限", delegate: nil, cancelButtonTitle: "OK".localized)
             alertView.show()
         }
     }
@@ -154,54 +139,25 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
         }
     }
     
-    private func initUI() {
-        self.title = "All Photos".localized
-    }
-    
     private func pushToImageSelectorPreviewController(initialIndexPath:IndexPath?,dataSource:[MTImagePickerModel]) {
         let vc = MTImagePickerPreviewController.instance
         vc.dataSource = dataSource
-        vc.selectedSource = self.selectedSource
+        vc.delegate = self.delegate
         vc.initialIndexPath = initialIndexPath
-        vc.maxCount = self.maxCount
-        vc.dismiss = {
-            selectedSource in
-            self.selectedSource = selectedSource
-            self.collectionView.reloadData()
-        }
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func getSelectedSortedSource() -> [MTImagePickerModel] {
-        var dataSource = [MTImagePickerModel]()
-        for model in self.selectedSource.sorted(by: { return $0.sortNumber < $1.sortNumber}) {
-            dataSource.append(model)
-        }
-        return dataSource
     }
     
     //MARK: IBActions
     @IBAction func btnFinishTouch(_ sender: AnyObject) {
-        let dataSource = self.getSelectedSortedSource()
-        if self.source == .Photos {
-            if #available(iOS 8.0, *) {
-                self.delegate?.imagePickerController?(picker:self.navigation, didFinishPickingWithPhotosModels: dataSource as! [MTImagePickerPhotosModel])
-            } else {
-                // Fallback on earlier versions
-            }
-        } else {
-            self.delegate?.imagePickerController?(picker:self.navigation, didFinishPickingWithAssetsModels: dataSource as! [MTImagePickerAssetsModel])
-        }
-        self.dismiss(animated: true, completion: nil)
+        delegate.didFinishPicking()
     }
     
     @IBAction func btnPreviewTouch(_ sender: AnyObject) {
-        let dataSource = self.getSelectedSortedSource()
+        let dataSource = delegate.selectedSource
         self.pushToImageSelectorPreviewController(initialIndexPath: nil, dataSource: dataSource)
     }
     @IBAction func btnCancelTouch(_ sender: AnyObject) {
-        self.delegate?.imagePickerControllerDidCancel?(picker: self.navigation)
-        self.dismiss(animated: true, completion: nil)
+        delegate.didCancel()
     }
 }
 

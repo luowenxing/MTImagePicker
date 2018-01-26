@@ -25,61 +25,30 @@ import UIKit
     @objc optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
 }
 
+protocol MTImagePickerDataSourceDelegate:NSObjectProtocol {
+    var selectedSource:[MTImagePickerModel] { get set }
+    var maxCount:Int { get }
+    var mediaTypes:[MTImagePickerMediaType] { get }
+    var source:MTImagePickerSource { get }
+    func didFinishPicking()
+    func didCancel()
+}
 
 public class MTImagePickerController:UINavigationController {
-
-    public weak var imagePickerDelegate:MTImagePickerControllerDelegate? {
-        get {
-            return self._delegate
-        }
-        set {
-            self._delegate = newValue
-            self.albumController?.delegate = newValue
-        }
-    }
     
-    public var mediaTypes:[MTImagePickerMediaType] {
-        get {
-            return self._mediaTypes
-        }
-        set {
-            self._mediaTypes.removeAll()
-            if newValue.contains(.Photo) {
-                self._mediaTypes.append(.Photo)
-            }
-            if newValue.contains(.Video) {
-                self._mediaTypes.append(.Video)
-            }
-            self.albumController?.mediaTypes = self._mediaTypes
-        }
-    }
-    
-    public var maxCount: Int {
-        get {
-            return self._maxCount
-        }
-        set {
-            if newValue > 0 {
-                self._maxCount = newValue
-                self.albumController?.maxCount = newValue
-            }
-        }
-    }
-    
-    public var defaultShowCameraRoll:Bool {
-        get {
-            return self._defaultAll
-        }
-        set {
-            self._defaultAll = newValue
-        }
-    }
+    public weak var imagePickerDelegate:MTImagePickerControllerDelegate?
+    public var mediaTypes:[MTImagePickerMediaType]  = [.Photo]
+    public var maxCount: Int = Int.max
+    public var defaultShowCameraRoll:Bool = true
+    public var selectedSource = [MTImagePickerModel]()
+    private var _source = MTImagePickerSource.ALAsset
     public var source:MTImagePickerSource {
         get {
             return self._source
         }
         set {
             self._source = newValue
+            // 只有iOS8以上才能使用Photos框架
             if newValue == .Photos {
                 if #available(iOS 8.0, *) {
                     
@@ -87,7 +56,6 @@ public class MTImagePickerController:UINavigationController {
                     self._source = .ALAsset
                 }
             }
-            self.albumController?.source = self._source
         }
     }
     
@@ -116,30 +84,44 @@ public class MTImagePickerController:UINavigationController {
     public override func viewWillAppear(_ animated: Bool) {
         if self.defaultShowCameraRoll {
             let controller = MTImagePickerAssetsController.instance
-            controller.delegate = self.imagePickerDelegate
-            controller.maxCount = self.maxCount
-            controller.source = self.source
+            controller.delegate = self
             MTImagePickerDataSource.fetchDefault(type: self.source, mediaTypes: self.mediaTypes) {
                 controller.groupModel = $0
                 self.pushViewController(controller, animated: false)
             }
         }
     }
-    
+
     class var instance:MTImagePickerController {
         get {
             let controller = MTImagePickerAlbumsController.instance
             let navigation = MTImagePickerController(rootViewController: controller)
-            navigation.albumController = controller
+            controller.delegate = navigation
             return navigation
         }
     }
+}
 
-    public weak var _delegate:MTImagePickerControllerDelegate?
-    private var _mediaTypes = [MTImagePickerMediaType.Photo]
-    private var _maxCount:Int = Int.max
-    private var _defaultAll:Bool = true
-    private var _source = MTImagePickerSource.ALAsset
-    private weak var albumController:MTImagePickerAlbumsController?
+extension MTImagePickerController:MTImagePickerDataSourceDelegate {
+    
+    func didFinishPicking() {
+        if self.source == .Photos {
+            if #available(iOS 8.0, *) {
+                self.imagePickerDelegate?.imagePickerController?(picker:self, didFinishPickingWithPhotosModels: selectedSource as! [MTImagePickerPhotosModel])
+            } else {
+                // Fallback on earlier versions
+            }
+        } else {
+            self.imagePickerDelegate?.imagePickerController?(picker:self, didFinishPickingWithAssetsModels: selectedSource as! [MTImagePickerAssetsModel])
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func didCancel() {
+        imagePickerDelegate?.imagePickerControllerDidCancel?(picker: self)
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }
+
+

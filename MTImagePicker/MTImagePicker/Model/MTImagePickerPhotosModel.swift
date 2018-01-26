@@ -12,8 +12,8 @@ import Photos
 public class MTImagePickerPhotosModel : MTImagePickerModel {
     
     public var phasset:PHAsset!
-    init(mediaType: MTImagePickerMediaType, sortNumber: Int,phasset:PHAsset) {
-        super.init(mediaType: mediaType, sortNumber: sortNumber)
+    init(mediaType: MTImagePickerMediaType,phasset:PHAsset) {
+        super.init(mediaType: mediaType)
         self.phasset = phasset
     }
     
@@ -33,7 +33,7 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
         let options = PHImageRequestOptions()
         options.deliveryMode = .fastFormat
         options.isSynchronous = true
-        PHImageManager.default().requestImage(for: self.phasset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: options) {
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFill, options: options) {
             image,infoDict in
             img = image
             
@@ -46,7 +46,9 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
         let options = PHImageRequestOptions()
         options.deliveryMode = .fastFormat
         options.isSynchronous = true
-        PHImageManager.default().requestImage(for: self.phasset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options) {
+        var size = UIScreen.main.compatibleBounds.size
+        size = CGSize(width: size.width / 3.0 , height: size.height / 3.0)
+        PHImageManager.default().requestImage(for: self.phasset, targetSize: size, contentMode: .aspectFit, options: options) {
             image,infoDict in
             img = image
         }
@@ -85,6 +87,10 @@ public class MTImagePickerPhotosModel : MTImagePickerModel {
             }
         }
         return fileSize
+    }
+    
+    override func getIdentity() -> String {
+        return self.phasset.localIdentifier
     }
     
     private func fetchAVPlayerItemSync() -> AVPlayerItem? {
@@ -134,7 +140,7 @@ class MTImagePickerPhotosAlbumModel:MTImagePickerAlbumModel {
     
     override func getAlbumImage(size:CGSize) -> UIImage? {
         if let asset = self.result.object(at: 0) as? PHAsset {
-            let model = MTImagePickerPhotosModel(mediaType: .Photo, sortNumber: 0, phasset: asset)
+            let model = MTImagePickerPhotosModel(mediaType: .Photo, phasset: asset)
             return model.getThumbImage(size: size)
         }
         return nil
@@ -146,7 +152,7 @@ class MTImagePickerPhotosAlbumModel:MTImagePickerAlbumModel {
             self.result.enumerateObjects({ (asset, index, isStop) -> Void in
                 if let phasset = asset as? PHAsset {
                     let mediaType:MTImagePickerMediaType = phasset.mediaType == .image ? .Photo : .Video
-                    let model = MTImagePickerPhotosModel(mediaType: mediaType, sortNumber: index, phasset: phasset)
+                    let model = MTImagePickerPhotosModel(mediaType: mediaType, phasset: phasset)
                     models.append(model)
                 }
             })

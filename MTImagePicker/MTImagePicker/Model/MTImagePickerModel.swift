@@ -9,13 +9,26 @@
 import UIKit
 import AVFoundation
 
+func ==(lhs:MTImagePickerModel, rhs:MTImagePickerModel) -> Bool {
+    return lhs.getIdentity() == rhs.getIdentity()
+}
+
 public class MTImagePickerModel:NSObject {
-    public var mediaType:MTImagePickerMediaType
-    public var sortNumber = 0
     
-    init(mediaType:MTImagePickerMediaType,sortNumber:Int) {
+    // 实现自定义的array contains
+    override public func isEqual(_ object: Any?) -> Bool {
+        guard let obj = object as? MTImagePickerModel else { return false }
+        return obj.getIdentity() == self.getIdentity()
+    }
+    
+    public var mediaType:MTImagePickerMediaType
+    
+    init(mediaType:MTImagePickerMediaType) {
         self.mediaType = mediaType
-        self.sortNumber = sortNumber
+    }
+    
+    func getIdentity() -> String {
+        fatalError("getIdentity has not been implemented")
     }
     
     func getFileName() -> String? {

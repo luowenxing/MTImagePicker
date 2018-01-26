@@ -11,11 +11,9 @@ import AVFoundation
 
 class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
     
+    weak var delegate:MTImagePickerDataSourceDelegate!
     var dataSource:[MTImagePickerModel]!
-    var selectedSource:Set<MTImagePickerModel>!
     var initialIndexPath:IndexPath?
-    var maxCount:Int!
-    var dismiss:((Set<MTImagePickerModel>) -> Void)?
     
     @IBOutlet weak var lbIndex: UILabel!
     @IBOutlet weak var topView: UIView!
@@ -35,7 +33,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lbSelected.text = String(self.selectedSource.count)
+        self.lbSelected.text = String(delegate.selectedSource.count)
         self.lbIndex.text = "\(initialIndexPath?.row ?? 0 + 1)/\(dataSource.count)"
     }
     
@@ -125,27 +123,28 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
         if let index = self.collectionView.indexPathsForVisibleItems.first {
             self.lbIndex.text = "\(index.row + 1)/\(dataSource.count)"
             let model = self.dataSource[index.row]
-            self.btnCheck.isSelected = self.selectedSource.contains(model)
+            self.btnCheck.isSelected = delegate.selectedSource.contains(model)
         }
     }
     
     @IBAction func btnBackTouch(_ sender: AnyObject) {
-        self.dismiss?(self.selectedSource)
         let _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnCheckTouch(_ sender: UIButton) {
-        if self.selectedSource.count < self.maxCount || sender.isSelected == true {
+        if delegate.selectedSource.count < delegate.maxCount || sender.isSelected == true {
             sender.isSelected = !sender.isSelected
             if let indexPath = self.collectionView.indexPathsForVisibleItems.first {
                 let model = self.dataSource[indexPath.row]
                 if sender.isSelected {
-                    self.selectedSource.insert(model)
+                    delegate.selectedSource.append(model)
                     sender.heartbeatsAnimation(duration: 0.15)
                 }else {
-                    self.selectedSource.remove(model)
+                    if let removeIndex = delegate.selectedSource.index(of: self.dataSource[indexPath.row]) {
+                        delegate.selectedSource.remove(at: removeIndex)
+                    }
                 }
-                self.lbSelected.text = String(self.selectedSource.count)
+                self.lbSelected.text = String(delegate.selectedSource.count)
                 self.lbSelected.heartbeatsAnimation(duration: 0.15)
             }
         } else {

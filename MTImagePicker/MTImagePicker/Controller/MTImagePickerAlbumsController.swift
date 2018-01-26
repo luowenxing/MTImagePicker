@@ -24,13 +24,8 @@ class MTImagePickerAlbumCell:UITableViewCell {
 
 class MTImagePickerAlbumsController :UITableViewController {
     
-    var mediaTypes:[MTImagePickerMediaType] = [MTImagePickerMediaType.Photo]
-    var source:MTImagePickerSource = .ALAsset
-    var maxCount:Int = Int.max
-    weak var delegate:MTImagePickerControllerDelegate?
-    
+    weak var delegate:MTImagePickerDataSourceDelegate!
     private var dataSource = [MTImagePickerAlbumModel]()
-    private var _source:MTImagePickerSource = .Photos
     
     class var instance:MTImagePickerAlbumsController {
         get {
@@ -42,7 +37,7 @@ class MTImagePickerAlbumsController :UITableViewController {
     
     override func viewDidLoad() {
         self.tableView.tableFooterView = UIView()
-        MTImagePickerDataSource.fetch(type: self.source, mediaTypes: self.mediaTypes, complete: { (dataSource) in
+        MTImagePickerDataSource.fetch(type: delegate.source, mediaTypes: delegate.mediaTypes, complete: { (dataSource) in
             self.dataSource = dataSource
             self.tableView.reloadData()
         })
@@ -69,13 +64,11 @@ class MTImagePickerAlbumsController :UITableViewController {
     func pushToMTImagePickerController(model:MTImagePickerAlbumModel,animate:Bool) {
         let controller = MTImagePickerAssetsController.instance
         controller.groupModel = model
-        controller.delegate = self.delegate
-        controller.maxCount = self.maxCount
-        controller.source = self.source
+        controller.delegate = delegate
         self.navigationController?.pushViewController(controller, animated: animate)
     }
     @IBAction func btnCancelTouch(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        self.delegate.didCancel()
     }
 }
 

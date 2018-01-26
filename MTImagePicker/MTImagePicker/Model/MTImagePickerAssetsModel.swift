@@ -18,8 +18,8 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
         return self.asset.defaultRepresentation()
     }()
     
-    init(mediaType:MTImagePickerMediaType,sortNumber:Int, asset:ALAsset) {
-        super.init(mediaType: mediaType, sortNumber: sortNumber)
+    init(mediaType:MTImagePickerMediaType, asset:ALAsset) {
+        super.init(mediaType: mediaType)
         self.asset = asset
     }
     
@@ -36,7 +36,7 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
     }
     
     override func getImageAsync(complete:@escaping (UIImage?) -> Void) {
-        DispatchQueue.global(priority: .default).async {
+        DispatchQueue.global().async {
             let image = UIImage(cgImage: self.rept.fullScreenImage().takeUnretainedValue())
             DispatchQueue.main.async {
                 complete(image)
@@ -56,6 +56,9 @@ public class MTImagePickerAssetsModel : MTImagePickerModel {
         return Int(self.rept.size())
     }
     
+    override func getIdentity() -> String {
+        return self.rept.url().absoluteString
+    }
 }
 
 
@@ -81,15 +84,14 @@ class MTImagePickerAssetsAlbumModel:MTImagePickerAlbumModel {
     
     override func getMTImagePickerModelsListAsync(complete: @escaping ([MTImagePickerModel]) -> Void) {
         var models = [MTImagePickerModel]()
-        DispatchQueue.global(priority: .default).async {
+        DispatchQueue.global().async {
             self.group.enumerateAssets({ (result, index, success) in
                 if let asset = result {
                     let ALAssetType = result?.value(forProperty: ALAssetPropertyType) as! NSString
                     let mediaType:MTImagePickerMediaType = ALAssetType.isEqual(to: ALAssetTypePhoto) ? .Photo : .Video
-                    let model = MTImagePickerAssetsModel(mediaType: mediaType, sortNumber: index, asset:asset)
+                    let model = MTImagePickerAssetsModel(mediaType: mediaType, asset:asset)
                     models.append(model)
                 }
-
             })
             DispatchQueue.main.async {
                 complete(models)

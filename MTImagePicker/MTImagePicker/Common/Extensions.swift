@@ -29,7 +29,7 @@ extension ALAsset {
     class func getAssetFromUrlSync(lib:ALAssetsLibrary,url:NSURL) -> ALAsset? {
         let sema = DispatchSemaphore(value: 0)
         var result:ALAsset?
-        DispatchQueue.global(priority: .default).async {
+        DispatchQueue.global().async {
             lib.asset(for: url as URL!, resultBlock: { (asset) in
                 result = asset
                 sema.signal()

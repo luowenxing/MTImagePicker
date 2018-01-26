@@ -81,7 +81,9 @@ class ViewController: UITableViewController,MTImagePickerControllerDelegate {
         self.tableView.reloadData()
     }
     
-    
+    func imagePickerControllerDidCancel(picker: MTImagePickerController) {
+        print("cancel")
+    }
     
     func btnPickTouch() {
         // 不推荐的写法，此处为了简便所以这样实现。

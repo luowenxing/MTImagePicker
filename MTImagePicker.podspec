@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "MTImagePicker"
 
-  s.version      = "3.0.3"
+  s.version      = "3.0.4"
 
   s.summary      = "A WeiXin like multiple image picker for iOS7+."
 

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "MTImagePicker"
 
-  s.version      = "3.0.2"
+  s.version      = "3.0.3"
 
   s.summary      = "A WeiXin like multiple image picker for iOS7+."
 
@@ -25,5 +25,6 @@ Pod::Spec.new do |s|
 
   s.source_files  = "MTImagePicker/MTImagePicker", "MTImagePicker/MTImagePicker/**/*.{swift}"
 
-  s.resources = "MTImagePicker/MTImagePicker/**/*.{png,jpeg,jpg,storyboard,xib}"
+  s.resource_bundle =  { "MTImagePicker" => "MTImagePicker/MTImagePicker/**/*.{png,jpeg,jpg,storyboard,xib}" }
+
 end

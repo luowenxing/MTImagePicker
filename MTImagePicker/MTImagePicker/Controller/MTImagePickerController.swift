@@ -25,15 +25,6 @@ import UIKit
     @objc optional func imagePickerControllerDidCancel(picker: MTImagePickerController)
 }
 
-protocol MTImagePickerDataSourceDelegate:NSObjectProtocol {
-    var selectedSource:[MTImagePickerModel] { get set }
-    var maxCount:Int { get }
-    var mediaTypes:[MTImagePickerMediaType] { get }
-    var source:MTImagePickerSource { get }
-    func didFinishPicking()
-    func didCancel()
-}
-
 public class MTImagePickerController:UINavigationController {
     
     public weak var imagePickerDelegate:MTImagePickerControllerDelegate?
@@ -92,7 +83,7 @@ public class MTImagePickerController:UINavigationController {
         }
     }
 
-    class var instance:MTImagePickerController {
+    public class var instance:MTImagePickerController {
         get {
             let controller = MTImagePickerAlbumsController.instance
             let navigation = MTImagePickerController(rootViewController: controller)
@@ -100,6 +91,15 @@ public class MTImagePickerController:UINavigationController {
             return navigation
         }
     }
+}
+
+protocol MTImagePickerDataSourceDelegate:NSObjectProtocol {
+    var selectedSource:[MTImagePickerModel] { get set }
+    var maxCount:Int { get }
+    var mediaTypes:[MTImagePickerMediaType] { get }
+    var source:MTImagePickerSource { get }
+    func didFinishPicking()
+    func didCancel()
 }
 
 extension MTImagePickerController:MTImagePickerDataSourceDelegate {

@@ -29,7 +29,7 @@ class MTImagePickerAlbumsController :UITableViewController {
     
     class var instance:MTImagePickerAlbumsController {
         get {
-            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.main)
+            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.getResourcesBundle())
             let vc = storyboard.instantiateViewController(withIdentifier: "MTImagePickerAlbumsController") as! MTImagePickerAlbumsController
             return vc
         }

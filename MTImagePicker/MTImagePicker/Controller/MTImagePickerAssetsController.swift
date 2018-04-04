@@ -27,7 +27,7 @@ class MTImagePickerAssetsController :UIViewController,UICollectionViewDataSource
     
     class var instance:MTImagePickerAssetsController {
         get {
-            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.main)
+            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.getResourcesBundle())
             let vc = storyboard.instantiateViewController(withIdentifier: "MTImagePickerController") as! MTImagePickerAssetsController
             return vc
         }

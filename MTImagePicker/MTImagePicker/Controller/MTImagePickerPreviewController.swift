@@ -25,7 +25,7 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     
     class var instance:MTImagePickerPreviewController {
         get {
-            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.main)
+            let storyboard = UIStoryboard(name: "MTImagePicker", bundle: Bundle.getResourcesBundle())
             let vc = storyboard.instantiateViewController(withIdentifier: "MTImagePickerPreviewController") as! MTImagePickerPreviewController
             return vc
         }

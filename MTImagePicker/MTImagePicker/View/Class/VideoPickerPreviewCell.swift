@@ -100,8 +100,8 @@ class VideoPickerPreviewCell:UICollectionViewCell{
     
     func setTopAndBottomView(hidden:Bool) {
         if let controller = self.controller {
-            controller.topView.isHidden = hidden
-            controller.bottomView.isHidden = hidden
+            controller.topViews.forEach { $0.isHidden = !$0.isHidden }
+            controller.bottomViews.forEach { $0.isHidden = !$0.isHidden }
         }
     }
     

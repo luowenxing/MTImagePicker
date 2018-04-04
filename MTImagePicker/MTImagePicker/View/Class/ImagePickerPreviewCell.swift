@@ -80,8 +80,8 @@ class ImagePickerPreviewCell:UICollectionViewCell,UIScrollViewDelegate {
     
     @objc func onImageSingleTap(_ sender:UITapGestureRecognizer) {
         if let controller = self.controller {
-            controller.topView.isHidden = !controller.topView.isHidden
-            controller.bottomView.isHidden = !controller.bottomView.isHidden
+            controller.topViews.forEach { $0.isHidden = !$0.isHidden }
+            controller.bottomViews.forEach { $0.isHidden = !$0.isHidden }
         }
     }
     

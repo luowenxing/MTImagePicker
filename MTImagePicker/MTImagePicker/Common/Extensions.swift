@@ -112,7 +112,7 @@ extension String {
 extension Bundle {
     static func getResourcesBundle() -> Bundle? {
         let bundle = Bundle(for: MTImagePickerController.self)
-        guard let resourcesBundleUrl = bundle.resourceURL?.appendingPathComponent("MTImagePicker") else {
+        guard let resourcesBundleUrl = bundle.url(forResource: "MTImagePicker", withExtension: "bundle") else {
             return nil
         }
         return Bundle(url: resourcesBundleUrl)

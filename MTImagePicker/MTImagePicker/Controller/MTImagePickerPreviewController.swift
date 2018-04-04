@@ -16,11 +16,13 @@ class MTImagePickerPreviewController:UIViewController,UICollectionViewDelegateFl
     var initialIndexPath:IndexPath?
     
     @IBOutlet weak var lbIndex: UILabel!
-    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var collectionView: MTImagePickerCollectionView!
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var btnCheck: UIButton!
     @IBOutlet weak var lbSelected: UILabel!
+    
+    @IBOutlet var topViews: [UIView]!
+    @IBOutlet var bottomViews: [UIView]!
+    
     private var initialScrollDone = false
     
     class var instance:MTImagePickerPreviewController {

@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
 
   s.source_files  = "MTImagePicker/MTImagePicker", "MTImagePicker/MTImagePicker/**/*.{swift}"
 
-  s.resource_bundle =  { "MTImagePicker" => "MTImagePicker/MTImagePicker/**/*.{png,jpeg,jpg,storyboard,xib}" }
+  s.resource_bundle =  { "MTImagePicker" => "MTImagePicker/MTImagePicker/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}" }
 
 end

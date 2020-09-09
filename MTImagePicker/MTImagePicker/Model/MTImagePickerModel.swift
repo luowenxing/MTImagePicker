@@ -1,11 +1,3 @@
-//
-//  ImageSelectorViewModel.swift
-//  CMBMobile
-//
-//  Created by Luo on 5/9/16.
-//  Copyright © 2016 Yst－WHB. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 

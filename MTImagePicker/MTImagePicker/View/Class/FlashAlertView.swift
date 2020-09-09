@@ -8,16 +8,6 @@
 
 import UIKit
 
-//
-//  FlashAlertView.swift
-//  CMBMobile
-//
-//  Created by Yst－WHB on 3/23/15.
-//  Copyright (c) 2015 Yst－WHB. All rights reserved.
-//
-
-import UIKit
-
 class FlashAlertView: UIAlertView {
     fileprivate var flashTime: TimeInterval = 1.25
     

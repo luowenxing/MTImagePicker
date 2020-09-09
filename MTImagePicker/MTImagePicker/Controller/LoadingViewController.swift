@@ -1,10 +1,3 @@
-//
-//  LoadingViewController.swift
-//  CMBMobile
-//
-//  Created by LUO on 3/14/16.
-//  Copyright © 2016 Yst－WHB. All rights reserved.
-//
 
 import UIKit
 
